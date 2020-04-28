@@ -26,8 +26,13 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.blue,
       body: Column(
         children: <Widget>[
+<<<<<<< HEAD
           
           //Namn på appen tjansssss
+=======
+          //Nytt test
+
+>>>>>>> 6c47ffb3c42344d6fa904192f219f06590e6c2c4
           Container(
             child: Stack(
               children: <Widget>[
