@@ -31,7 +31,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
             ),
               ],
             ),
-          ),          
+          ),
+          
       SizedBox(height: 20),
           Container(
           alignment: FractionalOffset.center,
