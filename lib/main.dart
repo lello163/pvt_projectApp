@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   padding: EdgeInsets.fromLTRB(0.0, 110.0, 0.0, 0.0),
                   child: Text(
-                    'Meet',
+                    'Meet n Greet',
                     style: TextStyle(
                       fontSize: 35.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2),
                   ),
