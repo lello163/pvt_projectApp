@@ -27,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           
-          //Namn på appen
+
           Container(
             child: Stack(
               children: <Widget>[
