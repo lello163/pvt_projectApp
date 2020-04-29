@@ -18,8 +18,30 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
     String _selectedPart;
     String _selectedRelation;
 
+  
+
 
     return new Scaffold(
+        /*bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 4.0,
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(icon: Icon(Icons.location_searching),
+              onPressed: (){},
+            ),
+            Text("Continue"),
+            IconButton(icon: Icon(Icons.refresh),
+              onPressed: (){
+                setState(() {
+                });
+              },
+            ),
+          ],
+          ),
+    ),*/
         resizeToAvoidBottomPadding: false,
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
@@ -125,11 +147,28 @@ SizedBox(height: 10.0),
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.blue))),
                     obscureText: false,
-                  ),
-                
-              
+                  ),             
  ),
- 
+ Container(
+   padding: EdgeInsets.fromLTRB(255, 260, 0, 0),
+            child: Row(
+              children: <Widget>[
+                  Text(
+                    "Continue",
+                    style:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2,)),
+               
+                IconButton(icon: Icon(Icons.keyboard_arrow_right),
+                onPressed: (){},
+                ),
+                  
+                  
+                  
+                  
+            
+              ],
+            ),
+          ),
               
     ]));
             
