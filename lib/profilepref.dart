@@ -12,6 +12,10 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
     String birthDateInString;
     bool isDateSelected= false;
     DateTime birthDate;
+    String _selectedGender; 
+    String _selectedPart;
+    String _selectedRelation;
+
 
     return new Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -69,8 +73,55 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
       ),
     ],
   ),
+),
+SizedBox(height: 40),
+Container(
+  height: 44.0,
+  padding: EdgeInsets.fromLTRB(100, 0 , 0, 0),
+  child: new DropdownButton<String>(
+    hint: Text('Please choose a gender'),
+    focusColor: Colors.black,
+    items: <String>['Male', 'Woman', 'Non-binary'].map((String _selectedGender) {
+    return new DropdownMenuItem<String>(
+      value: _selectedGender,
+      child: new Text(_selectedGender),
+    );
+  }).toList(),
+  onChanged: (_) {},
 )
-
+),
+SizedBox(height: 40),
+Container(
+  height: 44.0,
+  padding: EdgeInsets.fromLTRB(100, 0 , 0, 0),
+  child: new DropdownButton<String>(
+    hint: Text('Select your relationship status'),
+    focusColor: Colors.black,
+    items: <String>['Singel', 'In a relationship', 'Married', "Prefer not to say"].map((String _selectedRelation) {
+    return new DropdownMenuItem<String>(
+      value: _selectedRelation,
+      child: new Text(_selectedRelation),
+    );
+  }).toList(),
+  onChanged: (_) {},
+)
+),
+SizedBox(height: 40),
+Container(
+  height: 44.0,
+  padding: EdgeInsets.fromLTRB(100, 0 , 0, 0),
+  child: new DropdownButton<String>(
+    hint: Text('Where are you from?'),
+    focusColor: Colors.black,
+    items: <String>['Im from a different part of Sweden', 'Im from another country', 'Im from Stockholm'].map((String _selectedPart) {
+    return new DropdownMenuItem<String>(
+      value: _selectedPart,
+      child: new Text(_selectedPart),
+    );
+  }).toList(),
+  onChanged: (_) {},
+)
+)
               
               
     ]));
