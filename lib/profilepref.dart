@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -76,8 +78,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
 ),
 SizedBox(height: 40),
 Container(
-  height: 44.0,
-  padding: EdgeInsets.fromLTRB(100, 0 , 0, 0),
+  width: 310,
+  padding: EdgeInsets.fromLTRB(70, 0 , 0, 0),
   child: new DropdownButton<String>(
     hint: Text('Please choose a gender'),
     focusColor: Colors.black,
@@ -90,10 +92,9 @@ Container(
   onChanged: (_) {},
 )
 ),
-SizedBox(height: 40),
+SizedBox(height: 25),
 Container(
-  height: 44.0,
-  padding: EdgeInsets.fromLTRB(100, 0 , 0, 0),
+  padding: EdgeInsets.fromLTRB(70, 0 , 0, 0),
   child: new DropdownButton<String>(
     hint: Text('Select your relationship status'),
     focusColor: Colors.black,
@@ -106,23 +107,29 @@ Container(
   onChanged: (_) {},
 )
 ),
-SizedBox(height: 40),
-Container(
-  height: 44.0,
-  padding: EdgeInsets.fromLTRB(100, 0 , 0, 0),
-  child: new DropdownButton<String>(
-    hint: Text('Where are you from?'),
-    focusColor: Colors.black,
-    items: <String>['Im from a different part of Sweden', 'Im from another country', 'Im from Stockholm'].map((String _selectedPart) {
-    return new DropdownMenuItem<String>(
-      value: _selectedPart,
-      child: new Text(_selectedPart),
-    );
-  }).toList(),
-  onChanged: (_) {},
-)
-)
+SizedBox(height: 10.0),
+ Container(
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  width: 310,
+                  child: TextField(
+                    decoration: InputDecoration(
+
+                        labelText: 'Where do you come from? ',
+                        labelStyle: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,),
+                            hintText: 'Stockholm',
+                            icon: Icon(Icons.place),
+                            
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue))),
+                    obscureText: false,
+                  ),
+                
               
+ ),
+ 
               
     ]));
             
