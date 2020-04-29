@@ -97,7 +97,7 @@ Container(
   child: new DropdownButton<String>(
     hint: Text('Select your relationship status'),
     focusColor: Colors.black,
-    items: <String>['Singel', 'In a relationship', 'Married', "Prefer not to say"].map((String _selectedRelation) {
+    items: <String>['Singel', 'In a relationships', 'Married', "Prefer not to say"].map((String _selectedRelation) {
     return new DropdownMenuItem<String>(
       value: _selectedRelation,
       child: new Text(_selectedRelation),
