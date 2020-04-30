@@ -26,8 +26,8 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.blue,
       body: Column(
         children: <Widget>[
-          //Nytt test
-
+          
+          //Namn på appen tjansssssa
           Container(
             child: Stack(
               children: <Widget>[
@@ -99,7 +99,7 @@ ButtonTheme(
     color: Colors.lightBlue,
     child: Text("login".toUpperCase(),  style: TextStyle(
                       fontSize: 18.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2)),
-                          
+
   ),
 )
         ],

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -12,8 +14,34 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
     String birthDateInString;
     bool isDateSelected= false;
     DateTime birthDate;
+    String _selectedGender; 
+    String _selectedPart;
+    String _selectedRelation;
+
+  
+
 
     return new Scaffold(
+        /*bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 4.0,
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(icon: Icon(Icons.location_searching),
+              onPressed: (){},
+            ),
+            Text("Continue"),
+            IconButton(icon: Icon(Icons.refresh),
+              onPressed: (){
+                setState(() {
+                });
+              },
+            ),
+          ],
+          ),
+    ),*/
         resizeToAvoidBottomPadding: false,
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
@@ -31,7 +59,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
             ),
               ],
             ),
-          ),          
+          ),
+          
       SizedBox(height: 20),
           Container(
           alignment: FractionalOffset.center,
@@ -68,9 +97,78 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
       ),
     ],
   ),
+),
+SizedBox(height: 40),
+Container(
+  width: 310,
+  padding: EdgeInsets.fromLTRB(70, 0 , 0, 0),
+  child: new DropdownButton<String>(
+    hint: Text('Please choose a gender'),
+    focusColor: Colors.black,
+    items: <String>['Male', 'Woman', 'Non-binary'].map((String _selectedGender) {
+    return new DropdownMenuItem<String>(
+      value: _selectedGender,
+      child: new Text(_selectedGender),
+    );
+  }).toList(),
+  onChanged: (_) {},
 )
+),
+SizedBox(height: 25),
+Container(
+  padding: EdgeInsets.fromLTRB(70, 0 , 0, 0),
+  child: new DropdownButton<String>(
+    hint: Text('Select your relationship status'),
+    focusColor: Colors.black,
+    items: <String>['Singel', 'In a relationships', 'Married', "Prefer not to say"].map((String _selectedRelation) {
+    return new DropdownMenuItem<String>(
+      value: _selectedRelation,
+      child: new Text(_selectedRelation),
+    );
+  }).toList(),
+  onChanged: (_) {},
+)
+),
+SizedBox(height: 10.0),
+ Container(
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  width: 310,
+                  child: TextField(
+                    decoration: InputDecoration(
 
-              
+                        labelText: 'Where do you come from? ',
+                        labelStyle: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,),
+                            hintText: 'Stockholm',
+                            icon: Icon(Icons.place),
+                            
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue))),
+                    obscureText: false,
+                  ),             
+ ),
+ Container(
+   padding: EdgeInsets.fromLTRB(255, 260, 0, 0),
+            child: Row(
+              children: <Widget>[
+                  Text(
+                    "Continue",
+                    style:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2,)),
+               
+                IconButton(icon: Icon(Icons.keyboard_arrow_right),
+                onPressed: (){},
+                ),
+                  
+                  
+                  
+                  
+            
+              ],
+            ),
+          ),
               
     ]));
             

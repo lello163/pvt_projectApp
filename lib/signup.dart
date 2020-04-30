@@ -55,6 +55,7 @@ class _SignupPageState extends State<SignupPage> {
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                             hintText: 'Lastname',
+                            
 
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.blue))),
