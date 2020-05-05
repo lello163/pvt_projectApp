@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           
           //Bild på handskakning
           //Test
-          //Hej
+          //Hejgit
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

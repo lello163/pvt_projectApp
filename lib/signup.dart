@@ -14,6 +14,9 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     var text = Text('I agree to the ');
     return new Scaffold(
+       appBar: AppBar(
+                  title: const Text('Sign up Page'),
+                ),
         resizeToAvoidBottomPadding: false,
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
@@ -34,7 +37,7 @@ class _SignupPageState extends State<SignupPage> {
               padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
               child: Column(
                 children: <Widget>[
-                  TextField(
+                  TextFormField(
                     decoration: InputDecoration(
                         labelText: 'Firstname',
                         labelStyle: TextStyle(
@@ -47,7 +50,7 @@ class _SignupPageState extends State<SignupPage> {
                             borderSide: BorderSide(color: Colors.blue))),
                   ),
                   SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
                     decoration: InputDecoration(
                         labelText: 'LASTNAME ',
                         labelStyle: TextStyle(
@@ -55,14 +58,14 @@ class _SignupPageState extends State<SignupPage> {
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                             hintText: 'Lastname',
-                            
+                          
 
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.blue))),
                     obscureText: true,
                   ),
                   SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
                     decoration: InputDecoration(
                         labelText: 'EMAIL ',
                         labelStyle: TextStyle(
@@ -74,7 +77,7 @@ class _SignupPageState extends State<SignupPage> {
                             borderSide: BorderSide(color: Colors.blue))),
                   ),
                   SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
                     decoration: InputDecoration(
                         labelText: 'PASSWORD ',
                         labelStyle: TextStyle(
