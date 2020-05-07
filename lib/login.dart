@@ -109,7 +109,7 @@ _loginWithFB() async{
                   )
                 : Center(
                     child: OutlineButton(
-                      child: Text('Login with Facebook',
+                      child: Text('Continue with Facebook',
                                               style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -120,13 +120,6 @@ _loginWithFB() async{
                      },
                     
                   )),
-  //                          child: Text(
-  //                            'Continue with Facebook',
-  //                            style: TextStyle(
-  //                                color: Colors.white,
-  //                                fontWeight: FontWeight.bold,
-  //                                fontFamily: 'Montserrat', fontSize: 20),
-  //                          ),
                           ),
                         ),
                       )

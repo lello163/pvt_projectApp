@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profilepref.dart';
+import 'login.dart' ;
 import 'package:flutter/gestures.dart';
 import 'TermsandCond.dart';
 
@@ -10,9 +11,11 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   bool checkboxValue = false;
+  
   @override
   Widget build(BuildContext context) {
     var text = Text('I agree to the ');
+    
     return new Scaffold(
        appBar: AppBar(
                   title: const Text('Sign up Page'),
@@ -152,8 +155,70 @@ class _SignupPageState extends State<SignupPage> {
                           color: Colors.lightBlue,
                         ),
                       )),
-         
-                
+         SizedBox(height: 5.0),
+                  Container(
+                      height: 50.0,
+                      width: 300,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        shadowColor: Colors.greenAccent,
+                        color: Colors.blue,
+                        elevation: 7.0,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ProfilePrefPage())
+                            );
+                          },
+                          shape: new RoundedRectangleBorder(
+                         borderRadius: new BorderRadius.circular(30.0),
+                         side: BorderSide(color: Colors.black, width: 3.0)
+                           ),
+                          child: Center(
+                            child: Text(
+                              'Create an account with Facebook',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat'),
+                            ),
+                          ),
+                          color: Colors.lightBlue,
+                        ),
+                      )),
+                SizedBox(height: 5.0),
+                  Container(
+                      height: 50.0,
+                      width: 300,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        shadowColor: Colors.greenAccent,
+                        color: Colors.blue,
+                        elevation: 7.0,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ProfilePrefPage())
+                            );
+                          },
+                          shape: new RoundedRectangleBorder(
+                         borderRadius: new BorderRadius.circular(30.0),
+                         side: BorderSide(color: Colors.black, width: 3.0)
+                           ),
+                          child: Center(
+                            child: Text(
+                              'Create an account with Google',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat'),
+                            ),
+                          ),
+                          color: Colors.lightBlue,
+                        ),
+                      )),
                 ],
                 
               )),

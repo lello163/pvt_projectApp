@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
     },
 
     color: Colors.lightBlue,
-    child: Text("sign in".toUpperCase(),  style: TextStyle(
+    child: Text("sign up".toUpperCase(),  style: TextStyle(
                       fontSize: 18.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2)),
     
   ),
