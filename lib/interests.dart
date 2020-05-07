@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class InterestsPage extends StatefulWidget {
-  //final ValueChanged<bool> isSelected;
+  //final ValueChanged<bool> isSelected; hej
 
   @override
   _InterestsPageState createState() => _InterestsPageState();
