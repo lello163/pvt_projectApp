@@ -1,4 +1,4 @@
-/*import 'dart:ui';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -107,54 +107,3 @@ class _InterestsPageState extends State<InterestsPage> {
         }    
       
   } 
-*/
-import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
-import 'package:drag_select_grid_view/drag_select_grid_view.dart';
-import 'selectable_item.dart';
-import 'selection_app_bar.dart';
-
-class InterestsPage extends StatefulWidget {
-  @override
-  _Interestspage createState() => _Interestspage();
-}
-
-class _Interestspage extends State<InterestsPage> {
-  final controller = DragSelectGridViewController();
-
-  @override
-  void initState() {
-    super.initState();
-    controller.addListener(scheduleRebuild);
-  }
-
-  @override
-  void dispose() {
-    controller.removeListener(scheduleRebuild);
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SelectionAppBar(
-        selection: controller.selection,
-      ),
-      body: DragSelectGridView(
-        gridController: controller,
-        itemCount: 20,
-        itemBuilder: (context, index, selected) {
-          return SelectableItem(
-            index: index,
-            selected: selected,
-          );
-        },
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 80,
-        ),
-      ),
-    );
-  }
-
-  void scheduleRebuild() => setState(() {});
-}
