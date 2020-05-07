@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class InterestsPage extends StatefulWidget {
+  //final ValueChanged<bool> isSelected;
+
   @override
   _InterestsPageState createState() => _InterestsPageState();
   
 }
 
-class _InterestsPageState extends State<InterestsPage> {
+class _InterestsPageState extends State<InterestsPage> {  
+  bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
-    var myList = true;
     return new Scaffold(
       appBar: AppBar(
                   title: const Text('Interests'),
@@ -43,10 +46,18 @@ class _InterestsPageState extends State<InterestsPage> {
       child: const Text('Fitness'),
       color: Colors.teal[300],
     ),
+    
     InkWell(
-      splashColor: Colors.greenAccent,
-      onTap: () => print(myList = false),
-   
+        onTap: (){     
+      setState(() {
+          isSelected = !isSelected;
+          if(isSelected){
+             return Colors.black;
+          }else{
+             return Colors.green;
+          }
+      });
+      },
       child: Container(
       padding: const EdgeInsets.all(8),
       child: const Text('Animals'),
@@ -91,6 +102,7 @@ class _InterestsPageState extends State<InterestsPage> {
     Container(
       color: Colors.green,
       padding: const EdgeInsets.all(8),
+    
       child: Center( 
         child: Text('Culture events', style: TextStyle(color: Colors.black
         )),
@@ -107,3 +119,4 @@ class _InterestsPageState extends State<InterestsPage> {
         }    
       
   } 
+
