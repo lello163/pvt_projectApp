@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'login.dart';
+import 'interests.dart';
 //import 'package:image/image.dart';
 
 void main() => runApp(new MyApp());
@@ -85,6 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
     onPressed: () {
        Navigator.push(
     context,
+    //cheat-route för att se sida över intressen
+    //MaterialPageRoute(builder: (context) => InterestsPage()),
     MaterialPageRoute(builder: (context) => SignupPage()),
     );
     },

@@ -32,20 +32,27 @@ class _InterestsPageState extends State<InterestsPage> {
           // Generate 100 widgets that display their index in the List.
           children: <Widget> [
             Container(
+              foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/fooddrinks.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(8),
-      child: const Text('Food & Drinks'),
-      color: Colors.teal[100],
+      child: 
+          const Text('Food & Drinks', 
+          style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w200, fontStyle: FontStyle.italic, letterSpacing: 2),),
+      
+      //color: Colors.teal[100],
+      
     ),
     Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(1),
       child: const Text('Sport'),
-      color: Colors.teal[200],
+     // decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports.png'))),
     ),
-    Container(
+   /* Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.cover),),
       padding: const EdgeInsets.all(8),
-      child: const Text('Fitness'),
-      color: Colors.teal[300],
-    ),
+      child: const Text('Fitness', style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w200, fontStyle: FontStyle.italic, letterSpacing: 2)),
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'))),
+    ), */
     
     InkWell(
         onTap: (){     
@@ -59,50 +66,63 @@ class _InterestsPageState extends State<InterestsPage> {
       });
       },
       child: Container(
+        foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(8),
       child: const Text('Animals'),
-      color: Colors.red,
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals.png'))),
     ),
    ),
     Container(
-      padding: const EdgeInsets.all(1),
+      //funkar inte pga inkWell?
+     // foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/parents.png'), fit: BoxFit.fitWidth)),
+      padding: const EdgeInsets.all(8),
       child: const Text('Parent hang'),
-      color: Colors.teal[200],
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/parent.png'))),
     ),
     Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/film.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(8),
       child: const Text('Film'),
-      color: Colors.teal[300],
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/film.png'))),
     ),
      Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/explore2.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(8),
       child: const Text('Explore'),
-      color: Colors.teal[100],
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/explore.png'))),
     ),
     Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/nature2.png'), fit: BoxFit.cover),),
       padding: const EdgeInsets.all(1),
-      child: const Text('Nature'),
-      color: Colors.teal[200],
+      child: const Text('Fitness & Mindfulness'),
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/nature.png'))),
     ),
     Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/gaming2.jpg'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(8),
       child: const Text('Gaming'),
       color: Colors.teal[300],
     ),
      Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/music2.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(8),
       child: const Text('Music'),
-    /*  Image(
-        image: NetworkImage('https://cdn.discordapp.com/attachments/708249856929562664/708277680931471381/matt-botsford-OKLqGsCT8qs-unsplash_1.jpg')
-      )*/
-      color: Colors.teal[100],
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/music.png'))),
     ),
     Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/culture.png'), fit: BoxFit.fitWidth),),
       padding: const EdgeInsets.all(1),
-      child: const Text('Art'),
-      color: Colors.teal[200],
+      child: const Text('Art & Culture'),
+      //color: Colors.teal[200],
     ),
     Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/outdoors2.jpg'), fit: BoxFit.fitWidth),),
+      padding: const EdgeInsets.all(1),
+      child: const Text('Outdoors'),
+      //color: Colors.teal[200],
+    ),
+   /* Container(
+      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/culture.png'), fit: BoxFit.fitWidth),),
       color: Colors.green,
       padding: const EdgeInsets.all(8),
     
@@ -112,7 +132,7 @@ class _InterestsPageState extends State<InterestsPage> {
       
       ),
       
-    ),
+    ),*/
           ]
           
                  )
