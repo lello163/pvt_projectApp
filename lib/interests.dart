@@ -92,6 +92,9 @@ class _InterestsPageState extends State<InterestsPage> {
      Container(
       padding: const EdgeInsets.all(8),
       child: const Text('Music'),
+    /*  Image(
+        image: NetworkImage('https://cdn.discordapp.com/attachments/708249856929562664/708277680931471381/matt-botsford-OKLqGsCT8qs-unsplash_1.jpg')
+      )*/
       color: Colors.teal[100],
     ),
     Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'login.dart';
+//import 'package:image/image.dart';
 
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
@@ -20,6 +21,8 @@ class MyHomePage extends StatefulWidget{
   _MyHomePageState createState() => new _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
+  //final alignment = AlignmentGeometry;
+
   @override
   Widget build(BuildContext context){
     return new Scaffold(
@@ -28,12 +31,14 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           
           //Namn på appen tjansssssa Hello
-          Container(
-            child: Stack(
+         Container(
+            child: 
+              Stack(
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.fromLTRB(0.0, 110.0, 0.0, 0.0),
-                  child: Text(
+                  child: 
+                    Text(
                     'Meet n Greet',
                     style: TextStyle(
                       fontSize: 35.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2),
