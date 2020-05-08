@@ -25,11 +25,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context){
-    return new Scaffold(
-      backgroundColor: Colors.blue,
+    return new Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage('assets/main.png')),
+  //      fit: BoxFit.cover,
+      ),
+      
+    
+    
+    
+    child: Scaffold(
+      backgroundColor: Colors.transparent,
+      //backgroundColor: Colors.blue,
       body: Column(
         children: <Widget>[
-          
           //Namn på appen tjansssssa Hello
          Container(
             child: 
@@ -41,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text(
                     'Meet n Greet',
                     style: TextStyle(
-                      fontSize: 35.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2),
+                      fontSize: 45.0, color: Colors.white, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2), 
                   ),
                 ),
               ],
@@ -55,9 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Center(
+  /*             Center( 
                   child: ImageIcon(AssetImage('assets/handshake.png'), size: 200.0),
-                )
+                ) */
               ],
             ),
           ),
@@ -110,6 +119,6 @@ ButtonTheme(
 )
         ],
       ),
-    );
+    ));
   }
 }
