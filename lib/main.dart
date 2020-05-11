@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'login.dart';
+import 'interests.dart';
+
 
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:pvt_project/griditem.dart';
 import 'package:pvt_project/interests.dart';
 
 class ProfilePrefPage extends StatefulWidget {
@@ -83,7 +83,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
           context: context,
           initialDate: new DateTime.now(),
           firstDate: new DateTime(1900),
-          lastDate: new DateTime(2100)
+          lastDate: new DateTime(2100),
       );
           if(datePick!=null && datePick!=birthDate){
           setState(() {

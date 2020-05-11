@@ -1,10 +1,10 @@
-import 'dart:ui';
+/*import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class InterestsPage extends StatefulWidget {
-  //final ValueChanged<bool> isSelected; hej
+  //final ValueChanged<bool> isSelected; 
 
   @override
   _InterestsPageState createState() => _InterestsPageState();
@@ -58,57 +58,6 @@ class _InterestsPageState extends State<InterestsPage> {
           }
       });
       },
-      child: Container(
-      padding: const EdgeInsets.all(8),
-      child: const Text('Animals'),
-      color: Colors.red,
-    ),
-   ),
-    Container(
-      padding: const EdgeInsets.all(1),
-      child: const Text('Parent hang'),
-      color: Colors.teal[200],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: const Text('Film'),
-      color: Colors.teal[300],
-    ),
-     Container(
-      padding: const EdgeInsets.all(8),
-      child: const Text('Explore'),
-      color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(1),
-      child: const Text('Nature'),
-      color: Colors.teal[200],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: const Text('Gaming'),
-      color: Colors.teal[300],
-    ),
-     Container(
-      padding: const EdgeInsets.all(8),
-      child: const Text('Music'),
-      color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(1),
-      child: const Text('Art'),
-      color: Colors.teal[200],
-    ),
-    Container(
-      color: Colors.green,
-      padding: const EdgeInsets.all(8),
-    
-      child: Center( 
-        child: Text('Culture events', style: TextStyle(color: Colors.black
-        )),
-      
-      ),
-      
     ),
           ]
           
@@ -120,3 +69,22 @@ class _InterestsPageState extends State<InterestsPage> {
       
   } 
 
+*//*
+import 'package:flutter/material.dart';
+import 'itemsToCategory.dart';
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Items(),
+    );
+  }
+}
+*/
