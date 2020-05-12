@@ -87,8 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
        Navigator.push(
     context,
     //cheat-route för att se sida över intressen
-    //MaterialPageRoute(builder: (context) => InterestsPage()),
-    MaterialPageRoute(builder: (context) => SignupPage()),
+    MaterialPageRoute(builder: (context) => InterestsPage()),
+    //MaterialPageRoute(builder: (context) => SignupPage()),
     );
     },
 
