@@ -12,6 +12,10 @@ class InterestsPage extends StatefulWidget {
 }
 
 class _InterestsPageState extends State<InterestsPage> {
+  double opacity = 1;
+
+  bool sportSelected = false;
+
   bool isSelected = false;
   int counter = 0;
   //var shape = Brightness.dark;
@@ -19,6 +23,7 @@ class _InterestsPageState extends State<InterestsPage> {
 
   void _changeState() {
     setState(() {
+      sportsTapped();
       if (isSelected = false)
         shape = BoxShape.circle;
         isSelected = true;
@@ -29,6 +34,16 @@ class _InterestsPageState extends State<InterestsPage> {
 
       
     });
+  }
+
+  sportsTapped(){
+    if(sportSelected){
+      sportSelected = false;
+      opacity = 1;
+    } else {
+      sportSelected = true;
+      opacity = 0.3;
+    }
   }
 
   @override
@@ -79,6 +94,7 @@ class _InterestsPageState extends State<InterestsPage> {
               GestureDetector(
                 onTap: (){
                   _changeState();
+
                 },
               child: Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
@@ -95,10 +111,15 @@ class _InterestsPageState extends State<InterestsPage> {
                   ),
                 ),
                 decoration: BoxDecoration(
+                  color: Colors.white,
                     shape: shape,
                     image: DecorationImage(
+                      colorFilter: ColorFilter.mode(Colors.white.withOpacity(opacity),
+                          BlendMode.dstATop),
                         image: AssetImage('assets/sports2.png'),
-                        fit: BoxFit.fitWidth)),
+                        fit: BoxFit.fitWidth),
+                ),
+
               ),),
               Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
