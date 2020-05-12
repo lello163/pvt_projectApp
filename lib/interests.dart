@@ -12,10 +12,6 @@ class InterestsPage extends StatefulWidget {
 }
 
 class _InterestsPageState extends State<InterestsPage> {
-  double opacity = 1;
-
-  bool sportSelected = false;
-
   bool isSelected = false;
   int counter = 0;
   //var shape = Brightness.dark;
@@ -23,7 +19,6 @@ class _InterestsPageState extends State<InterestsPage> {
 
   void _changeState() {
     setState(() {
-      sportsTapped();
       if (isSelected = false)
         shape = BoxShape.circle;
         isSelected = true;
@@ -34,16 +29,6 @@ class _InterestsPageState extends State<InterestsPage> {
 
       
     });
-  }
-
-  sportsTapped(){
-    if(sportSelected){
-      sportSelected = false;
-      opacity = 1;
-    } else {
-      sportSelected = true;
-      opacity = 0.3;
-    }
   }
 
   @override
@@ -74,16 +59,14 @@ class _InterestsPageState extends State<InterestsPage> {
               child: Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/fooddrinks.png'), fit: BoxFit.fitWidth),),
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Food & Drinks',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Food & Drinks',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     shape: shape,
@@ -94,46 +77,36 @@ class _InterestsPageState extends State<InterestsPage> {
               GestureDetector(
                 onTap: (){
                   _changeState();
-
                 },
               child: Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
                 padding: const EdgeInsets.all(1),
-                child: Center(
-                  child: const Text(
-                    'Sport',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Sport',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
                     shape: shape,
                     image: DecorationImage(
-                      colorFilter: ColorFilter.mode(Colors.white.withOpacity(opacity),
-                          BlendMode.dstATop),
                         image: AssetImage('assets/sports2.png'),
-                        fit: BoxFit.fitWidth),
-                ),
-
+                        fit: BoxFit.fitWidth)),
               ),),
               Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Animals',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Animals',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -142,16 +115,14 @@ class _InterestsPageState extends State<InterestsPage> {
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Parent hang',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Parent hang',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -160,16 +131,14 @@ class _InterestsPageState extends State<InterestsPage> {
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Film',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Film',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -178,16 +147,14 @@ class _InterestsPageState extends State<InterestsPage> {
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Explore',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Explore',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 //culture & outdoors
                 decoration: BoxDecoration(
@@ -197,16 +164,14 @@ class _InterestsPageState extends State<InterestsPage> {
               ),
               Container(
                 padding: const EdgeInsets.all(1),
-                child: Center(
-                  child: const Text(
-                    'Fitness & Mindfulness',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Fitness & Mindfulness',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -216,16 +181,14 @@ class _InterestsPageState extends State<InterestsPage> {
               Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/gaming2.jpg'), fit: BoxFit.fitWidth),),
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Gaming',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Gaming',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -235,16 +198,14 @@ class _InterestsPageState extends State<InterestsPage> {
               Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/music2.png'), fit: BoxFit.fitWidth),),
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: const Text(
-                    'Music',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2),
-                  ),
+                child: const Text(
+                  'Music',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 2),
                 ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
