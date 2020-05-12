@@ -36,6 +36,7 @@ class _InterestsPageState extends State<InterestsPage> {
     return new Scaffold(
         appBar: AppBar(
           title: const Text('What are your interests?'),
+         // bottom: const Text('Continue'),
         ),
         resizeToAvoidBottomPadding: false,
         body: GridView.count(
@@ -80,7 +81,7 @@ class _InterestsPageState extends State<InterestsPage> {
                 },
               child: Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
-                padding: const EdgeInsets.all(1),
+                padding: const EdgeInsets.all(8),
                 child: const Text(
                   'Sport',
                   style: TextStyle(
@@ -163,7 +164,7 @@ class _InterestsPageState extends State<InterestsPage> {
                         fit: BoxFit.fitWidth)),
               ),
               Container(
-                padding: const EdgeInsets.all(1),
+                padding: const EdgeInsets.all(8),
                 child: const Text(
                   'Fitness & Mindfulness',
                   style: TextStyle(
@@ -212,13 +213,20 @@ class _InterestsPageState extends State<InterestsPage> {
                         image: AssetImage('assets/music2.png'),
                         fit: BoxFit.fitWidth)),
               ),
-              InkWell(
+             /* InkWell(
                 onTap: () {
                   counter++;
                   setState(() {});
                 },
-              )
-            ]));
+              )*/
+            ]),
+            bottomNavigationBar: Container(
+               padding: const EdgeInsets.all(4),
+               //alignment: Alignment.bottomRight,
+              //Alignment.centerRight,
+              child: Text('Continue', style: TextStyle(fontSize: 20.0))
+            ),
+            );
   }
 }
 
