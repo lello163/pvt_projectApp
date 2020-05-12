@@ -12,6 +12,8 @@ class InterestsPage extends StatefulWidget {
 }
 
 class _InterestsPageState extends State<InterestsPage> {
+  bool sportSelected = false;
+  double sportOpacity = 1;
   bool isSelected = false;
   int counter = 0;
   //var shape = Brightness.dark;
@@ -29,6 +31,16 @@ class _InterestsPageState extends State<InterestsPage> {
 
       
     });
+  }
+
+  sportsSelected(){
+    if(sportSelected){
+      sportSelected = false;
+      sportOpacity = 1;
+    } else {
+      sportSelected = true;
+      sportOpacity = 0.3;
+    }
   }
 
   @override
@@ -77,6 +89,7 @@ class _InterestsPageState extends State<InterestsPage> {
               GestureDetector(
                 onTap: (){
                   _changeState();
+                  sportsSelected();
                 },
               child: Container(
                 //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
@@ -93,6 +106,9 @@ class _InterestsPageState extends State<InterestsPage> {
                 decoration: BoxDecoration(
                     shape: shape,
                     image: DecorationImage(
+                        colorFilter:
+                        ColorFilter.mode(Colors.black.withOpacity(sportOpacity),
+                            BlendMode.dstATop),
                         image: AssetImage('assets/sports2.png'),
                         fit: BoxFit.fitWidth)),
               ),),
