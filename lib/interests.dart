@@ -234,7 +234,34 @@ class _InterestsPageState extends State<InterestsPage> {
                   setState(() {});
                 },
               )
-            ]));
+            ],),
+                  bottomNavigationBar: RaisedButton(
+        shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(30.0),
+            side: BorderSide(color: Colors.black, width: 3.0)),
+        /*constraints: BoxConstraints.expand(
+    height: Theme.of(context).textTheme.headline4.fontSize * 1.1 ,
+  ),*/
+        padding: const EdgeInsets.all(4),
+        color: Colors.lightBlue,
+        //alignment: Alignment.bottomRight,
+        //Alignment.centerRight,
+        child: Text('Continue',
+            style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+                fontStyle: FontStyle.italic,
+                letterSpacing: 2)),
+        onPressed: () {
+          Navigator.push(
+            context,
+            //Till profile sen
+            MaterialPageRoute(builder: (context) => InterestsPage()),
+          );
+        }
+      ),
+    
+    );
   }
 }
 
