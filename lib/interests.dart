@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class InterestsPage extends StatefulWidget {
   //final ValueChanged<bool> isSelected;
@@ -149,7 +150,8 @@ class _InterestsPageState extends State<InterestsPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          title: const Text('What are your interests?'),
+          title: const Text('What are your interests?', textAlign: TextAlign.center),
+          bottom: PreferredSize(child: const Text('Choose as many categories as you like', style: TextStyle(fontSize: 15.0, color: Colors.white)), preferredSize: Size.fromRadius(5.0))
         ),
         resizeToAvoidBottomPadding: false,
         body: GridView.count(
@@ -160,12 +162,12 @@ class _InterestsPageState extends State<InterestsPage> {
             // Create a grid with 1 columns.
             crossAxisCount: 1,
             // Generate 100 widgets that display their index in the List.
-
+            
 
             children: <Widget>[
-              Container(
+            /*  Container(
                 child: const Text('Choose as many categories as you like'),
-              ),
+              ),*/
               GestureDetector(
                 onTap: () {
                   selectedInterest(1);
@@ -433,13 +435,8 @@ class _InterestsPageState extends State<InterestsPage> {
         shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0),
             side: BorderSide(color: Colors.black, width: 3.0)),
-        /*constraints: BoxConstraints.expand(
-    height: Theme.of(context).textTheme.headline4.fontSize * 1.1 ,
-  ),*/
         padding: const EdgeInsets.all(4),
         color: Colors.lightBlue,
-        //alignment: Alignment.bottomRight,
-        //Alignment.centerRight,
         child: Text('Continue',
             style: TextStyle(
                 fontSize: 18.0,
@@ -447,11 +444,14 @@ class _InterestsPageState extends State<InterestsPage> {
                 fontStyle: FontStyle.italic,
                 letterSpacing: 2)),
         onPressed: () {
+          if (sportSelected |  foodSelected | animalsSelected | parentHangSelected | filmSelected | exploreSelected | fitnessSelected | gamingSelected | musicSelected){
           Navigator.push(
             context,
             //Till profile sen
             MaterialPageRoute(builder: (context) => InterestsPage()),
-          );
+          );} else {
+            Alert(context: context, title: "Slow down, tiger", desc: "You have to choose atleast one category of your liking.").show();
+          }
         }
       ),
     

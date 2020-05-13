@@ -155,6 +155,11 @@ class _SignupPageState extends State<SignupPage> {
                           color: Colors.lightBlue,
                         ),
                       )),
+ //                     child: Text(''),
+ Container(
+   padding: const EdgeInsets.all(20),
+   child: Text('- - - - - - - - - - - - - O R - - - - - - - - - - - - -', textAlign: TextAlign.center ),
+ ),
          SizedBox(height: 5.0),
                   Container(
                       height: 50.0,
@@ -168,7 +173,8 @@ class _SignupPageState extends State<SignupPage> {
                           onPressed: () {
                             Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProfilePrefPage())
+   //                         MaterialPageRoute(builder: (context) => ProfilePrefPage())
+                              MaterialPageRoute(builder: (context) => LogInPage())
                             );
                           },
                           shape: new RoundedRectangleBorder(
@@ -200,7 +206,8 @@ class _SignupPageState extends State<SignupPage> {
                           onPressed: () {
                             Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProfilePrefPage())
+                            //MaterialPageRoute(builder: (context) => ProfilePrefPage())
+                            MaterialPageRoute(builder: (context) => LogInPage())
                             );
                           },
                           shape: new RoundedRectangleBorder(
