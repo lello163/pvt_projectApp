@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+import 'profilepage.dart';
+
 class InterestsPage extends StatefulWidget {
   //final ValueChanged<bool> isSelected;
   //int _isSelected = 0;
@@ -448,7 +450,7 @@ class _InterestsPageState extends State<InterestsPage> {
           Navigator.push(
             context,
             //Till profile sen
-            MaterialPageRoute(builder: (context) => InterestsPage()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );} else {
             Alert(context: context, title: "Slow down, tiger", desc: "You have to choose atleast one category of your liking.").show();
           }
