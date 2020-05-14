@@ -29,8 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context){
     return new Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/main.png')),
-  //      fit: BoxFit.cover,
+        image: DecorationImage(image: AssetImage('assets/main.png'), 
+        fit: BoxFit.cover,
+        ),
       ),
       
     
@@ -89,8 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
     context,
     //cheat-route för att se sida över intressen
     //MaterialPageRoute(builder: (context) => InterestsPage()),
-    MaterialPageRoute(builder: (context) => Profile()),
-    //MaterialPageRoute(builder: (context) => SignupPage()),
+    //MaterialPageRoute(builder: (context) => Profile()),
+    MaterialPageRoute(builder: (context) => SignupPage()),
     );
     },
 

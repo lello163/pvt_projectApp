@@ -50,11 +50,19 @@ _loginWithFB() async{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return new Container(
+      decoration: BoxDecoration(
+    image: DecorationImage(
+      image: AssetImage("assets/main.png"),
+      fit: BoxFit.cover,
+    ),
+  ),
+    child: Scaffold(
       appBar: AppBar(
                   title: const Text('Login Page'),
                 ),
         resizeToAvoidBottomPadding: false,
+        backgroundColor: Colors.transparent,
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
           SizedBox(height: 60),
@@ -188,6 +196,6 @@ _loginWithFB() async{
                 ],
               )),
           
-        ]));
+        ])));
   }
 }

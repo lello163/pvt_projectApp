@@ -47,3 +47,30 @@ class _SettingsPageState extends State<SettingsPage> {
         ]));
   }
 }
+
+
+/*
+Alert(
+      context: context,
+      type: AlertType.warning,
+      title: "ALERT",
+      desc: "Are you sure you want to PAUSE your account?",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Cancel",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+        DialogButton(
+          child: Text(
+            "Yes",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          ]),
+        )
+      ],
+    ).show();
+  */

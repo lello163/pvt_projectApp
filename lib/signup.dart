@@ -16,11 +16,20 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     var text = Text('I agree to the ');
     
-    return new Scaffold(
+    return new Container(
+      decoration: BoxDecoration(
+    image: DecorationImage(
+      image: AssetImage("assets/main.png"),
+      fit: BoxFit.cover,
+    ),
+  ),
+    child: 
+    Scaffold(
        appBar: AppBar(
                   title: const Text('Sign up Page'),
                 ),
         resizeToAvoidBottomPadding: false,
+        backgroundColor: Colors.transparent,
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
           Container(
@@ -158,7 +167,9 @@ class _SignupPageState extends State<SignupPage> {
  //                     child: Text(''),
  Container(
    padding: const EdgeInsets.all(20),
-   child: Text('- - - - - - - - - - - - - O R - - - - - - - - - - - - -', textAlign: TextAlign.center ),
+   child: Text('- - - - - - - - - - - - - O R - - - - - - - - - - - - -', 
+   style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.0), 
+   textAlign: TextAlign.center ),
  ),
          SizedBox(height: 5.0),
                   Container(
@@ -232,6 +243,6 @@ class _SignupPageState extends State<SignupPage> {
             
                 ],
               )
-        );
+        ));
   }
 }
