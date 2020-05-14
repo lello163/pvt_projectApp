@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
-
+import 'profilepageview.dart';
 
 List names = [
   "Ling Waldner",
@@ -279,7 +279,7 @@ class _ProfileState extends State<Profile> {
             
             context,
             //Till profile sen
-            MaterialPageRoute(builder: (context) => Profile()),
+            MaterialPageRoute(builder: (context) => ProfilePage()),
           ); 
           
         }
