@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'settings.dart';
 
 
 List names = [
@@ -42,6 +43,15 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
        appBar: AppBar(
                   title: const Text('Profile'),
+                  actions: <Widget>[
+                    RaisedButton (
+                      child:  Icon(Icons.settings),
+                      onPressed: () {
+                        Navigator.push(context, 
+                        MaterialPageRoute(builder: (context) => SettingsPage()),);
+                      },
+                    )
+                  ],
                 ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 10),
