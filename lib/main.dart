@@ -76,14 +76,14 @@ class _MyHomePageState extends State<MyHomePage> {
           
               // Sign in
 
-              SizedBox(height: 200.0),
+              SizedBox(height: 200.0, width: 300),
               ButtonTheme(
   minWidth: 300.0,
   height: 70.0,
   child: RaisedButton(
       shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(30.0),
-      side: BorderSide(color: Colors.black, width: 3.0)
+      borderRadius: new BorderRadius.circular(20.0),
+     // side: BorderSide(color: Colors.black, width: 3.0)
       ),
     onPressed: () {
        Navigator.push(
@@ -95,9 +95,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     },
 
-    color: Colors.lightBlue,
-    child: Text("sign up".toUpperCase(),  style: TextStyle(
-                      fontSize: 18.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2)),
+    color: Colors.blue[700],
+    child: Text("sign up".toUpperCase(),  style: TextStyle(color: Colors.white,
+                      fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat', letterSpacing: 2)),
     
   ),
 ),
@@ -108,8 +108,8 @@ ButtonTheme(
   height: 70.0,
   child: RaisedButton(
       shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(30.0),
-      side: BorderSide(color: Colors.black, width: 3.0)
+      borderRadius: new BorderRadius.circular(20.0),
+     // side: BorderSide(color: Colors.black, width: 3.0)
       ),
     onPressed: () {     
     Navigator.push(
@@ -117,9 +117,9 @@ ButtonTheme(
     MaterialPageRoute(builder: (context) => LogInPage())
     );
     },
-    color: Colors.lightBlue,
-    child: Text("login".toUpperCase(),  style: TextStyle(
-                      fontSize: 18.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.italic, letterSpacing: 2)),
+    color: Colors.blue[700],
+    child: Text("login".toUpperCase(),  style: TextStyle(color: Colors.white,
+                      fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'Montserrat', letterSpacing: 2)),
 
   ),
 )

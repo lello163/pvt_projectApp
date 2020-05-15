@@ -33,8 +33,6 @@ class _InterestsPageState extends State<InterestsPage> {
   bool musicSelected = false;
   double musicOpacity = 1;
 
-
-
   bool isSelected = false;
   int counter = 0;
   //var shape = Brightness.dark;
@@ -42,34 +40,27 @@ class _InterestsPageState extends State<InterestsPage> {
 
   void _changeState() {
     setState(() {
-      if (isSelected = false)
-        shape = BoxShape.circle;
+      if (isSelected = false) shape = BoxShape.circle;
       isSelected = true;
       // else,
       //   isSelected = false;
       //   shape = Brightness.dark;
-
-
-
     });
   }
 
-
-
-
-  selectedInterest(int interestID){
-    switch(interestID){
+  selectedInterest(int interestID) {
+    switch (interestID) {
       case 1:
-        if(foodSelected){
+        if (foodSelected) {
           foodSelected = false;
           foodOpacity = 1;
         } else {
           foodSelected = true;
-          foodOpacity= 0.3;
+          foodOpacity = 0.3;
         }
         break;
       case 2:
-        if(sportSelected){
+        if (sportSelected) {
           sportSelected = false;
           sportOpacity = 1;
         } else {
@@ -78,7 +69,7 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 3:
-        if(animalsSelected){
+        if (animalsSelected) {
           animalsSelected = false;
           animalsOpacity = 1;
         } else {
@@ -87,7 +78,7 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 4:
-        if(parentHangSelected){
+        if (parentHangSelected) {
           parentHangSelected = false;
           parentHangOpacity = 1;
         } else {
@@ -96,7 +87,7 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 5:
-        if(filmSelected){
+        if (filmSelected) {
           filmSelected = false;
           filmOpacity = 1;
         } else {
@@ -105,7 +96,7 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 6:
-        if(exploreSelected){
+        if (exploreSelected) {
           exploreSelected = false;
           exploreOpacity = 1;
         } else {
@@ -114,7 +105,7 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 7:
-        if(fitnessSelected){
+        if (fitnessSelected) {
           fitnessSelected = false;
           fitnessOpacity = 1;
         } else {
@@ -123,8 +114,8 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 8:
-        if(gamingSelected){
-          gamingSelected= false;
+        if (gamingSelected) {
+          gamingSelected = false;
           gamingOpacity = 1;
         } else {
           gamingSelected = true;
@@ -132,7 +123,7 @@ class _InterestsPageState extends State<InterestsPage> {
         }
         break;
       case 9:
-        if(musicSelected){
+        if (musicSelected) {
           musicSelected = false;
           musicOpacity = 1;
         } else {
@@ -143,318 +134,326 @@ class _InterestsPageState extends State<InterestsPage> {
     }
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: AppBar(
-          title: const Text('What are your interests?', textAlign: TextAlign.center),
-          bottom: PreferredSize(child: const Text('Choose as many categories as you like', style: TextStyle(fontSize: 15.0, color: Colors.white)), preferredSize: Size.fromRadius(5.0))
-        ),
-        resizeToAvoidBottomPadding: false,
-        body: GridView.count(
-            padding: const EdgeInsets.all(30),
-            childAspectRatio: (6 / 1),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            // Create a grid with 1 columns.
-            crossAxisCount: 1,
-            // Generate 100 widgets that display their index in the List.
-            
+      appBar: AppBar(
+          title: const Text('What are your interests?',
+              textAlign: TextAlign.center),
+          bottom: PreferredSize(
+              child: const Text('Choose as many categories as you like',
+                  style: TextStyle(fontSize: 15.0, color: Colors.white, 
+                fontFamily: 'Monserrat',)),
+              preferredSize: Size.fromRadius(5.0))),
+      resizeToAvoidBottomPadding: false,
+      body: GridView.count(
+        padding: const EdgeInsets.all(30),
+        childAspectRatio: (6 / 1),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        // Create a grid with 1 columns.
+        crossAxisCount: 1,
+        // Generate 100 widgets that display their index in the List.
 
-            children: <Widget>[
-            /*  Container(
+        children: <Widget>[
+          /*  Container(
                 child: const Text('Choose as many categories as you like'),
               ),*/
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(1);
-                  _changeState();
-                },
-                child: Container(
-                  //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/fooddrinks.png'), fit: BoxFit.fitWidth),),
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Food & Drinks',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      shape: shape,
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(foodOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/fooddrinks.png'),
-                          fit: BoxFit.fitWidth)),
-                ),),
-              GestureDetector(
-                onTap: (){
-                  selectedInterest(2);
-                  _changeState();
-
-                },
-                child: Container(
-                  //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
-                  padding: const EdgeInsets.all(1),
-                  child: Center(
-                    child: const Text(
-                      'Sport',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      shape: shape,
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(sportOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/sports2.png'),
-                          fit: BoxFit.fitWidth)),
-                ),),
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(3);
-                  _changeState();
-
-                },
-                child: Container(
-                  //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Animals',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(animalsOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/animals2.png'),
-                          fit: BoxFit.fitWidth)),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(1);
+              _changeState();
+            },
+            child: Container(
+              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/fooddrinks.png'), fit: BoxFit.fitWidth),),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Food & Drinks',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(4);
-                  _changeState();
-
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Parent hang',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(parentHangOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/parent2.png'),
-                          fit: BoxFit.cover)),
+              decoration: BoxDecoration(
+                  shape: shape,
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(foodOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/fooddrinks.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(2);
+              _changeState();
+            },
+            child: Container(
+              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
+              padding: const EdgeInsets.all(1),
+              child: Center(
+                child: const Text(
+                  'Sport',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              GestureDetector(
-                onTap: (){
-                  selectedInterest(5);
-                  _changeState();
-
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Film',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(filmOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/film.png'),
-                          fit: BoxFit.fitWidth)),
+              decoration: BoxDecoration(
+                  shape: shape,
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(sportOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/sports2.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(3);
+              _changeState();
+            },
+            child: Container(
+              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Animals',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(6);
-                  _changeState();
-
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Explore',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  //culture & outdoors
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(exploreOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/explore2.png'),
-                          fit: BoxFit.fitWidth)),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(animalsOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/animals2.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(4);
+              _changeState();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Parent hang',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(7);
-                  _changeState();
-
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(1),
-                  child: Center(
-                    child: const Text(
-                      'Fitness & Mindfulness',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(fitnessOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/nature2.png'),
-                          fit: BoxFit.fitWidth)),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(parentHangOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/parent2.png'),
+                      fit: BoxFit.cover)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(5);
+              _changeState();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Film',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(8);
-                  _changeState();
-
-                },
-                child: Container(
-                  //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/gaming2.jpg'), fit: BoxFit.fitWidth),),
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Gaming',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(gamingOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/gaming2.jpg'),
-                          fit: BoxFit.fitWidth)),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(filmOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/film.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(6);
+              _changeState();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Explore',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  selectedInterest(9);
-                  _changeState();
-                },
-                child: Container(
-                  //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/music2.png'), fit: BoxFit.fitWidth),),
-                  padding: const EdgeInsets.all(8),
-                  child: Center(
-                    child: const Text(
-                      'Music',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          colorFilter:
-                          ColorFilter.mode(Colors.black.withOpacity(musicOpacity),
-                              BlendMode.dstATop),
-                          image: AssetImage('assets/music2.png'),
-                          fit: BoxFit.fitWidth)),
+              //culture & outdoors
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(exploreOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/explore2.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(7);
+              _changeState();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(1),
+              child: Center(
+                child: const Text(
+                  'Fitness & Mindfulness',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  counter++;
-                  setState(() {});
-                },
-              )
-            ],),
-                  bottomNavigationBar: RaisedButton(
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(30.0),
-            side: BorderSide(color: Colors.black, width: 3.0)),
-        padding: const EdgeInsets.all(4),
-        color: Colors.lightBlue,
-        child: Text('Continue',
-            style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w500,
-                fontStyle: FontStyle.italic,
-                letterSpacing: 2)),
-        onPressed: () {
-          if (sportSelected |  foodSelected | animalsSelected | parentHangSelected | filmSelected | exploreSelected | fitnessSelected | gamingSelected | musicSelected){
-          Navigator.push(
-            context,
-            //Till profile sen
-            MaterialPageRoute(builder: (context) => Profile()),
-          );} else {
-            Alert(context: context, title: "Slow down, tiger", desc: "You have to choose atleast one category of your liking.").show();
-          }
-        }
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(fitnessOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/nature2.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(8);
+              _changeState();
+            },
+            child: Container(
+              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/gaming2.jpg'), fit: BoxFit.fitWidth),),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Gaming',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                ),
+              ),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(gamingOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/gaming2.jpg'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              selectedInterest(9);
+              _changeState();
+            },
+            child: Container(
+              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/music2.png'), fit: BoxFit.fitWidth),),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Music',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                ),
+              ),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(musicOpacity),
+                          BlendMode.dstATop),
+                      image: AssetImage('assets/music2.png'),
+                      fit: BoxFit.fitWidth)),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              counter++;
+              setState(() {});
+            },
+          )
+        ],
       ),
-    
+      bottomNavigationBar: RaisedButton(
+          shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(15.0),),
+          padding: const EdgeInsets.all(5),
+          color: Colors.blue[700],
+          child: Text('Continue',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w500,
+                fontFamily: 'Monserrat',
+                  letterSpacing: 2)),
+          onPressed: () {
+            if (sportSelected |
+                foodSelected |
+                animalsSelected |
+                parentHangSelected |
+                filmSelected |
+                exploreSelected |
+                fitnessSelected |
+                gamingSelected |
+                musicSelected) {
+              Navigator.push(
+                context,
+                //Till profile sen
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+            } else {
+              Alert(
+                      context: context,
+                      title: "Slow down, tiger",
+                      desc:
+                          "You have to choose atleast one category of your liking.")
+                  .show();
+            }
+          }),
     );
   }
 }

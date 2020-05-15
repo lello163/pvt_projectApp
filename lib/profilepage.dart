@@ -263,15 +263,15 @@ class _ProfileState extends State<Profile> {
       ),
            bottomNavigationBar: RaisedButton(
         shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(30.0),
-            side: BorderSide(color: Colors.black, width: 3.0)),
+            borderRadius: new BorderRadius.circular(15.0),),
         padding: const EdgeInsets.fromLTRB(4, 5, 5, 5),
-        color: Colors.lightBlue,
+        color: Colors.blue[700],
         child: Text('Save',
             style: TextStyle(
+                color: Colors.white,
                 fontSize: 18.0,
                 fontWeight: FontWeight.w500,
-                fontStyle: FontStyle.italic,
+                fontFamily: 'Monserrat',
                 letterSpacing: 2)),
                 
         onPressed: () {
