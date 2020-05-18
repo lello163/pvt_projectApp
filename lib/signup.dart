@@ -197,9 +197,11 @@ class _SignupPageState extends State<SignupPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    SizedBox( height: 15, width:15,
+                                    SizedBox( height: 20 , width:20,
                                     child: Image.asset('assets/icons_fboldwhite.png'),),
                                     Container(
+                                       height: 50, width: 220,
+                                       padding: EdgeInsets.only(top: 17, left: 5),
                                       child: Text(
                                       'Create an account with Facebook',
                                       style: TextStyle(
@@ -236,9 +238,11 @@ class _SignupPageState extends State<SignupPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    SizedBox(height: 15, width: 15,
+                                    SizedBox(height: 20, width: 20,
                                     child: Image.asset('assets/icons_googlewhite.png'),),
                                     Container(
+                                      height: 50, width: 220,
+                                      padding: EdgeInsets.only(top: 17, left: 5),
                                     child: Text(
                                       'Create an account with Google',
                                       style: TextStyle(
