@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 200.0, width: 300),
               ButtonTheme(
   minWidth: 300.0,
-  height: 70.0,
+  height: 87.0,
   child: RaisedButton(
       shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(20.0),
@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
 SizedBox(height: 10),              
 ButtonTheme(
   minWidth: 300.0,
-  height: 70.0,
+  height: 87.0,
   child: RaisedButton(
       shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(20.0),

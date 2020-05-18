@@ -197,14 +197,18 @@ class _SignupPageState extends State<SignupPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    Icon(Icons.face),
-                                    Text(
+                                    SizedBox( height: 20 , width:20,
+                                    child: Image.asset('assets/icons_fboldwhite.png'),),
+                                    Container(
+                                       height: 50, width: 220,
+                                       padding: EdgeInsets.only(top: 17, left: 5),
+                                      child: Text(
                                       'Create an account with Facebook',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Montserrat'),
-                                    ),
+                                    ),)
                                   ],
                                 )),
                                 color: Colors.blue[700],
@@ -216,7 +220,7 @@ class _SignupPageState extends State<SignupPage> {
                             width: 300,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                              color: Colors.blue[700],
+                             // color: Colors.blue[700],
                               elevation: 7.0,
                               child: RaisedButton(
                                 onPressed: () {
@@ -234,14 +238,18 @@ class _SignupPageState extends State<SignupPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    Icon(Icons.grain),
-                                    Text(
+                                    SizedBox(height: 20, width: 20,
+                                    child: Image.asset('assets/icons_googlewhite.png'),),
+                                    Container(
+                                      height: 50, width: 220,
+                                      padding: EdgeInsets.only(top: 17, left: 5),
+                                    child: Text(
                                       'Create an account with Google',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Montserrat'),
-                                    ),
+                                    ),)
                                   ],
                                 )),
                                 color: Colors.blue[700],
