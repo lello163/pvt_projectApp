@@ -37,7 +37,41 @@ class _ProfileState extends State<Profile> {
       _image = image;
     });
   }
-  
+
+  Future<void> _showProfileSavedMessage() async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Saved'),
+        shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(15.0),),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text('Your profile page has been saved.'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text("OK"),
+            onPressed: (){
+              Navigator.of(context).pop();
+              Navigator.push(
+            
+            context,
+            //Till profile sen
+            MaterialPageRoute(builder: (context) => ProfilePage()),
+          ); 
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,12 +309,8 @@ class _ProfileState extends State<Profile> {
                 letterSpacing: 2)),
                 
         onPressed: () {
-          Navigator.push(
-            
-            context,
-            //Till profile sen
-            MaterialPageRoute(builder: (context) => ProfilePage()),
-          ); 
+          _showProfileSavedMessage();
+          
           
         }
       ),
