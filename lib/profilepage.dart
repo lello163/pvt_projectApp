@@ -37,6 +37,40 @@ class _ProfileState extends State<Profile> {
     });
   }
 
+  Future<void> _showProfileSavedMessage() async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Saved'),
+        shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(15.0),),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text('Your profile page has been saved.'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text("OK"),
+            onPressed: (){
+              Navigator.of(context).pop();
+              Navigator.push(
+            
+            context,
+            //Till profile sen
+            MaterialPageRoute(builder: (context) => ProfilePage()),
+          ); 
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -263,26 +297,25 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
-      bottomNavigationBar: RaisedButton(
-          shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(15.0),
-          ),
-          padding: const EdgeInsets.fromLTRB(4, 5, 5, 5),
-          color: Colors.blue[700],
-          child: Text('Save',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Monserrat',
-                  letterSpacing: 2)),
-          onPressed: () {
-            Navigator.push(
-              context,
-              //Till profile sen
-              MaterialPageRoute(builder: (context) => ProfilePage()),
-            );
-          }),
+           bottomNavigationBar: RaisedButton(
+        shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(15.0),),
+        padding: const EdgeInsets.fromLTRB(4, 5, 5, 5),
+        color: Colors.blue[700],
+        child: Text('Save',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Monserrat',
+                letterSpacing: 2)),
+                
+        onPressed: () {
+          _showProfileSavedMessage();
+          
+          
+        }
+      ),
     );
   }
 }
