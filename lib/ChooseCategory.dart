@@ -36,7 +36,7 @@ Widget build(BuildContext context) {
           ],
         ),
       ),
-    )
+    ), bottomNavigationBar: bottomMenu(context),
   );
 }
 }
