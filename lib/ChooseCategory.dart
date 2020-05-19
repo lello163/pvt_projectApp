@@ -1,3 +1,5 @@
+import 'package:deletethis/InfoAboutCreatingActivity.dart';
+import 'package:deletethis/CreateEvent.dart';
 import 'package:flutter/material.dart';
 
 class ChooseCategory extends StatefulWidget {
@@ -16,25 +18,67 @@ String woohoo = "Woohoo, let's get started \n   and create your event!";
 @override
 Widget build(BuildContext context) {
   return Scaffold(
+    backgroundColor: Colors.grey[200],
+
     body: Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 150.0),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
-              child: Transform.rotate(
-                  angle: 3/ 20.0,
-                child: Text(woohoo, style: TextStyle(fontSize: 20)),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30, left: 10.0),
+                child: RaisedButton.icon(
+                  label: Text("Back"),
+                  onPressed: (){ print("Back");},
+                  icon: Icon(Icons.arrow_back_ios),
+                ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: FlatButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InfoAboutCreatingActivity()),
+                    );
+                  },
+                  icon: Icon(Icons.help),
+                  label: Text(""),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50, bottom: 50.0),
+            child: Transform.rotate(
+                angle: 3/ 20.0,
+              child: Text(woohoo, style: TextStyle(fontSize: 20)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child: Text('Choose a category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Text('Choose a category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          ),
+          DropdownMenu(),
+          Padding(
+            padding: const EdgeInsets.only(top: 130.0),
+            child: Container(
+              width: 170,
+              child:   RaisedButton(
+                color: Colors.blue,
+                child: Text("Continue", style: TextStyle(fontSize: 16, color: Colors.white)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CreateEvent()),
+                  );
+                },
+              )
             ),
-            DropdownMenu(),
-          ],
-        ),
+          ),
+
+        ],
       ),
     ), bottomNavigationBar: bottomMenu(context),
   );
@@ -106,7 +150,7 @@ Widget bottomMenu(BuildContext context){
           ),
           IconButton(
             icon: Icon(Icons.calendar_today),
-            color: Colors.black,
+            color: Colors.blue,
             iconSize: 40,
             onPressed: (){
               print("pressed");
