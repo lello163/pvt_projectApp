@@ -11,16 +11,18 @@ class _ProfilePage extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
         actions: <Widget>[
           IconButton(
+              color: Colors.blue[900],
               icon: Icon(Icons.settings),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
-              })
+              },
+            )
         ],
       ),
       body: SingleChildScrollView(

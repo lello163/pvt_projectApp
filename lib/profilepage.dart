@@ -23,7 +23,6 @@ List names = [
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
-
 }
 
 class _ProfileState extends State<Profile> {
@@ -37,22 +36,25 @@ class _ProfileState extends State<Profile> {
       _image = image;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-                  title: const Text('Profile'),
-                  actions: <Widget>[
-                    RaisedButton (
-                      child:  Icon(Icons.settings),
-                      onPressed: () {
-                        Navigator.push(context, 
-                        MaterialPageRoute(builder: (context) => SettingsPage()),);
-                      },
-                    )
-                  ],
-                ),
+      appBar: AppBar(
+        title: const Text('Profile'),
+        actions: <Widget>[
+          IconButton(
+            color: Colors.blue[900],
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
@@ -61,15 +63,18 @@ class _ProfileState extends State<Profile> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
               SizedBox(height: 25),
               GestureDetector(
-              onTap: getImage,
-              child: Container(
-                child: CircleAvatar(radius: 80, child: _image == null ?  Icon(Icons.plus_one, ) : Image.file(_image),
-)
-              )
-              ),
+                  onTap: getImage,
+                  child: Container(
+                      child: CircleAvatar(
+                    radius: 80,
+                    child: _image == null
+                        ? Icon(
+                            Icons.plus_one,
+                          )
+                        : Image.file(_image),
+                  ))),
               SizedBox(height: 10),
               Text(
                 names[random.nextInt(10)],
@@ -79,59 +84,58 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               SizedBox(height: 3),
-       Container(
-  child: Padding(
-    padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-    child: TextField(
-      enabled: true,
-      minLines: 3,
-      maxLines: 3,
-      autocorrect: true,
-      decoration: InputDecoration(
-        hintText: '',
-        hoverColor: Colors.black,
-        filled: true,
-        fillColor: Color(0xFFDBEDFF),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-      ),
-    ),
-  ),
-                     ),
-          Container(
-  child: Padding(
-    padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
-    child: TextField(
-      enabled: true,
-      minLines: 3,
-      maxLines: 3,
-      autocorrect: true,
-      decoration: InputDecoration(
-        hintText: '',
-        hoverColor: Colors.black,
-        filled: true,
-        fillColor: Color(0xFFDBEDFF),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-      ),
-    ),
-  ),
-                     ),   
-                     
-                     
-                                               /*SizedBox(height: 20),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                  child: TextField(
+                    enabled: true,
+                    minLines: 3,
+                    maxLines: 3,
+                    autocorrect: true,
+                    decoration: InputDecoration(
+                      hintText: '',
+                      hoverColor: Colors.black,
+                      filled: true,
+                      fillColor: Color(0xFFDBEDFF),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
+                  child: TextField(
+                    enabled: true,
+                    minLines: 3,
+                    maxLines: 3,
+                    autocorrect: true,
+                    decoration: InputDecoration(
+                      hintText: '',
+                      hoverColor: Colors.black,
+                      filled: true,
+                      fillColor: Color(0xFFDBEDFF),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              /*SizedBox(height: 20),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -219,21 +223,21 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ), */
-               SizedBox(height: 3),
-               Container(
-                  padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
-                  child: Center(
-                    child: const Text(
-                      'Interests',
-                      style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                          letterSpacing: 2),
-                    ),
+              SizedBox(height: 3),
+              Container(
+                padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
+                child: Center(
+                  child: const Text(
+                    'Interests',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 2),
                   ),
                 ),
+              ),
               SizedBox(height: 8),
               GridView.builder(
                 shrinkWrap: true,
@@ -255,37 +259,30 @@ class _ProfileState extends State<Profile> {
                   );
                 },
               ),
-              
             ],
-            
           ),
         ),
       ),
-           bottomNavigationBar: RaisedButton(
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(15.0),),
-        padding: const EdgeInsets.fromLTRB(4, 5, 5, 5),
-        color: Colors.blue[700],
-        child: Text('Save',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Monserrat',
-                letterSpacing: 2)),
-                
-        onPressed: () {
-          Navigator.push(
-            
-            context,
-            //Till profile sen
-            MaterialPageRoute(builder: (context) => ProfilePage()),
-          ); 
-          
-        }
-      ),
+      bottomNavigationBar: RaisedButton(
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(15.0),
+          ),
+          padding: const EdgeInsets.fromLTRB(4, 5, 5, 5),
+          color: Colors.blue[700],
+          child: Text('Save',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Monserrat',
+                  letterSpacing: 2)),
+          onPressed: () {
+            Navigator.push(
+              context,
+              //Till profile sen
+              MaterialPageRoute(builder: (context) => ProfilePage()),
+            );
+          }),
     );
-    
   }
 }
-

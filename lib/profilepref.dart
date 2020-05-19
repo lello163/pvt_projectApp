@@ -53,15 +53,15 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                 child: Stack(
                   children: <Widget>[
                     Center(
-                      child: Container(
+                        /* child: Container(
                         child: Text('Your date of birth',
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w500,
                                 fontStyle: FontStyle.italic,
                                 letterSpacing: 2)),
-                      ),
-                    ),
+                      ),*/
+                        ),
                   ],
                 ),
               ),
@@ -73,29 +73,39 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.calendar_today),
+                      child: Icon(Icons.calendar_today, size: 35),
                     ),
                     GestureDetector(
-                      onTap: () async {
-                        final datePick = await showDatePicker(
-                            context: context,
-                            initialDate: new DateTime.now(),
-                            firstDate: new DateTime(1900),
-                            lastDate: new DateTime(2100));
-                        if (datePick != null && datePick != birthDate) {
-                          setState(() {
-                            birthDate = datePick;
-                            isDateSelected = true;
-                            birthDateInString =
-                                "${birthDate.month}/${birthDate.day}/${birthDate.year}"; // 08/14/2019
-                            print(birthDateInString);
-                          });
-                        }
-                      },
-                      child: Container(
-                        color: Colors.blue.shade600,
-                        padding: const EdgeInsets.all(8),
-                        child: const Text('Select date of birth'),
+                      child: RaisedButton(
+                        onPressed: () async {
+                          final datePick = await showDatePicker(
+                              context: context,
+                              initialDate: new DateTime.now(),
+                              firstDate: new DateTime(1900),
+                              lastDate: new DateTime(2100));
+                          if (datePick != null && datePick != birthDate) {
+                            setState(() {
+                              birthDate = datePick;
+                              isDateSelected = true;
+                              birthDateInString =
+                                  "${birthDate.month}/${birthDate.day}/${birthDate.year}"; // 08/14/2019
+                              print(birthDateInString);
+                              Text(birthDateInString);
+                            });
+                          }
+                        },
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(20.0),
+                        ),
+                        color: Colors.blue[700],
+                        padding: const EdgeInsets.only(
+                            top: 5, bottom: 5, left: 50, right: 50),
+                        child: const Text('Select date of birth',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'Monserrat',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15)),
                       ),
                     ),
                   ],
@@ -107,6 +117,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
                   child: new DropdownButton<String>(
                     hint: Text('Please choose a gender'),
+                    value: _selectedGender,
                     focusColor: Colors.black,
                     items: <String>['Male', 'Woman', 'Non-binary']
                         .map((String _selectedGender) {
@@ -115,7 +126,13 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                         child: new Text(_selectedGender),
                       );
                     }).toList(),
-                    onChanged: (_) {},
+                    onChanged: (newValue) {
+                      setState(() {
+                        _selectedGender = newValue;
+                       value: _selectedGender;
+
+                      });
+                    },
                   )),
               SizedBox(height: 25),
               Container(
