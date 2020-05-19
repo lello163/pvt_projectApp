@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'EventInfo.dart';
 import 'settings.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -167,7 +168,12 @@ class _ProfilePage extends State<ProfilePage> {
               ),
               IconButton(
                 icon: Icon(Icons.calendar_today),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventInfo()),
+                  );
+                },
               ),
               IconButton(
                 icon: Icon(Icons.location_on),
