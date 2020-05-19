@@ -77,7 +77,7 @@ class _LogInPageState extends State<LogInPage> {
                               color: Colors.white,
                               fontSize: 30.0,
                               fontWeight: FontWeight.w500,
-                              fontStyle: FontStyle.italic,
+                              fontFamily: 'Monserrat',
                               letterSpacing: 2)),
                     ),
                   ],

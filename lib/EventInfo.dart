@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:pvt_project/TempAndSky.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pvt_project/profilepage.dart';
+import 'package:pvt_project/profilepageview.dart';
 import 'WeatherData.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_icons/weather_icons.dart' as WeatherIcons;
@@ -306,23 +308,26 @@ class _EventInfoState extends State<EventInfo> {
             IconButton(
               icon: Icon(Icons.person),
               color: Colors.black,
-              iconSize: 40,
-              onPressed: (){
-                print("PROFILE PAGE");
-              },
+              iconSize: 30,
+               onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
             ),
             IconButton(
               icon: Icon(Icons.message),
               color: Colors.black,
-              iconSize: 40,
+              iconSize: 30,
               onPressed: (){
                 print("MESSAGE PAGE");
               },
             ),
             IconButton(
               icon: Icon(Icons.calendar_today),
-              color: Colors.black,
-              iconSize: 40,
+              color: Colors.blue[700],
+              iconSize: 30,
               onPressed: (){
                 print("pressed");
               },
@@ -330,7 +335,7 @@ class _EventInfoState extends State<EventInfo> {
             IconButton(
               icon: Icon(Icons.location_on),
               color: Colors.black,
-              iconSize: 40,
+              iconSize: 30,
               onPressed: (){
                 print("MAP PAGE");
               },

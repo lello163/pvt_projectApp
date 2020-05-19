@@ -78,7 +78,7 @@ class _ProfileState extends State<Profile> {
         title: const Text('Profile'),
         actions: <Widget>[
           IconButton(
-            color: Colors.blue[700],
+            color: Colors.blue[900],
             icon: Icon(Icons.settings),
             onPressed: () {
               Navigator.push(
@@ -114,7 +114,7 @@ class _ProfileState extends State<Profile> {
                 names[random.nextInt(10)],
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  fontSize: 22,
+                  fontSize: 25,
                 ),
               ),
               SizedBox(height: 3),
@@ -127,7 +127,7 @@ class _ProfileState extends State<Profile> {
                     maxLines: 3,
                     autocorrect: true,
                     decoration: InputDecoration(
-                      hintText: '',
+                      hintText: ' Location | Origin | Age | Relationship status | Occupation ',
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,
@@ -147,20 +147,17 @@ class _ProfileState extends State<Profile> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
                   child: TextField(
-                   // Text (' Location | From | Age | Relationship status | Occupation ', 
-                   // textAlign: TextAlign.center),
                     enabled: true,
                     minLines: 3,
                     maxLines: 3,
                     autocorrect: true,
                     decoration: InputDecoration(
-                      hintText: '',
+                      hintText: 'Something interesting about who I am...',
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        //borderSide: BorderSide(color: Colors.grey),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
