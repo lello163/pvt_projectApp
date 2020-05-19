@@ -78,7 +78,7 @@ class _ProfileState extends State<Profile> {
         title: const Text('Profile'),
         actions: <Widget>[
           IconButton(
-            color: Colors.blue[900],
+            color: Colors.blue[700],
             icon: Icon(Icons.settings),
             onPressed: () {
               Navigator.push(
@@ -113,7 +113,7 @@ class _ProfileState extends State<Profile> {
               Text(
                 names[random.nextInt(10)],
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                   fontSize: 22,
                 ),
               ),
@@ -130,10 +130,10 @@ class _ProfileState extends State<Profile> {
                       hintText: '',
                       hoverColor: Colors.black,
                       filled: true,
-                      fillColor: Color(0xFFDBEDFF),
+                      fillColor: Colors.transparent,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(color: Colors.grey),
+                        //borderSide: BorderSide(color: Colors.grey),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -147,6 +147,8 @@ class _ProfileState extends State<Profile> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
                   child: TextField(
+                   // Text (' Location | From | Age | Relationship status | Occupation ', 
+                   // textAlign: TextAlign.center),
                     enabled: true,
                     minLines: 3,
                     maxLines: 3,
@@ -155,10 +157,10 @@ class _ProfileState extends State<Profile> {
                       hintText: '',
                       hoverColor: Colors.black,
                       filled: true,
-                      fillColor: Color(0xFFDBEDFF),
+                      fillColor: Colors.transparent,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(color: Colors.grey),
+                        //borderSide: BorderSide(color: Colors.grey),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -267,7 +269,7 @@ class _ProfileState extends State<Profile> {
                         fontSize: 16.0,
                         color: Colors.black,
                         fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
+                        fontFamily: 'Monserrat',
                         letterSpacing: 2),
                   ),
                 ),
@@ -287,7 +289,7 @@ class _ProfileState extends State<Profile> {
                   return Padding(
                     padding: EdgeInsets.all(5.0),
                     child: Image.asset(
-                      "assets/profil.png",
+                      "assets/fooddrinks.png",
                       fit: BoxFit.cover,
                     ),
                   );

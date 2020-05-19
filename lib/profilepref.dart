@@ -129,7 +129,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                     onChanged: (newValue) {
                       setState(() {
                         _selectedGender = newValue;
-                       value: _selectedGender;
+                       //value: _selectedGender;
 
                       });
                     },

@@ -14,7 +14,7 @@ class _ProfilePage extends State<ProfilePage> {
         title: const Text("Profile"),
         actions: <Widget>[
           IconButton(
-              color: Colors.blue[900],
+              color: Colors.blue[700],
               icon: Icon(Icons.settings),
               onPressed: () {
                 Navigator.push(
@@ -42,9 +42,10 @@ class _ProfilePage extends State<ProfilePage> {
                       ))),
               SizedBox(height: 10),
               Text(
-                'name',
+                'Firstname Lastname',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Monserrat',
                   fontSize: 22,
                 ),
               ),
@@ -52,14 +53,15 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                 child: TextField(
+                //String text (' Location | From | Age | Relationship status | Occupation ', textAlign: TextAlign.center),
                   enabled: false,
                   minLines: 3,
                   maxLines: 3,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Color(0xFFDBEDFF),
+                    fillColor: Colors.transparent,
                     disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       borderSide: BorderSide(color: Colors.grey),
                     ),
                   ),
@@ -74,10 +76,10 @@ class _ProfilePage extends State<ProfilePage> {
                   maxLines: 3,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Color(0xFFDBEDFF),
+                    fillColor: Colors.transparent,
                     disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      //borderSide: BorderSide(color: Colors.grey),
                     ),
                   ),
                 ),
@@ -89,9 +91,9 @@ class _ProfilePage extends State<ProfilePage> {
                     child: const Text(
                       'Interests',
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w500,
                         fontSize: 16.0,
-                        fontStyle: FontStyle.italic,
+                        fontFamily: 'Monserrat',
                         letterSpacing: 2,
                       ),
                     ),
@@ -102,16 +104,16 @@ class _ProfilePage extends State<ProfilePage> {
                   physics: NeverScrollableScrollPhysics(),
                   primary: false,
                   padding: EdgeInsets.all(5),
-                  itemCount: 5,
+                  itemCount: 3,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 200 / 200,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5.0),
                       child: Image.asset(
-                        "assets/profil.png",
+                        "assets/fooddrinks.png",
                         fit: BoxFit.cover,
                       ),
                     );
