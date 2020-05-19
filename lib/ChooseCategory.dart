@@ -16,25 +16,45 @@ String woohoo = "Woohoo, let's get started \n   and create your event!";
 @override
 Widget build(BuildContext context) {
   return Scaffold(
+    backgroundColor: Colors.grey[200],
+
     body: Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 150.0),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
-              child: Transform.rotate(
-                  angle: 3/ 20.0,
-                child: Text(woohoo, style: TextStyle(fontSize: 20)),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30, left: 10.0),
+                child: RaisedButton.icon(
+                  label: Text("Back"),
+                  onPressed: (){ print("Back");},
+                  icon: Icon(Icons.arrow_back_ios),
+                ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: FlatButton.icon(
+                  onPressed: (){print("Help");},
+                  icon: Icon(Icons.help),
+                  label: Text(""),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50, bottom: 50.0),
+            child: Transform.rotate(
+                angle: 3/ 20.0,
+              child: Text(woohoo, style: TextStyle(fontSize: 20)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child: Text('Choose a category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-            ),
-            DropdownMenu(),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Text('Choose a category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          ),
+          DropdownMenu(),
+        ],
       ),
     ), bottomNavigationBar: bottomMenu(context),
   );
