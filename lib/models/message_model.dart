@@ -26,14 +26,14 @@ class Message {
   );
 
   //Users
-  final User elie = User(
+  final User emil = User(
     id: 1,
-    name: 'Elie',
+    name: 'Emil',
     imageUrl: 'assets/handshake.png',
   );
-  final User mathias = User(
+  final User lukas = User(
     id: 2,
-    name: 'Mathias',
+    name: 'Lukas',
     imageUrl: 'assets/handshake.png',
   );
   final User sara = User(
@@ -41,68 +41,68 @@ class Message {
     name: 'Sara',
     imageUrl: 'assets/handshake.png',
   );
-  final User adam = User(
+  final User simon = User(
     id: 4,
-    name: 'Adam',
+    name: 'Simon',
     imageUrl: 'assets/handshake.png',
   );
-  final User caroline = User(
+  final User jon = User(
     id: 5,
-    name: 'Caroline',
+    name: 'Jon',
     imageUrl: 'assets/handshake.png',
   );
-  final User alex = User(
+  final User amila = User(
     id: 6,
-    name: 'Alex',
+    name: 'Amila',
     imageUrl: 'assets/handshake.png',
   );
-  final User breanna = User(
+  final User linda = User(
     id: 7,
-    name: 'Breanna',
+    name: 'Linda',
     imageUrl: 'assets/handshake.png',
   );
 
   //Favorite contacts
-  List<User> favorites = [elie, alex, caroline, breanna, adam];
+  List<User> favorites = [emil, amila, jon, linda, simon];
 // EXAMPLE CHATS ON HOME SCREEN
 List<Message> chats = [
   Message(
-    sender: adam,
+    sender: simon,
     time: '4:30 PM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
     unread: true,
   ),
   Message(
-    sender: breanna,
+    sender: linda,
     time: '3:30 PM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
     unread: false,
   ),
   Message(
-    sender: mathias,
+    sender: lukas,
     time: '2:30 PM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
     unread: true,
   ),
   Message(
-    sender: caroline,
+    sender: jon,
     time: '1:30 PM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
     unread: false,
   ),
   Message(
-    sender: alex,
+    sender: amila,
     time: '12:30 PM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
     unread: false,
   ),
   Message(
-    sender: elie,
+    sender: emil,
     time: '11:30 AM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
@@ -115,7 +115,7 @@ List<Message> chats = [
 // EXAMPLE MESSAGES IN CHAT SCREEN
 List<Message> messages = [   
   Message(
-    sender: elie,
+    sender: emil,
     time: '5:30 PM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: true,
@@ -129,14 +129,14 @@ List<Message> messages = [
     unread: true,
   ),
   Message(
-    sender: elie,
+    sender: emil,
     time: '3:45 PM',
     text: 'How\'s the doggo?',
     isLiked: false,
     unread: true,
   ),
   Message(
-    sender: elie,
+    sender: emil,
     time: '3:15 PM',
     text: 'All the food',
     isLiked: true,
@@ -150,7 +150,7 @@ List<Message> messages = [
     unread: true,
   ),
   Message(
-    sender: elie,
+    sender: emil,
     time: '2:00 PM',
     text: 'I ate so much food today.',
     isLiked: false,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
 import 'settings.dart';
 import 'profilepage.dart';
@@ -154,7 +155,12 @@ class _ProfilePage extends State<ProfilePage> {
               IconButton(
                 icon: Icon(Icons.chat_bubble_outline),
                 iconSize: 30,
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MessageScreen()),
+                  );
+                },
               ),
               IconButton(
                 icon: Icon(Icons.calendar_today),
