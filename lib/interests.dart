@@ -7,6 +7,8 @@ import 'profilepage.dart';
 class InterestsPage extends StatefulWidget {
   //final ValueChanged<bool> isSelected;
   //int _isSelected = 0;
+  // final Data data;
+  // InterestsPage({this.data});
 
   @override
   _InterestsPageState createState() => _InterestsPageState();
@@ -37,6 +39,7 @@ class _InterestsPageState extends State<InterestsPage> {
   int counter = 0;
   //var shape = Brightness.dark;
   var shape = BoxShape.rectangle;
+  // var value = ("$(widget.value)");
 
   void _changeState() {
     setState(() {
@@ -142,8 +145,11 @@ class _InterestsPageState extends State<InterestsPage> {
               textAlign: TextAlign.center),
           bottom: PreferredSize(
               child: const Text('Choose as many categories as you like',
-                  style: TextStyle(fontSize: 15.0, color: Colors.white, 
-                fontFamily: 'Monserrat',)),
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.white,
+                    fontFamily: 'Monserrat',
+                  )),
               preferredSize: Size.fromRadius(5.0))),
       resizeToAvoidBottomPadding: false,
       body: GridView.count(
@@ -174,7 +180,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -203,7 +209,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -232,7 +238,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -259,7 +265,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -286,7 +292,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -313,7 +319,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -341,7 +347,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -369,7 +375,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -397,7 +403,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                fontFamily: 'Monserrat',
+                      fontFamily: 'Monserrat',
                       letterSpacing: 2),
                 ),
               ),
@@ -418,17 +424,26 @@ class _InterestsPageState extends State<InterestsPage> {
           )
         ],
       ),
-      bottomNavigationBar: RaisedButton(
-          shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(15.0),),
-          padding: const EdgeInsets.all(5),
+      bottomNavigationBar: 
+      SizedBox(
+        height: 70,
+        width: 150,
+        
+      child: Align(
+        alignment: FractionalOffset(0.9, 0.3),
+      child: RaisedButton(
+            shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0),
+          ),
+          
+          padding: const EdgeInsets.all(10),
           color: Colors.blue[700],
           child: Text('Continue',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   fontWeight: FontWeight.w500,
-                fontFamily: 'Monserrat',
+                  fontFamily: 'Monserrat',
                   letterSpacing: 2)),
           onPressed: () {
             if (sportSelected |
@@ -447,13 +462,25 @@ class _InterestsPageState extends State<InterestsPage> {
               );
             } else {
               Alert(
-                      context: context,
-                      title: "Slow down, tiger",
-                      desc:
-                          "You have to choose atleast one category of your liking.")
-                  .show();
+                context: context,
+                title: "Slow down, tiger",
+                desc: "You have to choose atleast one category of your liking.",
+                buttons: [
+                  DialogButton(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text('OK',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                        ))),
+                    onPressed: () => Navigator.pop(context),
+                    color: Colors.transparent,
+                  )
+                ],
+              ).show();
             }
-          }),
+          }))),
     );
   }
 }
