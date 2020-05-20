@@ -1,7 +1,6 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
-
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SettingsPage extends StatefulWidget {

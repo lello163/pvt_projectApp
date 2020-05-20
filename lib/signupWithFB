@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:pvt_project/interests.dart';
 
-class ProfilePrefPage extends StatefulWidget {
+class SignupWithFB extends StatefulWidget {
   @override
-  _ProfilePrefPageState createState() => _ProfilePrefPageState();
+  _SignupWithFBState createState() => _SignupWithFBState();
 }
 
-class _ProfilePrefPageState extends State<ProfilePrefPage> {
+class _SignupWithFBState extends State<SignupWithFB> {
   String _selectedGender;
   //String _selectedPart;
   String _selectedRelation;
@@ -171,6 +171,29 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   obscureText: false,
                 ),
               ),
+
+              
+
+              /*Container(
+                padding: EdgeInsets.fromLTRB(240, 180, 0, 0),
+                child: Row(
+                  children: <Widget>[
+                    Text("Continue",
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic,
+                          letterSpacing: 2,
+                        )),
+                    IconButton(
+                      icon: Icon(Icons.keyboard_arrow_right),
+                      onPressed: () {
+                        openPage(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),*/
             ]
             
             
@@ -271,16 +294,54 @@ openPage(context);
                     focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue))),
                   obscureText: false,
-                  validator: (String value) {
+                    //hintText: 'Skärholmen',
+                 /* validator: (String value) {
                     if (value.isEmpty) {
                       return 'You need to write a place!';
                     }
                     return value.contains('@')
                         ? 'Do not use the @ char.'
                         : null;
-                  },
+                  },*/
                 ),
               ),
+             /* Container(
+                padding: EdgeInsets.fromLTRB(240, 280, 0, 0),
+                child: Row(
+                  children: <Widget>[
+                    Text("Continue",
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic,
+                          letterSpacing: 2,
+                        )),
+                    IconButton(
+                      icon: Icon(Icons.keyboard_arrow_right),
+                      onPressed: () {
+                        //samla värden i...array?
+                        // add birthplace + _originController
+                        // add location + _locationController
+                        //add gender + _selectedGender
+                        // add relationstatus + _selectedRelation
+                        //add occupation + selectedOccupation
+
+                        //add birthDateInString;
+                       
+
+                        var route = new MaterialPageRoute(builder: (BuildContext context) => 
+                        new InterestsPage());
+                        //in med värde i interestpage-metod
+                        Navigator.of(context).push(route);
+                       /* Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InterestsPage()));*/
+                      },
+                    ),
+                  ],
+                ),
+              ),*/
             ],
           ),
           bottomNavigationBar: 

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 import 'profilepref.dart';
 import 'login.dart';
+import 'package:pvt_project/signupWithFB';
+import 'package:http/http.dart' as http;
 import 'package:flutter/gestures.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'TermsandCond.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'dart:convert' as JSON;
 
 class SignupPage extends StatefulWidget {
   @override
@@ -12,7 +17,42 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   bool checkboxValue = false;
+  bool _isLoggedIn = false;
+  Map userProfile;
+ final facebookLogin = FacebookLogin();
 
+  _loginWithFB() async {
+    final result = await facebookLogin.logInWithReadPermissions(['email']);
+
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final token = result.accessToken.token;
+        final graphResponse = await http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
+        final profile = JSON.jsonDecode(graphResponse.body);
+        print(profile);
+        setState(() {
+          userProfile = profile;
+          _isLoggedIn = true;
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SignupWithFB()));
+        });
+        break;
+
+      case FacebookLoginStatus.cancelledByUser:
+        setState(() => _isLoggedIn = false);
+        break;
+      case FacebookLoginStatus.error:
+        setState(() => _isLoggedIn = false);
+        break;
+    }
+  }
+
+  _logout() {
+    facebookLogin.logOut();
+    setState(() {
+      _isLoggedIn = false;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     var text = Text('I agree to the ');
@@ -52,6 +92,7 @@ class _SignupPageState extends State<SignupPage> {
                     ],
                   ),
                 ),
+
                 Container(
                     padding:
                         EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
@@ -151,7 +192,6 @@ class _SignupPageState extends State<SignupPage> {
                             width: 300,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                              //shadowColor: Colors.greenAccent,
                               color: Colors.blue[700],
                               elevation: 7.0,
                               child: RaisedButton(
@@ -211,54 +251,109 @@ class _SignupPageState extends State<SignupPage> {
                                   fontSize: 17.0),
                               textAlign: TextAlign.center),
                         ),
+                        Container(
+                          
+                         // padding: const EdgeInsets.all(5),
+                          padding: EdgeInsets.only(top: 10),
+                          child: Column(children: <Widget>[
+
+                            
                         SizedBox(height: 5.0),
                         Container(
-                            height: 50.0,
-                            width: 300,
-                            child: Material(
-                              borderRadius: BorderRadius.circular(20.0),
-                              color: Colors.blue[700],
-                              elevation: 7.0,
-                              child: RaisedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      //                         MaterialPageRoute(builder: (context) => ProfilePrefPage())
-                                      MaterialPageRoute(
-                                          builder: (context) => LogInPage()));
-                                },
-                                shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(20.0),
-                                ),
-                                child: Center(
-                                    child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    SizedBox(
-                                      height: 20,
-                                      width: 20,
-                                      child: Image.asset(
-                                          'assets/icons_fboldwhite.png'),
-                                    ),
-                                    Container(
-                                      height: 50,
-                                      width: 220,
-                                      padding:
-                                          EdgeInsets.only(top: 17, left: 5),
-                                      child: Text(
-                                        'Create an account with Facebook',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Montserrat'),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                                color: Colors.blue[700],
+                          
+                          //padding: const EdgeInsets.all(0),
+                          height: 50.0,
+                          width: 300,
+                          child: Material(
+                            
+                            borderRadius: BorderRadius.circular(20.0),
+                            color: Colors.blue[700],
+                            elevation: 7.0,
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Center(
+                                child: _isLoggedIn
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          Expanded(
+                                            child: SizedBox(
+                                              height: 20,
+                                              width: 10,
+                                              child: Align(
+                                                alignment: FractionalOffset(0.3, 0.3),
+                                              child: Image.asset(
+                                                  'assets/icons_fboldwhite.png'),
+                                    ))),
+                                          Expanded(
+                                            child: RaisedButton(
+                                              color: Colors.blue[700],
+                                            child: Text('Logout', style: TextStyle(color: Colors.white)),
+                                            onPressed: () {
+                                              _logout();
+                                            },
+                                            )),
+                                          Expanded( 
+                                            child: Row(
+                                              children: <Widget>[
+                                              RaisedButton(
+                                               
+                                            color: Colors.blue[700],
+                                                //child: Align(
+                                                //  alignment: FractionalOffset(0.2, 0.5),
+                                                //  widthFactor: 30,
+                                                  // borderRadius: BorderRadius.circular(20.0),
+                                            child: Text("Continue", style: TextStyle(color: Colors.white)),
+                                            //),
+                                            onPressed: () {
+                                              Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SignupWithFB()));
+                                            },
+                                          )])),
+                                        ],
+                                      )
+                                    : Center(
+                                        child: OutlineButton(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 20,
+                                              width: 20,
+                                              child: Image.asset(
+                                                  'assets/icons_fboldwhite.png'),
+                                            ),
+                                            Container(
+                                              height: 50,
+                                              width: 220,
+                                              padding: EdgeInsets.only(
+                                                  top: 17.0,
+                                                  left: 5.0),
+                                              child: Text(
+                                                'Continue with Facebook',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontFamily: 'Montserrat',
+                                                    //fontSize: 16
+                                                    ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          _loginWithFB();
+                                          
+                                        },
+                                      )),
                               ),
-                            )),
+                            ),
+                          ),)])),
                         SizedBox(height: 5.0),
                         Container(
                             height: 50.0,
@@ -271,9 +366,8 @@ class _SignupPageState extends State<SignupPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      //MaterialPageRoute(builder: (context) => ProfilePrefPage())
                                       MaterialPageRoute(
-                                          builder: (context) => LogInPage()));
+                                          builder: (context) => MyHomePage()));
                                 },
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(20.0),
@@ -307,9 +401,8 @@ class _SignupPageState extends State<SignupPage> {
                                 color: Colors.blue[700],
                               ),
                             )),
-                      ],
-                    )),
-              ],
-            )));
+              ])) ],
+                )),
+              );
   }
 }
