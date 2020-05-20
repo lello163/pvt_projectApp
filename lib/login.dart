@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
+import 'profilepage.dart';
 //import 'package:convert/convert.dart' as JSON;
 
 class LogInPage extends StatefulWidget {
@@ -27,6 +28,7 @@ class _LogInPageState extends State<LogInPage> {
         setState(() {
           userProfile = profile;
           _isLoggedIn = true;
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
         });
         break;
 
@@ -75,7 +77,7 @@ class _LogInPageState extends State<LogInPage> {
                               color: Colors.white,
                               fontSize: 30.0,
                               fontWeight: FontWeight.w500,
-                              fontStyle: FontStyle.italic,
+                              fontFamily: 'Monserrat',
                               letterSpacing: 2)),
                     ),
                   ],
@@ -156,6 +158,7 @@ class _LogInPageState extends State<LogInPage> {
                                         ),
                                         onPressed: () {
                                           _loginWithFB();
+                                          
                                         },
                                       )),
                               ),

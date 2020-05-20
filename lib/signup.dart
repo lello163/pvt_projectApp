@@ -12,9 +12,15 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   bool checkboxValue = false;
 
+  
+
   @override
   Widget build(BuildContext context) {
     var text = Text('I agree to the ');
+    String firstName;
+    String lastName;
+    String selectedPassword;
+
 
     return new Container(
         decoration: BoxDecoration(
@@ -40,7 +46,7 @@ class _SignupPageState extends State<SignupPage> {
                         child: Text('Welcome to Meet n Greet',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.0,
+                                fontSize: 20.0,
                                 fontWeight: FontWeight.w500,
                                 fontStyle: FontStyle.italic,
                                 letterSpacing: 2)),
@@ -55,14 +61,17 @@ class _SignupPageState extends State<SignupPage> {
                       children: <Widget>[
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'Firstname',
+                              labelText: 'FIRSTNAME',
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                  color: Colors.grey[200]),
                               hintText: 'Firstname',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
+                          onSaved: (String newName) {
+                            firstName = newName;
+                          }
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
@@ -71,11 +80,11 @@ class _SignupPageState extends State<SignupPage> {
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                  color: Colors.grey[400]),
                               hintText: 'Lastname',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
-                          obscureText: true,
+                          //obscureText: true,
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
@@ -84,10 +93,13 @@ class _SignupPageState extends State<SignupPage> {
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                  color: Colors.grey[700]),
                               hintText: 'Email',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
+                          onSaved: (String newLastname) {
+                            lastName = newLastname;
+                          }
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
@@ -96,10 +108,14 @@ class _SignupPageState extends State<SignupPage> {
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                  color: Colors.grey[850]),
                               hintText: 'Password',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
+                          onSaved: (String newPassword) {
+                            selectedPassword = newPassword;
+                          },
+                          obscureText: true,
                         ),
                         CheckboxListTile(
                           value: checkboxValue,
@@ -164,13 +180,13 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             )),
                         Container(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.only(top: 40, bottom: 5),
                           child: Text(
-                              '- - - - - - - - - - - - - O R - - - - - - - - - - - - -',
+                              '- - - - - - - - - - - - O R - - - - - - - - - - -',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15.0),
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 17.0),
                               textAlign: TextAlign.center),
                         ),
                         SizedBox(height: 5.0),

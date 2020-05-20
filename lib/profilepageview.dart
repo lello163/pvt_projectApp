@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'EventInfo.dart';
 import 'settings.dart';
+import 'profilepage.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -11,16 +13,18 @@ class _ProfilePage extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
         actions: <Widget>[
           IconButton(
+              color: Colors.blue[900],
               icon: Icon(Icons.settings),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
-              })
+              },
+            )
         ],
       ),
       body: SingleChildScrollView(
@@ -40,46 +44,35 @@ class _ProfilePage extends State<ProfilePage> {
                       ))),
               SizedBox(height: 10),
               Text(
-                'name',
+                'Firstname Lastname',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Monserrat',
+                  fontSize: 25,
                 ),
               ),
               SizedBox(height: 3),
               Container(
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                child: TextField(
-                  enabled: false,
-                  minLines: 3,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xFFDBEDFF),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
+                padding: const EdgeInsets.fromLTRB(20, 10, 15, 10),
+                color: Colors.transparent,
+                child: Text('Location | Origin | Age | Relationship status | Occupation', 
+                style: TextStyle(
+                  fontSize: 18, 
+                  fontWeight: FontWeight.w500, 
+                  fontFamily: 'Monserrat'),
+                  textAlign: TextAlign.center,
                   ),
-                ),
               ),
               SizedBox(height: 3),
               Container(
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                child: TextField(
-                  enabled: false,
-                  minLines: 3,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xFFDBEDFF),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                  ),
-                ),
-              ),
+                padding: const EdgeInsets.fromLTRB(20, 10, 15, 70),
+                color: Colors.transparent,
+                child: Text('Something interesting about who I am...', 
+                style: TextStyle(
+                  fontSize: 18, 
+                  fontWeight: FontWeight.w500, 
+                  fontFamily: 'Monserrat')),
+               ),
               SizedBox(height: 3),
               Container(
                   padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
@@ -87,9 +80,9 @@ class _ProfilePage extends State<ProfilePage> {
                     child: const Text(
                       'Interests',
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.0,
-                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 25.0,
+                        fontFamily: 'Monserrat',
                         letterSpacing: 2,
                       ),
                     ),
@@ -100,16 +93,16 @@ class _ProfilePage extends State<ProfilePage> {
                   physics: NeverScrollableScrollPhysics(),
                   primary: false,
                   padding: EdgeInsets.all(5),
-                  itemCount: 5,
+                  itemCount: 3,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 200 / 200,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5.0),
                       child: Image.asset(
-                        "assets/profil.png",
+                        "assets/fooddrinks.png",
                         fit: BoxFit.cover,
                       ),
                     );
@@ -126,7 +119,7 @@ class _ProfilePage extends State<ProfilePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                        MaterialPageRoute(builder: (context) => Profile()),
                       );
                     },
                     color: Colors.blue[700],
@@ -153,20 +146,29 @@ class _ProfilePage extends State<ProfilePage> {
               IconButton(
                 icon: Icon(
                   Icons.person,
-                  color: Colors.blue,
+                  color: Colors.blue[700],
                 ),
+                iconSize: 30,
                 onPressed: () {},
               ),
               IconButton(
                 icon: Icon(Icons.chat_bubble_outline),
+                iconSize: 30,
                 onPressed: () {},
               ),
               IconButton(
                 icon: Icon(Icons.calendar_today),
-                onPressed: () {},
+                iconSize: 30,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventInfo()),
+                  );
+                },
               ),
               IconButton(
                 icon: Icon(Icons.location_on),
+                iconSize:30,
                 onPressed: () {},
               )
             ],
