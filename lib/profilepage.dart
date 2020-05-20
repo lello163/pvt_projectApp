@@ -127,7 +127,7 @@ class _ProfileState extends State<Profile> {
                     maxLines: 3,
                     autocorrect: true,
                     decoration: InputDecoration(
-                      hintText: ' Location | Origin | Age | Relationship status | Occupation ',
+                      hintText: ' Location | Origin | Age \n Relationship status | Occupation ',
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,
@@ -296,25 +296,33 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
-           bottomNavigationBar: RaisedButton(
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(15.0),),
-        padding: const EdgeInsets.fromLTRB(4, 5, 5, 5),
-        color: Colors.blue[700],
-        child: Text('Save',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Monserrat',
-                letterSpacing: 2)),
-                
-        onPressed: () {
+           bottomNavigationBar: 
+      SizedBox(
+        height: 70,
+        width: 150,
+        
+      child: Align(
+        alignment: FractionalOffset(0.9, 0.3),
+      child: RaisedButton(
+            shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0),
+          ),
+          
+          padding: const EdgeInsets.all(10),
+          color: Colors.blue[700],
+          child: Text('Save',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Monserrat',
+                  letterSpacing: 2)),
+          onPressed: () {
           _showProfileSavedMessage();
           
           
         }
-      ),
+      ))) ,
     );
   }
 }

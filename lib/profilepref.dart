@@ -171,7 +171,10 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   obscureText: false,
                 ),
               ),
-              Container(
+
+              
+
+              /*Container(
                 padding: EdgeInsets.fromLTRB(240, 180, 0, 0),
                 child: Row(
                   children: <Widget>[
@@ -190,8 +193,36 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                     ),
                   ],
                 ),
-              ),
-            ]));
+              ),*/
+            ]
+            
+            
+            ),
+            bottomNavigationBar: 
+      SizedBox(
+        height: 70,
+        width: 150,
+        
+      child: Align(
+        alignment: FractionalOffset(0.9, 0.3),
+      child: RaisedButton(
+            shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0),
+          ),
+          
+          padding: const EdgeInsets.all(10),
+          color: Colors.blue[700],
+          child: Text('Continue',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Monserrat',
+                  letterSpacing: 2)),
+          onPressed: () {
+openPage(context);
+          }
+      ))));
   }
 
   void openPage(BuildContext context) {
@@ -274,7 +305,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   },*/
                 ),
               ),
-              Container(
+             /* Container(
                 padding: EdgeInsets.fromLTRB(240, 280, 0, 0),
                 child: Row(
                   children: <Widget>[
@@ -310,9 +341,55 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                     ),
                   ],
                 ),
-              ),
+              ),*/
             ],
-          ));
+          ),
+          bottomNavigationBar: 
+      SizedBox(
+        height: 70,
+        width: 150,
+        
+      child: Align(
+        alignment: FractionalOffset(0.9, 0.3),
+      child: RaisedButton(
+            shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0),
+          ),
+          
+          padding: const EdgeInsets.all(10),
+          color: Colors.blue[700],
+          child: Text('Continue',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Monserrat',
+                  letterSpacing: 2)),
+          onPressed: () {
+            
+                        //samla värden i...array?
+                        // add birthplace + _originController
+                        // add location + _locationController
+                        //add gender + _selectedGender
+                        // add relationstatus + _selectedRelation
+                        //add occupation + selectedOccupation
+
+                        //add birthDateInString;
+                       
+
+                        var route = new MaterialPageRoute(builder: (BuildContext context) => 
+                        new InterestsPage());
+                        //in med värde i interestpage-metod
+                        Navigator.of(context).push(route);
+                       /* Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InterestsPage()));*/
+
+          }
+          ))));
+
+          
     }));
   }
 }

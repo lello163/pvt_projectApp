@@ -3,6 +3,7 @@ import 'profilepref.dart';
 import 'login.dart';
 import 'package:flutter/gestures.dart';
 import 'TermsandCond.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -12,15 +13,12 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   bool checkboxValue = false;
 
-  
-
   @override
   Widget build(BuildContext context) {
     var text = Text('I agree to the ');
     String firstName;
     String lastName;
     String selectedPassword;
-
 
     return new Container(
         decoration: BoxDecoration(
@@ -60,19 +58,19 @@ class _SignupPageState extends State<SignupPage> {
                     child: Column(
                       children: <Widget>[
                         TextFormField(
-                          decoration: InputDecoration(
-                              labelText: 'FIRSTNAME',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey[200]),
-                              hintText: 'Firstname',
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue))),
-                          onSaved: (String newName) {
-                            firstName = newName;
-                          }
-                        ),
+                            decoration: InputDecoration(
+                                labelText: 'FIRSTNAME',
+                                labelStyle: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[200]),
+                                hintText: 'Firstname',
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.blue))),
+                            onSaved: (String newName) {
+                              firstName = newName;
+                            }),
                         SizedBox(height: 10.0),
                         TextFormField(
                           decoration: InputDecoration(
@@ -88,19 +86,19 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
-                          decoration: InputDecoration(
-                              labelText: 'EMAIL ',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey[700]),
-                              hintText: 'Email',
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue))),
-                          onSaved: (String newLastname) {
-                            lastName = newLastname;
-                          }
-                        ),
+                            decoration: InputDecoration(
+                                labelText: 'EMAIL ',
+                                labelStyle: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[700]),
+                                hintText: 'Email',
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.blue))),
+                            onSaved: (String newLastname) {
+                              lastName = newLastname;
+                            }),
                         SizedBox(height: 10.0),
                         TextFormField(
                           decoration: InputDecoration(
@@ -158,11 +156,35 @@ class _SignupPageState extends State<SignupPage> {
                               elevation: 7.0,
                               child: RaisedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProfilePrefPage()));
+                                  if (checkboxValue) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProfilePrefPage()));
+                                  } else {
+                                    Alert(
+                                        context: context,
+                                        title: 'Please accept \n Terms & conditions',
+                                        desc:
+                                            'You need to accept the Terms & conditions to be able to register an account.',
+                                        buttons: [
+                                          DialogButton(
+                                            child: Align(
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: Text('OK',
+                                                    style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ))),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            color: Colors.transparent,
+                                          )
+                                        ]).show();
+                                  }
                                 },
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(20.0),
@@ -213,18 +235,25 @@ class _SignupPageState extends State<SignupPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    SizedBox( height: 20 , width:20,
-                                    child: Image.asset('assets/icons_fboldwhite.png'),),
+                                    SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: Image.asset(
+                                          'assets/icons_fboldwhite.png'),
+                                    ),
                                     Container(
-                                       height: 50, width: 220,
-                                       padding: EdgeInsets.only(top: 17, left: 5),
+                                      height: 50,
+                                      width: 220,
+                                      padding:
+                                          EdgeInsets.only(top: 17, left: 5),
                                       child: Text(
-                                      'Create an account with Facebook',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'Montserrat'),
-                                    ),)
+                                        'Create an account with Facebook',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Montserrat'),
+                                      ),
+                                    )
                                   ],
                                 )),
                                 color: Colors.blue[700],
@@ -236,7 +265,7 @@ class _SignupPageState extends State<SignupPage> {
                             width: 300,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                             // color: Colors.blue[700],
+                              // color: Colors.blue[700],
                               elevation: 7.0,
                               child: RaisedButton(
                                 onPressed: () {
@@ -254,18 +283,25 @@ class _SignupPageState extends State<SignupPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    SizedBox(height: 20, width: 20,
-                                    child: Image.asset('assets/icons_googlewhite.png'),),
+                                    SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: Image.asset(
+                                          'assets/icons_googlewhite.png'),
+                                    ),
                                     Container(
-                                      height: 50, width: 220,
-                                      padding: EdgeInsets.only(top: 17, left: 5),
-                                    child: Text(
-                                      'Create an account with Google',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'Montserrat'),
-                                    ),)
+                                      height: 50,
+                                      width: 220,
+                                      padding:
+                                          EdgeInsets.only(top: 17, left: 5),
+                                      child: Text(
+                                        'Create an account with Google',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Montserrat'),
+                                      ),
+                                    )
                                   ],
                                 )),
                                 color: Colors.blue[700],

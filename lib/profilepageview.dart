@@ -55,7 +55,7 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 10),
                 color: Colors.transparent,
-                child: Text('Location | Origin | Age | Relationship status | Occupation', 
+                child: Text('Location | Origin | Age \n Relationship status | Occupation', 
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 

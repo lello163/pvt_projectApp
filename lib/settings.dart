@@ -92,18 +92,18 @@ class _SettingsPageState extends State<SettingsPage> {
                     DialogButton(
                       child: Text(
                         "Cancel",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.pop(context),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     ),
                     DialogButton(
                       child: Text(
                         "Save",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.pop(context),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     )
                   ],
                 ).show();
@@ -142,21 +142,21 @@ class _SettingsPageState extends State<SettingsPage> {
                     DialogButton(
                       child: Text(
                         "Cancel",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.pop(context),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     ),
                     DialogButton(
                       child: Text(
                         "Yes",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyHomePage())),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     )
                   ],
                 ).show();
@@ -196,21 +196,21 @@ class _SettingsPageState extends State<SettingsPage> {
                     DialogButton(
                       child: Text(
                         "Cancel",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.pop(context),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     ),
                     DialogButton(
                       child: Text(
                         "Yes",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyHomePage())),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     )
                   ],
                 ).show();
@@ -250,21 +250,21 @@ class _SettingsPageState extends State<SettingsPage> {
                     DialogButton(
                       child: Text(
                         "Cancel",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.pop(context),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     ),
                     DialogButton(
                       child: Text(
                         "Yes",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 20),
                       ),
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyHomePage())),
-                      color: Colors.blue[700],
+                      color: Colors.transparent,
                     )
                   ],
                 ).show();
