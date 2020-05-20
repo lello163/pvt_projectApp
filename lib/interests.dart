@@ -7,6 +7,8 @@ import 'profilepage.dart';
 class InterestsPage extends StatefulWidget {
   //final ValueChanged<bool> isSelected;
   //int _isSelected = 0;
+ // final Data data;
+ // InterestsPage({this.data});
 
   @override
   _InterestsPageState createState() => _InterestsPageState();
@@ -37,6 +39,7 @@ class _InterestsPageState extends State<InterestsPage> {
   int counter = 0;
   //var shape = Brightness.dark;
   var shape = BoxShape.rectangle;
+ // var value = ("$(widget.value)");
 
   void _changeState() {
     setState(() {
@@ -154,7 +157,7 @@ class _InterestsPageState extends State<InterestsPage> {
         // Create a grid with 1 columns.
         crossAxisCount: 1,
         // Generate 100 widgets that display their index in the List.
-
+        
         children: <Widget>[
           /*  Container(
                 child: const Text('Choose as many categories as you like'),

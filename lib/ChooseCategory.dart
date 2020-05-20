@@ -1,6 +1,8 @@
-import 'package:deletethis/InfoAboutCreatingActivity.dart';
-import 'package:deletethis/CreateEvent.dart';
+//import 'package:deletethis/InfoAboutCreatingActivity.dart';
+//import 'package:deletethis/CreateEvent.dart';
 import 'package:flutter/material.dart';
+import 'CreateEvent.dart';
+import 'InfoAboutCreatingActivity.dart';
 
 class ChooseCategory extends StatefulWidget {
   @override
@@ -114,7 +116,7 @@ class _DropdownMenuState extends State<DropdownMenu> {
           choice = newValue;
         });
       },
-      items: <String>['Food & Drinks', 'Sport', 'Fitness & Mindfullness', 'Animals', 'Parent Hang', 'Movies', 'Outdoors & Explore', 'Art & Culture']
+      items: <String>['Food & Drinks', 'Sport', 'Fitness & Mindfulness', 'Animals', 'Parent Hang', 'Movies', 'Outdoors & Explore', 'Art & Culture']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
