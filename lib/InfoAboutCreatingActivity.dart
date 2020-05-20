@@ -1,4 +1,4 @@
-import 'package:deletethis/ChooseCategory.dart';
+import 'package:pvt_project/ChooseCategory.dart';
 import 'package:flutter/material.dart';
 
 class InfoAboutCreatingActivity extends StatefulWidget {
