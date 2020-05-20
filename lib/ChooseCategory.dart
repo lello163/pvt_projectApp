@@ -1,5 +1,5 @@
-import 'package:deletethis/InfoAboutCreatingActivity.dart';
-import 'package:deletethis/CreateEvent.dart';
+import 'package:pvt_project/InfoAboutCreatingActivity.dart';
+import 'package:pvt_project/CreateEvent.dart';
 import 'package:flutter/material.dart';
 
 class ChooseCategory extends StatefulWidget {

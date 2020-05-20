@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:deletethis/ChooseCategory.dart';
+import 'package:pvt_project/ChooseCategory.dart';
 
 class CreateEvent extends StatefulWidget {
   @override
