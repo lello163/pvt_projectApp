@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:pvt_project/interests.dart';
+import 'package:pvt_project/nextPageProfPage.dart';
 
 class ProfilePrefPage extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   String birthDateInString;
   bool isDateSelected = false;
   DateTime birthDate;
-
+ 
 
 
   @override
@@ -197,18 +198,21 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   fontFamily: 'Monserrat',
                   letterSpacing: 2)),
           onPressed: () {
-openPage(context);
+Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NextProfilePrefPage()),
+              );
           }
       ))));
   }
 
-  void openPage(BuildContext context) {
+  /*void openPage(BuildContext context) {
     final _locationController = TextEditingController();
     var _occupations = ['Working',
                       'Studying',
                       'Unemployed/Looking for a job',
                       "Other"];
-
+   
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       
             return Scaffold(
@@ -330,5 +334,5 @@ openPage(context);
 
           
     }));
-  }
+  }*/
 }
