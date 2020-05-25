@@ -3,6 +3,7 @@ import 'package:pvt_project/SignedUpActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
 import 'profilepageview.dart';
+import 'CreateEvent.dart';
 
 class AllActivities extends StatefulWidget {
   @override
@@ -21,6 +22,9 @@ class _AllActivities extends State<AllActivities> {
             icon: Icon(Icons.calendar_today),
             onPressed: () {
               // Add route to schedule new event.
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => CreateEvent())
+              );
             },
           )
         ],
