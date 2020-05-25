@@ -28,7 +28,7 @@ class _AllActivities extends State<AllActivities> {
 
       body: GridView.count(
         padding: const EdgeInsets.all(10),
-        childAspectRatio: (6/1),
+        childAspectRatio: (5/1),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: 1,
@@ -80,7 +80,140 @@ class _AllActivities extends State<AllActivities> {
             )
           ],),
 
-          
+          Container(
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: const Text(
+                    'Fika Group',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Sunday. 15:00',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  )
+                ),
+                Center(
+                  child: Text(
+                    'Participants: 3/6',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  )
+                ),
+                ],
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    image: DecorationImage(
+                      image: AssetImage('assets/fooddrinks.png'),
+                      fit: BoxFit.fitWidth)),
+          ),
+           Container(
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: const Text(
+                    'A dog walk',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Sundays. 10:00',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  )
+                ),
+                Center(
+                  child: Text(
+                    'Participants: 3/4',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  )
+                ),
+                ],
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    image: DecorationImage(
+                      image: AssetImage('assets/animals2.png'),
+                      fit: BoxFit.fitWidth)),
+          ),
+           Container(
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: const Text(
+                    'Play Volleyball',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Thursdays. 17:00',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  )
+                ),
+                Center(
+                  child: Text(
+                    'Participants: 10/12',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Monserrat',
+                      letterSpacing: 2),
+                  )
+                ),
+                ],
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    image: DecorationImage(
+                      image: AssetImage('assets/sports2.png'),
+                      fit: BoxFit.fitWidth)),
+          ),
+
+          /*
               Container(
                 padding: const EdgeInsets.all(5),
                 child: Center(
@@ -138,6 +271,7 @@ class _AllActivities extends State<AllActivities> {
                       image: AssetImage('assets/sports2.png'),
                       fit: BoxFit.fitWidth)),
               ),
+              */
 
 
 
