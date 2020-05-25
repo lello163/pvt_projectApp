@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pvt_project/AllActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
 import 'settings.dart';
@@ -168,7 +169,7 @@ class _ProfilePage extends State<ProfilePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EventInfo()),
+                    MaterialPageRoute(builder: (context) => AllActivities()),
                   );
                 },
               ),

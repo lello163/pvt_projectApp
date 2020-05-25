@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:pvt_project/AllActivities.dart';
 import 'package:pvt_project/TempAndSky.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -329,7 +330,10 @@ class _EventInfoState extends State<EventInfo> {
               color: Colors.blue[700],
               iconSize: 30,
               onPressed: (){
-                print("pressed");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AllActivities()),
+                );
               },
             ),
             IconButton(

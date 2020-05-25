@@ -83,7 +83,15 @@ class _SignedUpActivities extends State<SignedUpActivities> {
             )
           ],),
 
-          Container(
+          
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EventInfo()));
+
+            },
+          child: Container(
             child: Column(
               children: <Widget>[
                 Center(
@@ -126,6 +134,7 @@ class _SignedUpActivities extends State<SignedUpActivities> {
                     image: DecorationImage(
                       image: AssetImage('assets/fooddrinks.png'),
                       fit: BoxFit.fitWidth)),
+          ),
           ),
           Container(
             child: Column(
@@ -228,7 +237,6 @@ class _SignedUpActivities extends State<SignedUpActivities> {
               IconButton(
                 icon: Icon(
                   Icons.person,
-                  color: Colors.blue[700],
                 ),
                 iconSize: 30,
                 onPressed: () {
@@ -250,13 +258,9 @@ class _SignedUpActivities extends State<SignedUpActivities> {
               ),
               IconButton(
                 icon: Icon(Icons.calendar_today),
+                color: Colors.blue[700],
                 iconSize: 30,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EventInfo()),
-                  );
-                },
+                onPressed: (){},
               ),
               IconButton(
                 icon: Icon(Icons.location_on),
