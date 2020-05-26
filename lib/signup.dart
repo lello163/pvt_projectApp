@@ -11,6 +11,15 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   bool checkboxValue = false;
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+  final firstNameCon = new TextEditingController();
+  final lastNameCon = new TextEditingController();
+  final emailCon = new TextEditingController();
+  final passwordCon = new TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +63,7 @@ class _SignupPageState extends State<SignupPage> {
                     child: Column(
                       children: <Widget>[
                         TextFormField(
+                          controller: firstNameCon,
                           decoration: InputDecoration(
                               labelText: 'FIRST NAME',
                               labelStyle: TextStyle(
@@ -66,6 +76,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
+                          controller: lastNameCon,
                           decoration: InputDecoration(
                               labelText: 'LAST NAME',
                               labelStyle: TextStyle(
@@ -79,6 +90,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
+                          controller: emailCon,
                           decoration: InputDecoration(
                               labelText: 'EMAIL ',
                               labelStyle: TextStyle(
@@ -91,6 +103,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
+                          controller: passwordCon,
                           decoration: InputDecoration(
                               labelText: 'PASSWORD ',
                               labelStyle: TextStyle(
@@ -142,11 +155,18 @@ class _SignupPageState extends State<SignupPage> {
                               elevation: 7.0,
                               child: RaisedButton(
                                 onPressed: () {
+
+                                  setState(() {
+                                    firstName = firstNameCon.text;
+                                    lastName = lastNameCon.text;
+                                    email = emailCon.text;
+                                    password = passwordCon.text;
+                                    });
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              ProfilePrefPage()));
+                                              ProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password)));
                                 },
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(20.0),

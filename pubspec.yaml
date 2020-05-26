@@ -25,13 +25,14 @@ dependencies:
   convert: ^2.1.1
   weather_icons: 2.0.1
   rflutter_alert: ^1.0.3
+  numberpicker: 1.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_datetime_picker: ^1.3.8
   image_picker: ^0.6.6+1
-  numberpicker: ^1.2.0
+
  
 
 

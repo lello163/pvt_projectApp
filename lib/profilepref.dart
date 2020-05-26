@@ -1,3 +1,4 @@
+//import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -6,11 +7,25 @@ import 'package:pvt_project/interests.dart';
 import 'package:pvt_project/nextPageProfPage.dart';
 
 class ProfilePrefPage extends StatefulWidget {
+  //Mottagna variabler
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
+  //Här tas strängarna med info om användaren emot
+  ProfilePrefPage({Key key, this.firstName, this.lastName, this.email, this.password});
   @override
-  _ProfilePrefPageState createState() => _ProfilePrefPageState();
+  _ProfilePrefPageState createState() => _ProfilePrefPageState(firstName: firstName, lastName: lastName, email: email, password: password);
 }
 
 class _ProfilePrefPageState extends State<ProfilePrefPage> {
+  //Mottagna strängar
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
   String _selectedGender;
   //String _selectedPart;
   String _selectedRelation;
@@ -18,11 +33,15 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   String birthDateInString;
   bool isDateSelected = false;
   DateTime birthDate;
- 
+  String accountInfo;
+
+ //Här tas strängarna med info om användaren emot
+  _ProfilePrefPageState({Key key, this.firstName, this.lastName, this.email, this.password});
 
 
   @override
   Widget build(BuildContext context) {
+print(firstName + " " + lastName  + " "+ email + " " + password);
     final _originController = new TextEditingController();
     var _genders = ['Male', 'Female', 'Non-binary'];
     var _relations = ['Singel',
