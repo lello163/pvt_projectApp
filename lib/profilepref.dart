@@ -33,7 +33,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   String birthDateInString;
   bool isDateSelected = false;
   DateTime birthDate;
-  String accountInfo;
+  String origin;
 
  //Här tas strängarna med info om användaren emot
   _ProfilePrefPageState({Key key, this.firstName, this.lastName, this.email, this.password});
@@ -41,7 +41,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
 
   @override
   Widget build(BuildContext context) {
-print(firstName + " " + lastName  + " "+ email + " " + password);
+
     final _originController = new TextEditingController();
     var _genders = ['Male', 'Female', 'Non-binary'];
     var _relations = ['Singel',
@@ -217,9 +217,10 @@ print(firstName + " " + lastName  + " "+ email + " " + password);
                   fontFamily: 'Monserrat',
                   letterSpacing: 2)),
           onPressed: () {
+              origin = _originController.text;
 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NextProfilePrefPage()),
+                MaterialPageRoute(builder: (context) => NextProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password, selectedGender: _selectedGender, selectedRelation: _selectedRelation, origin: origin, birthDateInString: birthDateInString)),
               );
           }
       ))));

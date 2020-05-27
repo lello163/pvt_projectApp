@@ -1,3 +1,4 @@
+//import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -5,21 +6,48 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:pvt_project/interests.dart';
 
 class NextProfilePrefPage extends StatefulWidget {
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
+  String selectedGender;
+  String selectedRelation;
+  String birthDateInString;
+  String origin;
+
+
+
+  NextProfilePrefPage({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString});
   @override
-  _NextProfilePrefPageState createState() => _NextProfilePrefPageState();
+  _NextProfilePrefPageState createState() => _NextProfilePrefPageState(firstName: firstName, lastName: lastName, email: email, password: password,
+      selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString);
 }
 
 class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
-  String _selectedGender;
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+  String origin;
+
+  String selectedGender;
   //String _selectedPart;
-  String _selectedRelation;
+  String selectedRelation;
   String _selectedOccupation;
   String birthDateInString;
   bool isDateSelected = false;
   DateTime birthDate;
+
+
+
+  _NextProfilePrefPageState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString});
+
+
  
  @override
   Widget build(BuildContext context) {
+   print(firstName + lastName + email + password + selectedGender + selectedRelation + origin + birthDateInString);
     var _occupations = ['Working',
                       'Studying',
                       'Unemployed/Looking for a job',
