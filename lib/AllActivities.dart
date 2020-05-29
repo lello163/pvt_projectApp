@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pvt_project/Frequency.dart';
 import 'package:pvt_project/SignedUpActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
@@ -11,6 +12,46 @@ class AllActivities extends StatefulWidget {
 }
 
 class _AllActivities extends State<AllActivities> {
+  Future<void> _showMeetAgainMessage() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Isn\'t it fun to meet new people?'),
+          shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(15.0),),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Did you have a fun time at the Coffe Hangout activity? \nDo you wish to meet them again?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("No"),
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text("Yes"),
+              onPressed:() {
+                Navigator.of(context).pop();
+              }
+            ),
+          ],
+        );
+      },
+    );  
+  }
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -322,7 +363,9 @@ class _AllActivities extends State<AllActivities> {
                 icon: Icon(Icons.calendar_today),
                 color: Colors.blue[700],
                 iconSize: 30,
-                onPressed: (){},
+                onPressed: (){
+                  _showMeetAgainMessage();
+                },
               ),
               IconButton(
                 icon: Icon(Icons.location_on),

@@ -15,6 +15,7 @@ class CreateEvent extends StatefulWidget {
 class _CreateEventState extends State<CreateEvent> {
   bool men = false;
   bool women = false;
+  bool nonBinary = false;
   //int _currentValue = 2;
   DateTime dateTime;
   //int initialIntegerValue = 2;
@@ -119,11 +120,16 @@ class _CreateEventState extends State<CreateEvent> {
             ),
           ),
           textBoxLarge(context, "Add description"),
+
           Padding(
-            padding: const EdgeInsets.only(left: 61.0, top: 10),
+            padding: const EdgeInsets.only(top: 10),
+            child: Text("Who can sign up?"),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 50.0, top: 10),
             child: Row(
               children: <Widget>[
-                Text("Who can sign up?    Men: ",
+                Text("Men: ",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Checkbox(
                     value: men,
@@ -140,6 +146,16 @@ class _CreateEventState extends State<CreateEvent> {
                     onChanged: (bool newValue) {
                       setState(() {
                         women = newValue;
+                      });
+                    }),
+                Text("Non-Binary: ",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Checkbox(
+                    value: nonBinary,
+                    activeColor: Colors.blue,
+                    onChanged: (bool newValue) {
+                      setState(() {
+                        nonBinary = newValue;
                       });
                     }),
               ],
@@ -228,7 +244,7 @@ class _CreateEventState extends State<CreateEvent> {
 
           Container(
               width: 300,
-              padding: EdgeInsets.fromLTRB(10, 100, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, 80, 10, 10),
               alignment: Alignment.bottomCenter,
               child: ButtonTheme(
                 minWidth: 250,
