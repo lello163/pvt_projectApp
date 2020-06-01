@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_map_location_picker/google_map_location_picker.dart';
 import 'package:pvt_project/SignedUpActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
 import 'profilepageview.dart';
 import 'CreateEvent.dart';
+import 'package:pvt_project/widgets/recent_chats.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AllActivities extends StatefulWidget {
   @override
@@ -11,6 +15,8 @@ class AllActivities extends StatefulWidget {
 }
 
 class _AllActivities extends State<AllActivities> {
+  String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -327,7 +333,20 @@ class _AllActivities extends State<AllActivities> {
               IconButton(
                 icon: Icon(Icons.location_on),
                 iconSize:30,
-                onPressed: () {},
+                 onPressed: () async {
+                    LocationResult result = await showLocationPicker(
+                      context,
+                      apiKey,
+                      initialCenter: LatLng(31.1975844, 29.9598339),
+//                      automaticallyAnimateToCurrentLocation: true,
+//                      mapStylePath: 'assets/mapStyle.json',
+                      myLocationButtonEnabled: true,
+                      layersButtonEnabled: true,
+//                      resultCardAlignment: Alignment.bottomCenter,
+                    );
+                    print("result = $result");
+                  },
+                
               )
             ],
           )),
