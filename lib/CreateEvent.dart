@@ -1,3 +1,4 @@
+import 'package:http/http.dart';
 import 'package:pvt_project/ChooseCategory.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,12 @@ class _CreateEventState extends State<CreateEvent> {
   String json;
   void createJson(){
     json = "{\"name\":\""+name+"\",\"time\":\""+time+"\",\"description\":\""+description+"\",\"catergoryOfActivity\":\""+categoryOfActivity+"\",\"minAge\"_\""+minAge+"\",\"maxAge\":\""+maxAge+"\",\"groupSize\":\""+groupSize+"\",\"allowedGender\":\""+allowedGender+"\",\"location\":\""+location+"\",\"coordinates\":\""+coordinates+"\"}";
+  }
+
+  Future<void> sendToServer() async {
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String url = "https://group5-15.pvt.dsv.su.se/activity/add";
+    Response response = await put(url, headers: headers, body: json);  
   }
 
  /* bool men = false;
@@ -306,6 +313,8 @@ class _CreateEventState extends State<CreateEvent> {
                 child: Text("Continue",
                     style: TextStyle(fontSize: 16, color: Colors.white)),
                 onPressed: () {
+                  createJson();
+                  sendToServer();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Frequency()),
