@@ -80,11 +80,11 @@ String description="";
     });
   }
 
-  void imagePicker(){
-    if (interest == 'fitness'){
+  /*svoid imagePicker(){
+    if (interest.contains('fitness')){
       image1 : AssetImage('assets/nature2.png');
     } 
-    if (interest == 'parentHang'){
+    if (interest.contains('parentHang')){
       if (image1 = null) {
         image1 : AssetImage('assets/parent2.png');
       } else {
@@ -93,7 +93,7 @@ String description="";
         }
       }
     }
-    if (interest == 'gaming') {
+    if (interest.contains('gaming')) {
       if (image1 = null) {
         image1 : AssetImage('assets/gaming2.jpg');
       } else {
@@ -104,7 +104,7 @@ String description="";
         }
       }
     }
-  }
+  } */
 
   Future<void> _showProfileSavedMessage() async {
     return showDialog<void>(
