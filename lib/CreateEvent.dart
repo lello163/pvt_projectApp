@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:pvt_project/InfoAboutCreatingActivity.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import 'Frequency.dart';
+
 class CreateEvent extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -16,6 +18,7 @@ class _CreateEventState extends State<CreateEvent> {
   bool men = false;
   bool women = false;
   bool nonBinary = false;
+  bool differentGenders = false;
   //int _currentValue = 2;
   DateTime dateTime;
   //int initialIntegerValue = 2;
@@ -119,13 +122,30 @@ class _CreateEventState extends State<CreateEvent> {
               ],
             ),
           ),
-          textBoxLarge(context, "Add description"),
+          textBoxLarge(context, "  Add description"),
+
 
           Padding(
+            padding: const EdgeInsets.only(left: 75.0, top: 10),
+            child: Row(
+              children: <Widget>[
+                
+                Checkbox(
+                    value: differentGenders,
+                    activeColor: Colors.blue,
+                    onChanged: (bool newValue) {
+                      setState(() {
+                        men = newValue;
+                      });
+                    }),
+                Text("I want people of different \n genders to be able to sign up",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ])),
+          /*Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Text("Who can sign up?"),
-          ),
-          Padding(
+          ),*/
+         /* Padding(
             padding: const EdgeInsets.only(left: 50.0, top: 10),
             child: Row(
               children: <Widget>[
@@ -160,7 +180,7 @@ class _CreateEventState extends State<CreateEvent> {
                     }),
               ],
             ),
-          ),
+          ),*/
 
           Row(
             // crossAxisAlignment: CrossAxisAlignment.values[3],
@@ -255,7 +275,7 @@ class _CreateEventState extends State<CreateEvent> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CreateEvent()),
+                    MaterialPageRoute(builder: (context) => Frequency()),
                   );
                 },
               ))),

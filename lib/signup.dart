@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'profilepref.dart';
 import 'login.dart';
 import 'package:flutter/gestures.dart';
@@ -162,11 +163,40 @@ class _SignupPageState extends State<SignupPage> {
                                     email = emailCon.text;
                                     password = passwordCon.text;
                                     });
-                                  Navigator.push(
+                                 /* Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              ProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password)));
+                                              ProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password)));*/
+                                  if (checkboxValue) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password)));
+                                  } else {
+                                    Alert(
+                                        context: context,
+                                        title: 'Please accept \n Terms & conditions',
+                                        desc:
+                                            'You need to accept the Terms & conditions to be able to register an account.',
+                                        buttons: [
+                                          DialogButton(
+                                            child: Align(
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: Text('OK',
+                                                    style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ))),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            color: Colors.transparent,
+                                          )
+                                        ]).show();
+                                  }
                                 },
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(20.0),
