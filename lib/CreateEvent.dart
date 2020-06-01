@@ -24,7 +24,7 @@ class CreateEvent extends StatefulWidget {
 	String minAge = "";
 	String maxAge = "";
 	String groupSize = "";
-	String allowedGender = ""
+	String allowedGender = "";
 	String location = "" ;
 	String coordinates = "";
 
@@ -58,7 +58,7 @@ class _CreateEventState extends State<CreateEvent> {
 	String minAge = "";
 	String maxAge = "";
 	String groupSize = "";
-	String allowedGender = ""
+	String allowedGender = "";
 	String location = "" ;
 	String coordinates = "";
 

@@ -302,9 +302,11 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
-                    createJson();
+                   createJson();
                     sendToServer();
                     _showProfileSavedMessage();
+                    Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => ProfilePage()));
                   }))),
     );
   }
