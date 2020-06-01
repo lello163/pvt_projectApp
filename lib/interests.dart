@@ -10,11 +10,46 @@ class InterestsPage extends StatefulWidget {
   // final Data data;
   // InterestsPage({this.data});
 
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
+  String selectedGender;
+  String selectedRelation;
+  String birthDateInString;
+  String origin;
+
+  String occupation;
+  String location;
+
+
+
+  InterestsPage({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location});
+
+
   @override
-  _InterestsPageState createState() => _InterestsPageState();
+  _InterestsPageState createState() => _InterestsPageState(firstName: firstName, lastName: lastName, email: email, password: password,
+      selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location);
 }
 
 class _InterestsPageState extends State<InterestsPage> {
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
+  String selectedGender;
+  String selectedRelation;
+  String birthDateInString;
+  String origin;
+  String occupation;
+  String location;
+
+  _InterestsPageState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location});
+
+
+  String interest = "";
   //Selection variables
   bool sportSelected = false;
   double sportOpacity = 1;
@@ -455,16 +490,52 @@ class _InterestsPageState extends State<InterestsPage> {
                 fitnessSelected |
                 gamingSelected |
                 musicSelected) {
+              if(sportSelected){
+                interest += "sports";
+              }
+
+              if(foodSelected){
+                interest += ",food";
+              }
+              if(animalsSelected){
+                interest += ",animals";
+              }
+
+              if(parentHangSelected){
+                interest += ",parentHang";
+              }
+
+              if(filmSelected){
+                interest += ",film";
+              }
+              if(exploreSelected){
+                interest += ",explore";
+              }
+
+              if(fitnessSelected){
+                interest = ",fitness";
+              }
+
+              if(gamingSelected){
+                interest += ",gaming";
+              }
+
+              if(musicSelected){
+                interest += ",music";
+              }
+
               Navigator.push(
                 context,
                 //Till profile sen
-                MaterialPageRoute(builder: (context) => Profile()),
+
+                MaterialPageRoute(builder: (context) => Profile(firstName: firstName, lastName: lastName, email: email, password: password,
+                    selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interest: interest)),
               );
             } else {
               Alert(
                 context: context,
                 title: "Slow down, tiger",
-                desc: "You have to choose atleast one category of your liking.",
+                desc: "You have to choose at least one category of your liking.",
                 buttons: [
                   DialogButton(
                     child: Align(

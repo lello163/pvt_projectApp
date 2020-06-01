@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:pvt_project/InfoAboutCreatingActivity.dart';
+//SENASTE
 class Frequency extends StatefulWidget {
   @override
   State<StatefulWidget> createState(){
@@ -63,13 +64,13 @@ class _FrequencyState extends State<Frequency> {
           }
           break;
         case 5:
-         onceAMonth = value;
-         if(value){
-           oneTimeEvent = false;
-           everyWeek = false;
-           everyOtherWeek = false;
-           everyThirdWeek = false;
-         }
+          onceAMonth = value;
+          if(value){
+            oneTimeEvent = false;
+            everyWeek = false;
+            everyOtherWeek = false;
+            everyThirdWeek = false;
+          }
           break;
       }
 
@@ -87,7 +88,6 @@ class _FrequencyState extends State<Frequency> {
             twice = false;
             threeTimes = false;
             fourTimes = false;
-
           }
           break;
         case 2:
@@ -108,7 +108,7 @@ class _FrequencyState extends State<Frequency> {
 
           break;
         case 4:
-         fourTimes = value;
+          fourTimes = value;
           if(value){
             once = false;
             twice = false;
@@ -124,11 +124,31 @@ class _FrequencyState extends State<Frequency> {
 
   Widget topMenu(BuildContext context){
     return( Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-
+        Padding(
+          padding: const EdgeInsets.only(top: 30, left: 10.0),
+          child: RaisedButton.icon(
+            label: Text("Back"),
+            onPressed: (){ print("DatePicker");},
+            icon: Icon(Icons.arrow_back_ios),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: FlatButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InfoAboutCreatingActivity()),
+              );
+            },
+            icon: Icon(Icons.help),
+            label: Text(""),
+          ),
+        ),
       ],
     )
-
     );
   }
   Widget bottomMenu(BuildContext context){
@@ -155,7 +175,7 @@ class _FrequencyState extends State<Frequency> {
             ),
             IconButton(
               icon: Icon(Icons.calendar_today),
-              color: Colors.black,
+              color: Colors.blue,
               iconSize: 40,
               onPressed: (){
                 print("pressed");
@@ -182,105 +202,95 @@ class _FrequencyState extends State<Frequency> {
           topMenu(context),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 50, left: 50),
+              padding: const EdgeInsets.only(top: 20,left: 50),
               child: ListView(
 
-                    children: <Widget>[
-                      Text("Frequency", style: TextStyle(fontSize: 24),),
-                      CheckboxListTile(
-                          title: Text("One time event"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: oneTimeEvent,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedFrequency(value, 1);}
-      ),
-                      CheckboxListTile(
-                          title: Text("Every week"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: everyWeek,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedFrequency(value, 2);}
-                      ),
-                      CheckboxListTile(
-                          title: Text("Every other week"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: everyOtherWeek,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedFrequency(value, 3);}
-                      ),
-                      CheckboxListTile(
-                          title: Text("Every third week"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: everyThirdWeek,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedFrequency(value, 4);}
-                      ),
-                      CheckboxListTile(
-                          title: Text("Once a month"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: onceAMonth,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedFrequency(value, 5);}
+                children: <Widget>[
+                  Text("Frequency", style: TextStyle(fontSize: 24),),
+                  CheckboxListTile(
+                      title: Text("One time event"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: oneTimeEvent,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedFrequency(value, 1);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Every week"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: everyWeek,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedFrequency(value, 2);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Every other week"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: everyOtherWeek,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedFrequency(value, 3);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Every third week"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: everyThirdWeek,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedFrequency(value, 4);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Once a month"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: onceAMonth,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedFrequency(value, 5);}
 
-                      ),
-                      Text("How many times", style: TextStyle(fontSize: 24),),
-                      CheckboxListTile(
-                          title: Text("Once"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: everyWeek,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedTimes(value, 1);}
-                      ),
-                      CheckboxListTile(
-                          title: Text("Twice"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: everyOtherWeek,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedTimes(value, 2);}
-                      ),
-                      CheckboxListTile(
-                          title: Text("Three times"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: everyThirdWeek,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedTimes(value, 3);}
-                      ),
-                      CheckboxListTile(
-                          title: Text("Four times"),
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: onceAMonth,
-                          activeColor: Colors.red,
-                          onChanged: (bool value){onChangedTimes(value, 4);}
+                  ),
+                  Text("How many times", style: TextStyle(fontSize: 24),),
+                  CheckboxListTile(
+                      title: Text("Once"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: once,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedTimes(value, 1);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Twice"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: twice,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedTimes(value, 2);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Three times"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: threeTimes,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedTimes(value, 3);}
+                  ),
+                  CheckboxListTile(
+                      title: Text("Four times"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: fourTimes,
+                      activeColor: Colors.red,
+                      onChanged: (bool value){onChangedTimes(value, 4);}
 
-                      ),
+                  ),
 
- 
-
-                    ]
+                ]
                 ,
 
-        ),
+              ),
             ),
           ),
-
-                               Container(
-              width: 300,
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              alignment: Alignment.bottomCenter,
-              child: ButtonTheme(
-                minWidth: 250,
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              width: 200,
               child: RaisedButton(
                 color: Colors.blue,
-                child: Text("Save",
-                    style: TextStyle(fontSize: 16, color: Colors.white)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Frequency()),
-                  );
-                },
-              ))),
-
+                child: Text("Save"),
+                onPressed: (){print("SAVE");},
+              ),
+            ),
+          )
         ],
       ),
     );

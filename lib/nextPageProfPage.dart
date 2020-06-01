@@ -32,12 +32,16 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
   String origin;
 
   String selectedGender;
-  //String _selectedPart;
   String selectedRelation;
-  String _selectedOccupation;
   String birthDateInString;
-  bool isDateSelected = false;
-  DateTime birthDate;
+
+  String _selectedOccupation;
+  String location;
+
+
+
+
+
 
 
 
@@ -47,7 +51,7 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
  
  @override
   Widget build(BuildContext context) {
-   print(firstName + lastName + email + password + selectedGender + selectedRelation + origin + birthDateInString);
+
     var _occupations = ['Working',
                       'Studying',
                       'Unemployed/Looking for a job',
@@ -147,6 +151,13 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                   fontFamily: 'Monserrat',
                   letterSpacing: 2)),
           onPressed: () {
+              location = _locationController.text;
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password, selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: _selectedOccupation, location: location)),
+              );
+
+
             
                         //samla värden i...array?
                         // add birthplace + _originController

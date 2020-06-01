@@ -21,11 +21,50 @@ List names = [
 ];
 
 class Profile extends StatefulWidget {
+
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
+  String selectedGender;
+  String selectedRelation;
+  String birthDateInString;
+  String origin;
+  String occupation;
+  String location;
+
+
+  String interest;
+  Profile({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
   @override
-  _ProfileState createState() => _ProfileState();
+  _ProfileState createState() => _ProfileState(firstName: firstName, lastName: lastName, email: email, password: password,
+      selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interest: interest);
 }
 
 class _ProfileState extends State<Profile> {
+String json;
+  void createJson (){
+   json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
+
+  }
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
+
+  String selectedGender;
+  String selectedRelation;
+  String birthDateInString;
+  String origin;
+  String occupation;
+  String location;
+
+  String interest;
+String description="";
+
+
+  _ProfileState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
   static Random random = Random();
   File _image;
 
@@ -73,6 +112,7 @@ class _ProfileState extends State<Profile> {
 }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
