@@ -254,12 +254,33 @@ class _FrequencyState extends State<Frequency> {
 
                       ),
 
+ 
+
                     ]
                 ,
 
         ),
             ),
           ),
+
+                               Container(
+              width: 300,
+              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+              alignment: Alignment.bottomCenter,
+              child: ButtonTheme(
+                minWidth: 250,
+              child: RaisedButton(
+                color: Colors.blue,
+                child: Text("Save",
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Frequency()),
+                  );
+                },
+              ))),
+
         ],
       ),
     );

@@ -4,6 +4,7 @@ import 'signup.dart';
 import 'login.dart';
 import 'interests.dart';
 import 'profilepage.dart';
+import 'package:flutter/services.dart';
 //import 'package:image/image.dart';
 
 void main() => runApp(new MyApp());
