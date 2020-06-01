@@ -513,7 +513,7 @@ class _InterestsPageState extends State<InterestsPage> {
               }
 
               if(fitnessSelected){
-                interest = ",fitness";
+                interest += ",fitness";
               }
 
               if(gamingSelected){

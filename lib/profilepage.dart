@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
@@ -48,6 +49,13 @@ String json;
    json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
 
   }
+
+Future<void> sendToServer() async {
+  Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+  String url = "https://group5-15.pvt.dsv.su.se/user/add";
+  Response response = await put(url, headers: headers, body: json);
+
+}
   String firstName ="";
   String lastName ="";
   String email="";
@@ -59,10 +67,6 @@ String json;
   String origin;
   String occupation;
   String location;
-  Image image1;
-  Image image2;
-  Image image3;
-  Image image4;
 
   String interest;
 String description="";
@@ -255,7 +259,6 @@ String description="";
                 ),
               ),
               SizedBox(height: 8),
-
               GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -299,7 +302,8 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
-                    debugPrint(interest);
+                    createJson();
+                    sendToServer();
                     _showProfileSavedMessage();
                   }))),
     );
