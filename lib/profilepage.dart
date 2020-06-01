@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
@@ -37,8 +36,6 @@ class Profile extends StatefulWidget {
 
 
   String interest;
-
-
   Profile({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
   @override
   _ProfileState createState() => _ProfileState(firstName: firstName, lastName: lastName, email: email, password: password,
@@ -49,14 +46,8 @@ class _ProfileState extends State<Profile> {
 String json;
   void createJson (){
    json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
+
   }
-
-Future<void> sendToServer() async {
-  Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
-  String url = "https://group5-15.pvt.dsv.su.se/user/add";
-
-  Response response = await put(url, headers: headers, body: json);
- }
   String firstName ="";
   String lastName ="";
   String email="";
@@ -277,8 +268,6 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
-                    createJson();
-                    sendToServer();
                     _showProfileSavedMessage();
                   }))),
     );
