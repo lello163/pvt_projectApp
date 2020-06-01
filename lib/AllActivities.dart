@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:google_map_location_picker/google_map_location_picker.dart';
-=======
 import 'package:pvt_project/Frequency.dart';
->>>>>>> d9b300af17ead3a132a9c5f1c827af838c8c16fa
 import 'package:pvt_project/SignedUpActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
@@ -19,9 +16,8 @@ class AllActivities extends StatefulWidget {
 }
 
 class _AllActivities extends State<AllActivities> {
-<<<<<<< HEAD
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
-=======
+
   Future<void> _showMeetAgainMessage() async {
     return showDialog<void>(
       context: context,
@@ -61,7 +57,6 @@ class _AllActivities extends State<AllActivities> {
 
 
 
->>>>>>> d9b300af17ead3a132a9c5f1c827af838c8c16fa
 
   @override
   Widget build(BuildContext context) {
