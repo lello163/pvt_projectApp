@@ -8,23 +8,28 @@ import 'package:pvt_project/nextPageProfPage.dart';
 
 class ProfilePrefPage extends StatefulWidget {
   //Mottagna variabler
-  String firstName ="";
-  String lastName ="";
-  String email="";
-  String password="";
+  String firstName = "";
+  String lastName = "";
+  String email = "";
+  String password = "";
 
   //Här tas strängarna med info om användaren emot
-  ProfilePrefPage({Key key, this.firstName, this.lastName, this.email, this.password});
+  ProfilePrefPage(
+      {Key key, this.firstName, this.lastName, this.email, this.password});
   @override
-  _ProfilePrefPageState createState() => _ProfilePrefPageState(firstName: firstName, lastName: lastName, email: email, password: password);
+  _ProfilePrefPageState createState() => _ProfilePrefPageState(
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password);
 }
 
 class _ProfilePrefPageState extends State<ProfilePrefPage> {
   //Mottagna strängar
-  String firstName ="";
-  String lastName ="";
-  String email="";
-  String password="";
+  String firstName = "";
+  String lastName = "";
+  String email = "";
+  String password = "";
 
   String _selectedGender;
   //String _selectedPart;
@@ -35,45 +40,25 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   DateTime birthDate;
   String origin;
 
- //Här tas strängarna med info om användaren emot
-  _ProfilePrefPageState({Key key, this.firstName, this.lastName, this.email, this.password});
-
+  //Här tas strängarna med info om användaren emot
+  _ProfilePrefPageState(
+      {Key key, this.firstName, this.lastName, this.email, this.password});
 
   @override
   Widget build(BuildContext context) {
-
     final _originController = new TextEditingController();
     var _genders = ['Male', 'Female', 'Non-binary'];
-    var _relations = ['Singel',
-                      'In a relationships',
-                      'Married',
-                      "Prefer not to say"];
- 
+    var _relations = [
+      'Singel',
+      'In a relationships',
+      'Married',
+      "Prefer not to say"
+    ];
 
     return new Scaffold(
         appBar: AppBar(
           title: const Text('...'),
         ),
-        /*bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 4.0,
-        child: new Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(icon: Icon(Icons.location_searching),
-              onPressed: (){},
-            ),
-            Text("Continue"),
-            IconButton(icon: Icon(Icons.refresh),
-              onPressed: (){
-                setState(() {
-                });
-              },
-            ),
-          ],
-          ),
-    ),*/
         resizeToAvoidBottomPadding: false,
         body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +81,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(Icons.calendar_today, size: 35),
                     ),
-                     GestureDetector(
+                    GestureDetector(
                       child: RaisedButton(
                         onPressed: () async {
                           final datePick = await showDatePicker(
@@ -121,7 +106,10 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                         color: Colors.blue[700],
                         padding: const EdgeInsets.only(
                             top: 5, bottom: 5, left: 50, right: 50),
-                        child: Text(birthDate == null ? 'Select date of birth' : birthDateInString,
+                        child: Text(
+                            birthDate == null
+                                ? 'Select date of birth'
+                                : birthDateInString,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Monserrat',
@@ -141,9 +129,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                     focusColor: Colors.black,
                     items: _genders.map((String dropDownStringItem) {
                       return DropdownMenuItem<String>(
-                        value: dropDownStringItem,
-                        child: Text(dropDownStringItem) 
-                      );
+                          value: dropDownStringItem,
+                          child: Text(dropDownStringItem));
                     }).toList(),
                     onChanged: (String newValue) {
                       setState(() {
@@ -159,10 +146,9 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                     hint: Text('Select your relationship status'),
                     focusColor: Colors.black,
                     items: _relations.map((String dropDownStringItem) {
-                      return DropdownMenuItem<String> (
-                        value: dropDownStringItem,
-                        child: Text(dropDownStringItem)
-                      );
+                      return DropdownMenuItem<String>(
+                          value: dropDownStringItem,
+                          child: Text(dropDownStringItem));
                     }).toList(),
                     onChanged: (String newValue) {
                       setState(() {
@@ -191,168 +177,40 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                   obscureText: false,
                 ),
               ),
-            ]
-            
-            
-            ),
-            bottomNavigationBar: 
-      SizedBox(
-        height: 70,
-        width: 150,
-        
-      child: Align(
-        alignment: FractionalOffset(0.9, 0.3),
-      child: RaisedButton(
-            shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-          
-          padding: const EdgeInsets.all(10),
-          color: Colors.blue[700],
-          child: Text('Continue',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Monserrat',
-                  letterSpacing: 2)),
-          onPressed: () {
-              origin = _originController.text;
-Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NextProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password, selectedGender: _selectedGender, selectedRelation: _selectedRelation, origin: origin, birthDateInString: birthDateInString)),
-              );
-          }
-      ))));
-  }
-
-  /*void openPage(BuildContext context) {
-    final _locationController = TextEditingController();
-    var _occupations = ['Working',
-                      'Studying',
-                      'Unemployed/Looking for a job',
-                      "Other"];
-   
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      
-            return Scaffold(
-                appBar: AppBar(
-                  title: const Text('...'),
-                ),
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(height: 20),
-                    Container(
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.fromLTRB(36, 55, 0.0, 0.0),
-                            child: Text('Tell us more about yourself',
-                                style: TextStyle(
-                                    fontSize: 23.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.italic,
-                                    letterSpacing: 2)),
-                          ),
-                        ],
-                      ),
+            ]),
+        bottomNavigationBar: SizedBox(
+            height: 70,
+            width: 150,
+            child: Align(
+                alignment: FractionalOffset(0.9, 0.3),
+                child: RaisedButton(
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
                     ),
-                    SizedBox(height: 50),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
-                        child: new DropdownButton<String>(
-                          hint: Text('What is your main occupation?'),
-                          focusColor: Colors.black,
-                          items: _occupations.map((String dropDownStringItem) {
-                      return DropdownMenuItem<String>(
-                        value: dropDownStringItem,
-                        child: Text (dropDownStringItem)
-                        );
-                    }).toList(),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        this._selectedOccupation = newValue;
-                      });
-                    },
-                    value: _selectedOccupation,
-                  )),
-              SizedBox(height: 50.0),
-              Container(
-                padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                width: 330,
-                child: TextFormField(
-                  controller: _locationController,
-                  //autovalidate: true,
-                  decoration: InputDecoration(
-                    labelText: 'Where in Stockholm do you live? *',
-                    labelStyle: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                    icon: Icon(Icons.place),
-                    focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue))),
-                  obscureText: false,
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return 'You need to write a place!';
-                    }
-                    return value.contains('@')
-                        ? 'Do not use the @ char.'
-                        : null;
-                  },
-                ),
-              ),
-            ],
-          ),
-          bottomNavigationBar: 
-      SizedBox(
-        height: 70,
-        width: 150,
-        
-      child: Align(
-        alignment: FractionalOffset(0.9, 0.3),
-      child: RaisedButton(
-            shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-          
-          padding: const EdgeInsets.all(10),
-          color: Colors.blue[700],
-          child: Text('Continue',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Monserrat',
-                  letterSpacing: 2)),
-          onPressed: () {
-            
-                        //samla värden i...array?
-                        // add birthplace + _originController
-                        // add location + _locationController
-                        //add gender + _selectedGender
-                        // add relationstatus + _selectedRelation
-                        //add occupation + selectedOccupation
-
-                        //add birthDateInString;
-                       
-
-                        var route = new MaterialPageRoute(builder: (BuildContext context) => 
-                        new InterestsPage());
-                        //in med värde i interestpage-metod
-                        Navigator.of(context).push(route);
-                       /* Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => InterestsPage()));*/
-
-          }
-          ))));
-
-          
-    }));
-  }*/
+                    padding: const EdgeInsets.all(10),
+                    color: Colors.blue[700],
+                    child: Text('Continue',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Monserrat',
+                            letterSpacing: 2)),
+                    onPressed: () {
+                      origin = _originController.text;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NextProfilePrefPage(
+                                firstName: firstName,
+                                lastName: lastName,
+                                email: email,
+                                password: password,
+                                selectedGender: _selectedGender,
+                                selectedRelation: _selectedRelation,
+                                origin: origin,
+                                birthDateInString: birthDateInString)),
+                      );
+                    }))));
+  }
 }

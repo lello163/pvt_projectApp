@@ -15,13 +15,11 @@ class CreateEvent extends StatefulWidget {
 }
 
 class _CreateEventState extends State<CreateEvent> {
-  bool men = false;
+ /* bool men = false;
   bool women = false;
-  bool nonBinary = false;
+  bool nonBinary = false;*/
   bool differentGenders = false;
-  //int _currentValue = 2;
   DateTime dateTime;
-  //int initialIntegerValue = 2;
   int numberOfParticipants = 2;
   int minimumAge = 18;
   int maximumAge = 99;
@@ -135,11 +133,11 @@ class _CreateEventState extends State<CreateEvent> {
                     activeColor: Colors.blue,
                     onChanged: (bool newValue) {
                       setState(() {
-                        men = newValue;
+                        differentGenders = newValue;
                       });
                     }),
                 Text("I want people of different \n genders to be able to sign up",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: TextStyle(fontWeight: FontWeight.w500)),
               ])),
           /*Padding(
             padding: const EdgeInsets.only(top: 10),
