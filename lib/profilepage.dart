@@ -59,6 +59,10 @@ String json;
   String origin;
   String occupation;
   String location;
+  Image image1;
+  Image image2;
+  Image image3;
+  Image image4;
 
   String interest;
 String description="";
@@ -74,6 +78,32 @@ String description="";
     setState(() {
       _image = image;
     });
+  }
+
+  void imagePicker(){
+    if (interest == 'fitness'){
+      image1 : AssetImage('assets/nature2.png');
+    } 
+    if (interest == 'parentHang'){
+      if (image1 = null) {
+        image1 : AssetImage('assets/parent2.png');
+      } else {
+        if (image2 = null) {
+          image2 : AssetImage('assets/parent2.png');
+        }
+      }
+    }
+    if (interest == 'gaming') {
+      if (image1 = null) {
+        image1 : AssetImage('assets/gaming2.jpg');
+      } else {
+        if (image2 = null) {
+          image2 : AssetImage('assets/gaming2.jpg');
+        } else if (image3 = null) {
+          image3 : AssetImage('assets/gaming2.jpg');
+        }
+      }
+    }
   }
 
   Future<void> _showProfileSavedMessage() async {
@@ -225,6 +255,7 @@ String description="";
                 ),
               ),
               SizedBox(height: 8),
+
               GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -268,6 +299,7 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
+                    debugPrint(interest);
                     _showProfileSavedMessage();
                   }))),
     );
