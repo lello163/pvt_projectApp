@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:pvt_project/AllActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
@@ -8,15 +11,36 @@ import 'package:google_map_location_picker/google_map_location_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 class ProfilePage extends StatefulWidget {
+  String userID = "";
+  ProfilePage(
+    {Key key, this.userID}
+  );
+
   @override
-  _ProfilePage createState() => _ProfilePage();
+  _ProfilePage createState() => _ProfilePage(
+    userID: userID);
 }
 
 class _ProfilePage extends State<ProfilePage> {
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
+  String userID = "";
+
+
+  Future<void> getUserInfo() async {
+    Map<String, String> headers = {
+      "Content-type": 'application/json; charset=UTF-8'
+    };
+    String url = "https://group5-15.pvt.dsv.su.se/user/get?id=userID";
+    Response response = await get(url, headers: headers);
+    print(response);
+  }
+
+
+  _ProfilePage({Key key, this.userID});
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),

@@ -1,9 +1,12 @@
+import 'package:http/http.dart';
 import 'package:pvt_project/ChooseCategory.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pvt_project/InfoAboutCreatingActivity.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:http/http.dart' as http;
+
 
 import 'Frequency.dart';
 
@@ -14,7 +17,30 @@ class CreateEvent extends StatefulWidget {
   }
 }
 
+  String name = "";
+	String time = "";
+	String description = "";
+	String categoryOfActivity = "";
+	String minAge = "";
+	String maxAge = "";
+	String groupSize = "";
+	String allowedGender = "";
+	String location = "" ;
+	String coordinates = "";
+
 class _CreateEventState extends State<CreateEvent> {
+
+  String json;
+  void createJson(){
+    json = "{\"name\":\""+name+"\",\"time\":\""+time+"\",\"description\":\""+description+"\",\"catergoryOfActivity\":\""+categoryOfActivity+"\",\"minAge\"_\""+minAge+"\",\"maxAge\":\""+maxAge+"\",\"groupSize\":\""+groupSize+"\",\"allowedGender\":\""+allowedGender+"\",\"location\":\""+location+"\",\"coordinates\":\""+coordinates+"\"}";
+  }
+
+  Future<void> sendToServer() async {
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String url = "https://group5-15.pvt.dsv.su.se/activity/add";
+    Response response = await put(url, headers: headers, body: json);  
+  }
+
  /* bool men = false;
   bool women = false;
   bool nonBinary = false;*/
@@ -23,6 +49,22 @@ class _CreateEventState extends State<CreateEvent> {
   int numberOfParticipants = 2;
   int minimumAge = 18;
   int maximumAge = 99;
+
+
+  String name = "";
+	String time = "";
+	String description = "";
+	String categoryOfActivity = "";
+	String minAge = "";
+	String maxAge = "";
+	String groupSize = "";
+	String allowedGender = "";
+	String location = "" ;
+	String coordinates = "";
+
+
+  _CreateEventState({Key key, this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates});
+
 
   @override
   Widget build(BuildContext context) {
@@ -271,6 +313,8 @@ class _CreateEventState extends State<CreateEvent> {
                 child: Text("Continue",
                     style: TextStyle(fontSize: 16, color: Colors.white)),
                 onPressed: () {
+                  createJson();
+                  sendToServer();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Frequency()),
