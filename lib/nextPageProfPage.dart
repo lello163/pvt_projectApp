@@ -41,6 +41,8 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
   bool isDateSelected = false;
   DateTime birthDate;
 
+  String location;
+  String occupation;
 
 
   _NextProfilePrefPageState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString});
@@ -149,7 +151,8 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                   fontFamily: 'Monserrat',
                   letterSpacing: 2)),
           onPressed: () {
-            
+                        location = _locationController.text;
+                        occupation = _selectedOccupation;
                         //samla värden i...array?
                         // add birthplace + _originController
                         // add location + _locationController
@@ -161,7 +164,8 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                        
 
                         var route = new MaterialPageRoute(builder: (BuildContext context) => 
-                        new InterestsPage());
+                        new InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password,
+                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: _selectedOccupation, location: location));
                         //in med värde i interestpage-metod
                         Navigator.of(context).push(route);
                        /* Navigator.push(
