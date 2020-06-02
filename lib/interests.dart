@@ -174,6 +174,7 @@ class _InterestsPageState extends State<InterestsPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(firstName + lastName + email + password + selectedGender + selectedRelation + birthDateInString + origin + occupation + location);
     return new Scaffold(
       appBar: AppBar(
           title: const Text('What are your interests?',
