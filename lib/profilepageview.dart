@@ -12,18 +12,20 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 class ProfilePage extends StatefulWidget {
   String userID = "";
+  User user;
   ProfilePage(
-    {Key key, this.userID}
+    {Key key, this.userID, this.user}
   );
 
   @override
   _ProfilePage createState() => _ProfilePage(
-    userID: userID);
+    userID: userID, user: user);
 }
 
 class _ProfilePage extends State<ProfilePage> {
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
   String userID;
+  User user;
 
 
   Future<void> getUserInfo() async {
@@ -36,7 +38,7 @@ class _ProfilePage extends State<ProfilePage> {
   }
 
 
-  _ProfilePage({Key key, this.userID});
+  _ProfilePage({Key key, this.userID, this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,7 @@ class _ProfilePage extends State<ProfilePage> {
                       ))),
               SizedBox(height: 10),
               Text(
-                'Firstname Lastname',
+                user.getName(),
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Monserrat',
@@ -85,7 +87,8 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 10),
                 color: Colors.transparent,
-                child: Text('Location | Origin | Age \n Relationship status | Occupation', 
+                child: Text( ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
+
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
@@ -107,8 +110,8 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                   padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
                   child: Center(
-                    child: const Text(
-                      'Interests',
+                    child:  Text(
+                      'Interests: ' + user.getInterests(),
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 25.0,

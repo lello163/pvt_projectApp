@@ -167,13 +167,18 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> getUserFromServer() async {
-    String urlEmailToID = "https://group5-15.pvt.dsv.su.se/user/get/id?"+ email;
+    print("count starting");
+   await new Future.delayed(const Duration(seconds : 7));
+    print("count done");
+    String urlEmailToID = "https://group5-15.pvt.dsv.su.se/user/get/id?email="+ email;
     Response responseID= await get(urlEmailToID);
     userID = responseID.body;
+    print(userID);
     String urlUserByID = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
     Response rep2 = await get(urlUserByID);
     var dataJson = json.decode(rep2.body);
     user = new User.fromJson(dataJson);
+    print(user.firstName + user.lastName + user.location);
   }
 
   void updateUserDescription(){
@@ -215,7 +220,7 @@ class _ProfileState extends State<Profile> {
                 Navigator.push(
                   context,
                   //Till profile sen
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                  MaterialPageRoute(builder: (context) => ProfilePage(user: user)),
                 );
               },
             ),
@@ -231,7 +236,6 @@ class _ProfileState extends State<Profile> {
 if(!done){
   getUserFromServer();
   done = true;
-  print(user.getLocation());
 }
     return Scaffold(
       appBar: AppBar(
@@ -287,8 +291,9 @@ if(!done){
                     maxLines: 3,
                     autocorrect: true,
                     decoration: InputDecoration(
-                      hintText:
+                     /* hintText:
                           ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
+                    */
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,

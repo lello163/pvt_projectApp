@@ -170,7 +170,7 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                         formatOccupation();
                         var route = new MaterialPageRoute(builder: (BuildContext context) => 
                         new InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password,
-                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location));
+                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupationCorrectFormat, location: location));
                         Navigator.of(context).push(route);
           }
           ))));

@@ -231,8 +231,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                                 lastName: lastName,
                                 email: email,
                                 password: password,
-                                selectedGender: _selectedGender,
-                                selectedRelation: _selectedRelation,
+                                selectedGender: genderCorrectFormat,
+                                selectedRelation:relationCorrectFormat,
                                 origin: origin,
                                 birthDateInString: birthDateInString)),
                       );
