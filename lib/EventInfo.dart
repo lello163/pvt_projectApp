@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:pvt_project/AllActivities.dart';
 import 'package:pvt_project/TempAndSky.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pvt_project/profilepage.dart';
 import 'package:pvt_project/profilepageview.dart';
+import 'Activities.dart';
 import 'WeatherData.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_icons/weather_icons.dart' as WeatherIcons;
@@ -332,7 +332,7 @@ class _EventInfoState extends State<EventInfo> {
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AllActivities()),
+                  MaterialPageRoute(builder: (context) => Activities()),
                 );
               },
             ),

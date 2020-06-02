@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:pvt_project/AllActivities.dart';
 import 'package:pvt_project/screens/message_screen.dart';
+import 'Activities.dart';
 import 'EventInfo.dart';
 import 'settings.dart';
 import 'profilepage.dart';
@@ -197,7 +197,7 @@ class _ProfilePage extends State<ProfilePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AllActivities()),
+                    MaterialPageRoute(builder: (context) => Activities()),
                   );
                 },
               ),

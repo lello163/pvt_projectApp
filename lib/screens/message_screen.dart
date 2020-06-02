@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_map_location_picker/google_map_location_picker.dart';
-import 'package:pvt_project/AllActivities.dart';
+import 'package:pvt_project/Activities.dart';
 import 'package:pvt_project/models/message_model.dart';
 import 'package:pvt_project/profilepageview.dart';
 import 'package:pvt_project/widgets/category_selector.dart';
@@ -90,7 +90,7 @@ Widget build(BuildContext context) {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AllActivities()),
+                    MaterialPageRoute(builder: (context) => Activities()),
                   );
                 },
               ),
