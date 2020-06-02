@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
@@ -75,6 +76,16 @@ String description="";
     });
   }
 
+  void getUserFromServer(){
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String urlGetID = "https://group5-15.pvt.dsv.su.se/user/get/id?" + email;
+    Future<Response> response = http.get(urlGetID, headers: headers);
+    String userID = response.toString();
+    String urlGetUSER = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
+    Future<Response> response2 = http.get(urlGetUSER, headers: headers);
+    String user = response2.toString();
+    print(user);
+  }
   Future<void> _showProfileSavedMessage() async {
     return showDialog<void>(
       context: context,
