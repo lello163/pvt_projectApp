@@ -153,26 +153,10 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
           onPressed: () {
                         location = _locationController.text;
                         occupation = _selectedOccupation;
-                        //samla värden i...array?
-                        // add birthplace + _originController
-                        // add location + _locationController
-                        //add gender + _selectedGender
-                        // add relationstatus + _selectedRelation
-                        //add occupation + selectedOccupation
-
-                        //add birthDateInString;
-                       
-
                         var route = new MaterialPageRoute(builder: (BuildContext context) => 
                         new InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password,
                           selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: _selectedOccupation, location: location));
-                        //in med värde i interestpage-metod
                         Navigator.of(context).push(route);
-                       /* Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => InterestsPage()));*/
-
           }
           ))));
 

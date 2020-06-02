@@ -546,8 +546,7 @@ class _InterestsPageState extends State<InterestsPage> {
                 context,
                 //Till profile sen
 
-                MaterialPageRoute(builder: (context) => Profile(firstName: firstName, lastName: lastName, email: email, password: password,
-                    selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interest: interest)),
+                MaterialPageRoute(builder: (context) => Profile(email: email)),
               );
             } else {
               Alert(
@@ -573,50 +572,3 @@ class _InterestsPageState extends State<InterestsPage> {
     );
   }
 }
-
-/* InkWell(
-        onTap: (){     
-      setState(() {
-          isSelected = !isSelected;
-          if(isSelected){
-             return Colors.black;
-          }else{
-             return Colors.green;
-          }
-      });
-      },
-      child: Container(
-        foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
-      padding: const EdgeInsets.all(8),
-      child: const Text('Animals'),
-      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals.png'))),
-    ),
-   ),
-   */
-
-/*
-    Container(
-      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/culture.png'), fit: BoxFit.fitWidth),),
-      padding: const EdgeInsets.all(1),
-      child: const Text('Art & Culture'),
-      //color: Colors.teal[200],
-    ),
-    Container(
-      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/outdoors2.jpg'), fit: BoxFit.fitWidth),),
-      padding: const EdgeInsets.all(1),
-      child: const Text('Outdoors'),
-      //color: Colors.teal[200],
-    ),
-    */
-/* Container(
-      foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/culture.png'), fit: BoxFit.fitWidth),),
-      color: Colors.green,
-      padding: const EdgeInsets.all(8),
-    
-      child: Center( 
-        child: Text('Culture events', style: TextStyle(color: Colors.black
-        )),
-      
-      ),
-      
-    ),*/
