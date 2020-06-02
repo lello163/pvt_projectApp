@@ -75,15 +75,27 @@ String description="";
     });
   }
 
-  void getUserFromServer(){
+    Future<http.Response> getUserFromServer() async {
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
     String urlGetID = "https://group5-15.pvt.dsv.su.se/user/get/id?" + email;
-    Future<Response> response = http.get(urlGetID, headers: headers);
-    String userID = response.toString();
+    final response = await get(urlGetID, headers: headers);
+    String userID = response.body;
     String urlGetUSER = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
-    Future<Response> response2 = http.get(urlGetUSER, headers: headers);
-    String user = response2.toString();
+    final response2 = await get(urlGetUSER, headers: headers);
+    String user = response2.body;
     print(user);
+    return null;
+  }
+
+  Future<void> getUserFromServer2() async {
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String url1 = "https://group5-15.pvt.dsv.su.se/user/get/id?" + email;
+    Response rep = await get(url1);
+    String userID = rep.body;
+    String url2 = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
+    Response rep2 = await get(url2);
+    print(rep2.body);
+
   }
   Future<void> _showProfileSavedMessage() async {
     return showDialog<void>(
@@ -277,8 +289,7 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
-                    //createJson();
-                    //sendToServer();
+                    getUserFromServer();
                     _showProfileSavedMessage();
                   }))),
     );
