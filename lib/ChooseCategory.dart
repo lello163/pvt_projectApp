@@ -5,9 +5,13 @@ import 'CreateEvent.dart';
 import 'InfoAboutCreatingActivity.dart';
 
 class ChooseCategory extends StatefulWidget {
+String userID;
+String category;
+ChooseCategory({Key key, this.userID});
+
   @override
   State<StatefulWidget> createState(){
-    return _ChooseCategoryState();
+    return _ChooseCategoryState(userID: userID);
   }
 }
 
@@ -15,7 +19,11 @@ class ChooseCategory extends StatefulWidget {
 
 String choice = "";
 class _ChooseCategoryState extends State<ChooseCategory> {
+  String userID;
+  String category;
 String woohoo = "Woohoo, let's get started \n   and create your event!";
+
+_ChooseCategoryState({Key key, this.userID});
 
 @override
 Widget build(BuildContext context) {
@@ -73,7 +81,7 @@ Widget build(BuildContext context) {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CreateEvent()),
+                    MaterialPageRoute(builder: (context) => CreateEvent(userID: userID, category: category)),
                   );
                 },
               )

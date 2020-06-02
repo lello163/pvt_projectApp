@@ -23,7 +23,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePage extends State<ProfilePage> {
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
-  String userID = "";
+  String userID;
 
 
   Future<void> getUserInfo() async {
@@ -97,7 +97,7 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 70),
                 color: Colors.transparent,
-                child: Text('Something interesting about who I am...', 
+                child: Text('', 
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
@@ -197,7 +197,7 @@ class _ProfilePage extends State<ProfilePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Activities()),
+                    MaterialPageRoute(builder: (context) => Activities(userID: userID)),
                   );
                 },
               ),

@@ -67,30 +67,19 @@ class _CreateEventState extends State<CreateEvent> {
   int minimumAge = 18;
   int maximumAge = 99;
 
-
-  /*String name = "";
-	String time = "";
-	String description = "";
-	String categoryOfActivity = "";
-	String minAge = "";
-	String maxAge = "";
-	String groupSize = "";
-	String allowedGender = "";
-	String location = "" ;
-	String coordinates = "";*/
-
-  //_CreateEventState({Key key, this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates});
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: bottomMenu(context),
       body: Center(
-        child: Column(children: <Widget>[
+                 child: Expanded (
+            flex: 2,
+            child: 
+        Column(children: <Widget>[
+
           topMenu(context),
           textBox(context, 'Name of event'),
-          Row(
+Row(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 17.0, right: 5),
@@ -134,6 +123,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   initialDateTime: DateTime.now(),
                                   onDateTimeChanged: (DateTime newDate) {
                                     dateTime = newDate;
+                                    time = dateTime.toIso8601String();
                                   },
                                   use24hFormat: true,
                                   maximumDate: new DateTime(2025, 12, 30),
@@ -283,7 +273,7 @@ class _CreateEventState extends State<CreateEvent> {
 
           Container(
               width: 300,
-              padding: EdgeInsets.fromLTRB(10, 80, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
               alignment: Alignment.bottomCenter,
               child: ButtonTheme(
                 minWidth: 250,
@@ -302,7 +292,7 @@ class _CreateEventState extends State<CreateEvent> {
               ))),
         ]),
       ),
-    );
+    ));
   }
 
   void _numberPickerDialog() {
