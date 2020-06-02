@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:async';
 import 'dart:io';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:pvt_project/CreateEvent.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
 
@@ -33,6 +35,7 @@ class User {
   final String origin;
   final String occupation;
   final String location;
+  final String description;
 
   final String interests;
 
@@ -47,7 +50,8 @@ class User {
       this.origin,
       this.occupation,
       this.location,
-      this.interests});
+      this.interests,
+      this.description});
 
   factory User.fromJson(Map<String, dynamic> parsedJson) {
     return User(
@@ -62,16 +66,54 @@ class User {
       occupation: parsedJson['occupation'],
       location: parsedJson['placeOfResidence'],
       interests: parsedJson['interests'],
+      description: parsedJson['description'],
     );
   }
 
   String getName() {
     return (firstName + " " + lastName);
   }
+
+  String getEmail(){
+    return email;
+  }
+  String getBirthDate(){
+    return birthDateInString;
+  }
+
+  String getPassword(){
+    return password;
+  }
+  String getGender(){
+    return selectedGender;
+  }
+
+  String getRelation(){
+    return selectedRelation;
+  }
+
+  String getOrigin(){
+    return origin;
+  }
+
+  String getLocation(){
+    return location;
+  }
+  String getOccupation(){
+    return occupation;
+  }
+
+  String getDescription(){
+    return description;
+  }
+  String getInterests(){
+    return interests;
+  }
   
   }
 
 class Profile extends StatefulWidget {
+
 
   String firstName ="";
   String lastName ="";
@@ -93,7 +135,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
+  User user;
 
  // String firstName ="";
   //String lastName ="";
@@ -108,8 +150,8 @@ class _ProfileState extends State<Profile> {
   String location;
 
   String interest;
-String description="";
-
+  String description="";
+  String userID="";
 
 
   _ProfileState({Key key, this.email});
@@ -124,28 +166,30 @@ String description="";
     });
   }
 
-    Future<http.Response> getUserFromServer() async {
-    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
-    String urlGetID = "https://group5-15.pvt.dsv.su.se/user/get/id?" + email;
-    final response = await get(urlGetID, headers: headers);
-    String userID = response.body;
-    String urlGetUSER = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
-    final response2 = await get(urlGetUSER, headers: headers);
-    String user = response2.body;
-    print(user);
-    return null;
+  Future<void> getUserFromServer() async {
+    String urlEmailToID = "https://group5-15.pvt.dsv.su.se/user/get/id?"+ email;
+    Response responseID= await get(urlEmailToID);
+    userID = responseID.body;
+    String urlUserByID = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
+    Response rep2 = await get(urlUserByID);
+    var dataJson = json.decode(rep2.body);
+    user = new User.fromJson(dataJson);
   }
 
-  Future<void> getUserFromServer2() async {
+  void updateUserDescription(){
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
-    String url1 = "https://group5-15.pvt.dsv.su.se/user/get/id?" + email;
-    Response rep = await get(url1);
-    String userID = rep.body;
-    String url2 = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
-    Response rep2 = await get(url2);
-    print(rep2.body);
-
+    String jsonInfo = "{\"type\":\"description\", \"data\":\""+ description + "\"}";
+    String url =  "https://group5-15.pvt.dsv.su.se/user/update?id=" + userID;
+    http.put(url, headers: headers, body: jsonInfo);
   }
+
+  void updatePageWithUserInfo(){
+    setState(() {
+
+    });
+  }
+
+
   Future<void> _showProfileSavedMessage() async {
     return showDialog<void>(
       context: context,
@@ -181,9 +225,14 @@ String description="";
     );
   }
 
+  bool done = false;
   @override
   Widget build(BuildContext context) {
-
+if(!done){
+  getUserFromServer();
+  done = true;
+  print(user.getLocation());
+}
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -221,13 +270,13 @@ String description="";
                         : Image.file(_image),
                   ))),
               SizedBox(height: 10),
-              Text(
-                User.getName();
+             /* Text(
+               // User.getName();
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
                 ),
-              ),
+              ),*/
               SizedBox(height: 3),
               Container(
                 child: Padding(
@@ -239,7 +288,7 @@ String description="";
                     autocorrect: true,
                     decoration: InputDecoration(
                       hintText:
-                          ' Location | Origin | Age \n Relationship status | Occupation ',
+                          ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,
@@ -259,12 +308,14 @@ String description="";
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
                   child: TextField(
+
                     enabled: true,
                     minLines: 3,
                     maxLines: 3,
                     autocorrect: true,
                     decoration: InputDecoration(
                       hintText: 'Something interesting about who I am...',
+
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,
@@ -338,6 +389,7 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
+                    updatePageWithUserInfo();
                     getUserFromServer();
                     _showProfileSavedMessage();
                   }))),

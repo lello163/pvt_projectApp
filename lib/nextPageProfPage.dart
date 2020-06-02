@@ -36,18 +36,33 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
   String selectedGender;
   //String _selectedPart;
   String selectedRelation;
-  String _selectedOccupation;
   String birthDateInString;
   bool isDateSelected = false;
   DateTime birthDate;
 
   String location;
   String occupation;
+  String occupationCorrectFormat;
 
 
   _NextProfilePrefPageState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString});
 
-
+  void formatOccupation(){
+    switch(occupation){
+      case 'Working':
+        occupationCorrectFormat = 'WORKING';
+        break;
+      case 'Studying':
+        occupationCorrectFormat = 'STUDYING';
+        break;
+      case  'Unemployed/Looking for a job':
+        occupationCorrectFormat= 'UNEMPLOYED';
+        break;
+      case 'Other':
+        occupationCorrectFormat= 'OTHER';
+        break;
+    }
+  }
  
  @override
   Widget build(BuildContext context) {
@@ -94,10 +109,10 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                     }).toList(),
                     onChanged: (String newValue) {
                       setState(() {
-                        this._selectedOccupation = newValue;
+                        this.occupation = newValue;
                       });
                     },
-                    value: _selectedOccupation,
+                    value: occupation,
                   )),
               SizedBox(height: 50.0),
               Container(
@@ -152,10 +167,10 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                   letterSpacing: 2)),
           onPressed: () {
                         location = _locationController.text;
-                        occupation = _selectedOccupation;
+                        formatOccupation();
                         var route = new MaterialPageRoute(builder: (BuildContext context) => 
                         new InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password,
-                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: _selectedOccupation, location: location));
+                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location));
                         Navigator.of(context).push(route);
           }
           ))));

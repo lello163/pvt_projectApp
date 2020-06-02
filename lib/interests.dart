@@ -82,14 +82,18 @@ class _InterestsPageState extends State<InterestsPage> {
 
   String json;
   void createJson (){
-    json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
+    json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\",\"interests\":\"" + interest + "\"}";
 
   }
 
   Future<void> sendToServer() async {
+    print("ADDING");
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
     String url = "https://group5-15.pvt.dsv.su.se/user/add";
+    print("STILL ADDING");
+    print(json);
     http.put(url, headers: headers, body: json);
+    print("ADDED");
   }
 
   void _changeState() {

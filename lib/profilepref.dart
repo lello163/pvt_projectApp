@@ -32,6 +32,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   String password = "";
 
   String _selectedGender;
+  String genderCorrectFormat;
+  String relationCorrectFormat;
   //String _selectedPart;
   String _selectedRelation;
   String _selectedOccupation;
@@ -44,6 +46,26 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   _ProfilePrefPageState(
       {Key key, this.firstName, this.lastName, this.email, this.password});
 
+
+  void formatRelation(){
+    switch(_selectedRelation){
+      case 'Single':
+        relationCorrectFormat = 'SINGLE';
+        break;
+      case 'In a relationship':
+        relationCorrectFormat = 'INRELATIONSHIP';
+        break;
+      case 'Married':
+        relationCorrectFormat= 'MARRIED';
+        break;
+      case 'Prefer not to say':
+        relationCorrectFormat = 'PREFEREDNOTTOSAY';
+        break;
+    }
+  }
+  void formatGender(){
+    genderCorrectFormat = _selectedGender.toUpperCase();
+  }
   @override
   Widget build(BuildContext context) {
     final _originController = new TextEditingController();
@@ -152,6 +174,7 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                     }).toList(),
                     onChanged: (String newValue) {
                       setState(() {
+
                         this._selectedRelation = newValue;
                       });
                     },
@@ -198,6 +221,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                             letterSpacing: 2)),
                     onPressed: () {
                       origin = _originController.text;
+                      formatRelation();
+                      formatGender();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
