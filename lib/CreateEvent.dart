@@ -82,7 +82,7 @@ class _CreateEventState extends State<CreateEvent> {
       "Content-type": 'application/json; charset=UTF-8'
     };
     String url =
-        "/activity/participate?user=" + userID + "&activity=214193";
+        "/activity/participate?user=" + userID + "19753&activity=214193";
     http.put(url, headers: headers, body: json);
   }
 
@@ -97,6 +97,7 @@ class _CreateEventState extends State<CreateEvent> {
     final _locationController = new TextEditingController();
     final _nameController = new TextEditingController();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         bottomNavigationBar: bottomMenu(context),
         body: Center(
           child: Expanded(
@@ -151,7 +152,7 @@ class _CreateEventState extends State<CreateEvent> {
                             lastDate: new DateTime(2022));
                         setState(() {
                           setDate =
-                              "${datePick.month}/${datePick.day}/${datePick.year}";
+                              "Date(${datePick.month}/${datePick.day}/${datePick.year})";
                         });
                       },
                     )),
@@ -167,9 +168,12 @@ class _CreateEventState extends State<CreateEvent> {
                         );
                         setState(() {
                           setTime = "${timePick.hour}/${timePick.minute} ";
+                          //selectedTime.toString();
                         });
                       },
                     )),
+
+                   
                     /*Container(
                       width: 40,
                       child: Icon(Icons.access_time),
