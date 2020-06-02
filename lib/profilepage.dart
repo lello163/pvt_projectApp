@@ -91,10 +91,11 @@ List names = [
 ];
 
 class Profile extends StatefulWidget {
-  String firstName = "";
-  String lastName = "";
-  String email = "";
-  String password = "";
+
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
 
   String selectedGender;
   String selectedRelation;
@@ -191,10 +192,10 @@ class _ProfileState extends State<Profile> {
     Response response = await put(url, headers: headers, body: json);
   }
 
-  String firstName = "";
-  String lastName = "";
-  String email = "";
-  String password = "";
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
 
   String selectedGender;
   String selectedRelation;
@@ -233,32 +234,6 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  /*svoid imagePicker(){
-    if (interest.contains('fitness')){
-      image1 : AssetImage('assets/nature2.png');
-    } 
-    if (interest.contains('parentHang')){
-      if (image1 = null) {
-        image1 : AssetImage('assets/parent2.png');
-      } else {
-        if (image2 = null) {
-          image2 : AssetImage('assets/parent2.png');
-        }
-      }
-    }
-    if (interest.contains('gaming')) {
-      if (image1 = null) {
-        image1 : AssetImage('assets/gaming2.jpg');
-      } else {
-        if (image2 = null) {
-          image2 : AssetImage('assets/gaming2.jpg');
-        } else if (image3 = null) {
-          image3 : AssetImage('assets/gaming2.jpg');
-        }
-      }
-    }
-  } */
-
   Future<void> _showProfileSavedMessage() async {
     return showDialog<void>(
       context: context,
@@ -296,6 +271,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
