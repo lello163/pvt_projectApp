@@ -14,6 +14,8 @@ class NextProfilePrefPage extends StatefulWidget {
   String selectedRelation;
   String birthDateInString;
   String origin;
+//String location;
+//String occupation;
 
   NextProfilePrefPage(
       {Key key,
@@ -51,6 +53,9 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
   bool isDateSelected = false;
   DateTime birthDate;
 
+  String location;
+  String occupation;
+
   _NextProfilePrefPageState(
       {Key key,
       this.firstName,
@@ -78,7 +83,7 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
       'Unemployed/Looking for a job',
       "Other"
     ];
-    final _locationController = TextEditingController();
+    final _locationController = new TextEditingController();
     return Scaffold(
         appBar: AppBar(
           title: const Text('...'),
@@ -167,6 +172,8 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                             fontFamily: 'Monserrat',
                             letterSpacing: 2)),
                     onPressed: () {
+                      location = _locationController.text;
+                      occupation = _selectedOccupation;
                       //samla värden i...array?
                       // add birthplace + _originController
                       // add location + _locationController
@@ -178,7 +185,8 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
 
                       var route = new MaterialPageRoute(
                           builder: (BuildContext context) =>
-                              new InterestsPage());
+                              new InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password,
+                    selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location));
                       //in med värde i interestpage-metod
                       Navigator.of(context).push(route);
                     }))));

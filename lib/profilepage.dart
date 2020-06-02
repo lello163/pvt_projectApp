@@ -51,7 +51,7 @@ class User {
       this.location,
       this.interests});
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory User.fromJson(Map<String, String> json) {
     return User(
       firstName: json['firstName'],
       lastName: json['lastName'],
@@ -68,11 +68,11 @@ class User {
   }
 
   String getName(){
-    return firstName + "  " + lastName;
+    return firstName + lastName;
   }
 
   String getInfo(){
-    return location + " " + origin + " " + "age"  + " " + selectedRelation + " " +occupation ;
+    return (location + origin  + selectedRelation + occupation) ;
   }
 }
 
@@ -207,8 +207,8 @@ class _ProfileState extends State<Profile> {
   String interests;
   String description = "";
 
-  String info =  User().getInfo();
-  String name = User().getName();
+  //String info =  User().getInfo();
+  //String name = User().getName();
 
   _ProfileState(
       {Key key,
@@ -310,7 +310,7 @@ class _ProfileState extends State<Profile> {
                   ))),
               SizedBox(height: 10),
               Text(
-                name,
+                "",
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
@@ -322,7 +322,7 @@ class _ProfileState extends State<Profile> {
                 child:  TextField(
                   enabled: false,
                   decoration: InputDecoration(
-                  hintText: info,
+                  hintText: "",
                   ),
                 )
                  ),
