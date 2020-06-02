@@ -28,37 +28,23 @@ _ChooseCategoryState({Key key, this.userID});
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: Colors.grey[200],
-
-    body: Center(
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 30, left: 10.0),
-                child: RaisedButton.icon(
-                  label: Text("Back"),
-                  onPressed: (){ print("Back");},
-                  icon: Icon(Icons.arrow_back_ios),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: FlatButton.icon(
-                  onPressed: () {
+    appBar: AppBar(title: Text(""),
+    actions: <Widget>[
+      IconButton(
+        icon: Icon(Icons.help),
+        onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => InfoAboutCreatingActivity()),
                     );
                   },
-                  icon: Icon(Icons.help),
-                  label: Text(""),
-                ),
-              ),
-            ],
-          ),
+        )
+    ],),
+    backgroundColor: Colors.grey[200],
+
+    body: Center(
+      child: Column(
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 50, bottom: 50.0),
             child: Transform.rotate(

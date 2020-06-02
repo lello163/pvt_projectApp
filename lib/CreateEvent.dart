@@ -13,12 +13,13 @@ import 'Frequency.dart';
 class CreateEvent extends StatefulWidget {
 
 String userID = "";
-CreateEvent({Key key, this.userID});
+String category;
+CreateEvent({Key key, this.userID, this.category});
 
   @override
   State<StatefulWidget> createState() {
     return _CreateEventState(
-      userID: userID.toString(),
+      userID: userID.toString(), category: category
     );
 
   }
@@ -41,12 +42,13 @@ CreateEvent({Key key, this.userID});
 
 class _CreateEventState extends State<CreateEvent> {
   String userID;
+  String category;
   String json;
   void createJson(){
     json = "{\"name\":\""+name+"\",\"time\":\""+time+"\",\"description\":\""+description+"\",\"catergoryOfActivity\":\""+categoryOfActivity+"\",\"minAge\"_\""+minAge+"\",\"maxAge\":\""+maxAge+"\",\"groupSize\":\""+groupSize+"\",\"allowedGender\":\""+allowedGender+"\",\"location\":\""+location+"\",\"coordinates\":\""+coordinates+"\"}";
   }
 
-  _CreateEventState({Key key, this.userID});
+  _CreateEventState({Key key, this.userID, this.category});
 
   Future<void> sendToServer() async {
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
