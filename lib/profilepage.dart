@@ -3,7 +3,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
@@ -108,7 +107,7 @@ class _ProfileState extends State<Profile> {
       "Content-type": 'application/json; charset=UTF-8'
     };
     String url = "https://group5-15.pvt.dsv.su.se/user/add";
-    http.put(url, headers: headers, body: json);
+    Response response = await put(url, headers: headers, body: json);
   }
 
   String firstName = "";
