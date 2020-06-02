@@ -32,8 +32,10 @@ class _ProfilePage extends State<ProfilePage> {
     Map<String, String> headers = {
       "Content-type": 'application/json; charset=UTF-8'
     };
-    String url = "https://group5-15.pvt.dsv.su.se/user/get?id=userID";
-    Response response = await get(url, headers: headers);
+    String url = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
+    Response response = await get(url);
+    var dataJson = json.decode(response.body);
+    user = new User.fromJson(dataJson);
     print(response);
   }
 
