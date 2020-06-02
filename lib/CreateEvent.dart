@@ -7,60 +7,80 @@ import 'package:pvt_project/InfoAboutCreatingActivity.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:http/http.dart' as http;
 
-
 import 'Frequency.dart';
+import 'profilepageview.dart';
 
 class CreateEvent extends StatefulWidget {
-
-String userID = "";
-String category;
-CreateEvent({Key key, this.userID, this.category});
+  String userID = "";
+  String category;
+  CreateEvent({Key key, this.userID, this.category});
 
   @override
   State<StatefulWidget> createState() {
-    return _CreateEventState(
-      userID: userID.toString(), category: category
-    );
-
+    return _CreateEventState(userID: userID.toString(), category: category);
   }
-
 }
 
-  String name = "";
-	String time = "";
-	String description = "";
-	String categoryOfActivity = "";
-	String minAge = "";
-	String maxAge = "";
-	String groupSize = "";
-	String allowedGender = "";
-	String location = "" ;
-	String coordinates = "";
+String name = "";
+String time = "";
+String description = "";
+String categoryOfActivity = "";
+String minAge = "";
+String maxAge = "";
+String groupSize = "";
+String allowedGender = "";
+String location = "";
+String coordinates = "";
 
-  final eventName = new TextEditingController();
-  final eventDescription = new TextEditingController();
+final eventName = new TextEditingController();
+final eventDescription = new TextEditingController();
 
 class _CreateEventState extends State<CreateEvent> {
   String userID;
   String category;
   String json;
-  void createJson(){
-    json = "{\"name\":\""+name+"\",\"time\":\""+time+"\",\"description\":\""+description+"\",\"catergoryOfActivity\":\""+categoryOfActivity+"\",\"minAge\"_\""+minAge+"\",\"maxAge\":\""+maxAge+"\",\"groupSize\":\""+groupSize+"\",\"allowedGender\":\""+allowedGender+"\",\"location\":\""+location+"\",\"coordinates\":\""+coordinates+"\"}";
+  void createJson() {
+    json = "{\"name\":\"" +
+        name +
+        "\",\"time\":\"" +
+        time +
+        "\",\"description\":\"" +
+        description +
+        "\",\"catergoryOfActivity\":\"" +
+        categoryOfActivity +
+        "\",\"minAge\"_\"" +
+        minAge +
+        "\",\"maxAge\":\"" +
+        maxAge +
+        "\",\"groupSize\":\"" +
+        groupSize +
+        "\",\"allowedGender\":\"" +
+        allowedGender +
+        "\",\"location\":\"" +
+        location +
+        "\",\"coordinates\":\"" +
+        coordinates +
+        "\"}";
   }
 
   _CreateEventState({Key key, this.userID, this.category});
 
   Future<void> sendToServer() async {
-    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    Map<String, String> headers = {
+      "Content-type": 'application/json; charset=UTF-8'
+    };
     String url = "https://group5-15.pvt.dsv.su.se/activity/add";
-    http.put(url, headers: headers, body: json);  
+    http.put(url, headers: headers, body: json);
     addCreator();
   }
 
   Future<void> addCreator() async {
-    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
-    String url = "/activity/participate?user="+userID+"19753&activity=214193";
-    http.put(url, headers: headers, body: json); 
+    Map<String, String> headers = {
+      "Content-type": 'application/json; charset=UTF-8'
+    };
+    String url =
+        "/activity/participate?user=" + userID + "19753&activity=214193";
+    http.put(url, headers: headers, body: json);
   }
 
   bool differentGenders = false;
@@ -71,230 +91,244 @@ class _CreateEventState extends State<CreateEvent> {
 
   @override
   Widget build(BuildContext context) {
+    final _locationController = new TextEditingController();
+    final _nameController = new TextEditingController();
     return Scaffold(
-      bottomNavigationBar: bottomMenu(context),
-      body: Center(
-                 child: Expanded (
+        bottomNavigationBar: bottomMenu(context),
+        body: Center(
+          child: Expanded(
             flex: 2,
-            child: 
-        Column(children: <Widget>[
-
-          topMenu(context),
-          textBox(context, 'Name of event'),
-Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 17.0, right: 5),
-                child: GestureDetector(
-                  onTap: () {
-                    print("MAP");
-                  },
-                  child: Container(
-                    width: 40,
-                    child: Icon(Icons.edit_location),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: textBox(context, 'Location'),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0, left: 62),
-            child: Row(
-              children: <Widget>[
-                MaterialButton(
-                  child: Text(
-                    "Date picker",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.blue,
-                  onPressed: () {
-                    showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext builder) {
-                          return Container(
-                              height: MediaQuery.of(context)
-                                      .copyWith()
-                                      .size
-                                      .height /
-                                  3,
-                              child: CupertinoDatePicker(
-                                  initialDateTime: DateTime.now(),
-                                  onDateTimeChanged: (DateTime newDate) {
-                                    dateTime = newDate;
-                                    time = dateTime.toIso8601String();
-                                  },
-                                  use24hFormat: true,
-                                  maximumDate: new DateTime(2025, 12, 30),
-                                  maximumYear: DateTime.now().year + 2,
-                                  minuteInterval: 1,
-                                  mode: CupertinoDatePickerMode.date));
-                        });
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: MaterialButton(
-                    child: Text(
-                      "Time",
-                      style: TextStyle(color: Colors.white),
+            child: Column(children: <Widget>[
+              topMenu(context),
+              Container(
+                  padding: EdgeInsets.fromLTRB(30, 0, 14, 0),
+                  width: 300,
+                  height: 50,
+                  child: TextFormField(
+                      controller: _nameController,
+                      decoration: InputDecoration(labelText: 'Name of event'))),
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 17.0, right: 5),
+                    child: GestureDetector(
+                      onTap: () {
+                        print("MAP");
+                      },
+                      child: Container(
+                        width: 40,
+                        child: Icon(Icons.edit_location),
+                      ),
                     ),
-                    color: Colors.blue,
-                    onPressed: () {
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (BuildContext builder) {
-                            return Container(
-                                height: MediaQuery.of(context)
-                                        .copyWith()
-                                        .size
-                                        .height /
-                                    3,
-                                child: CupertinoDatePicker(
-                                    initialDateTime: DateTime.now(),
-                                    onDateTimeChanged: (DateTime newDate) {},
-                                    use24hFormat: true,
-                                    minuteInterval: 1,
-                                    mode: CupertinoDatePickerMode.time));
-                          });
-                    },
                   ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16, 0, 25, 0),
+                  width: 300,
+                  height: 50,
+                  child: TextFormField(
+                      controller: _locationController,
+                      decoration: InputDecoration(labelText:'Location')),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, left: 62),
+                child: Row(
+                  children: <Widget>[
+                    MaterialButton(
+                      child: Text(
+                        "Date picker",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      color: Colors.blue,
+                      onPressed: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (BuildContext builder) {
+                              return Container(
+                                  height: MediaQuery.of(context)
+                                          .copyWith()
+                                          .size
+                                          .height /
+                                      3,
+                                  child: CupertinoDatePicker(
+                                      initialDateTime: DateTime.now(),
+                                      onDateTimeChanged: (DateTime newDate) {
+                                        dateTime = newDate;
+                                        time = dateTime.toIso8601String();
+                                      },
+                                      use24hFormat: true,
+                                      maximumDate: new DateTime(2025, 12, 30),
+                                      maximumYear: DateTime.now().year + 2,
+                                      minuteInterval: 1,
+                                      mode: CupertinoDatePickerMode.date));
+                            });
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: MaterialButton(
+                        child: Text(
+                          "Time",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        color: Colors.blue,
+                        onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext builder) {
+                                return Container(
+                                    height: MediaQuery.of(context)
+                                            .copyWith()
+                                            .size
+                                            .height /
+                                        3,
+                                    child: CupertinoDatePicker(
+                                        initialDateTime: DateTime.now(),
+                                        onDateTimeChanged:
+                                            (DateTime newDate) {},
+                                        use24hFormat: true,
+                                        minuteInterval: 1,
+                                        mode: CupertinoDatePickerMode.time));
+                              });
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: 40,
+                      child: Icon(Icons.access_time),
+                    ),
+                  ],
                 ),
-                Container(
-                  width: 40,
-                  child: Icon(Icons.access_time),
-                ),
-              ],
-            ),
-          ),
-          textBoxLarge(context, "  Add description"),
-
-
-          Padding(
-            padding: const EdgeInsets.only(left: 75.0, top: 10),
-            child: Row(
-              children: <Widget>[
-                
-                Checkbox(
-                    value: differentGenders,
-                    activeColor: Colors.blue,
-                    onChanged: (bool newValue) {
-                      setState(() {
-                        differentGenders = newValue;
-                        if (newValue = true) {
-                          allowedGender = 'ALL';
-                        } else {
-                          allowedGender = 'NONE';
-                        }
-                      });
-                    }),
-                Text("I want people of different \n genders to be able to sign up",
-                    style: TextStyle(fontWeight: FontWeight.w500)),
-              ])),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  width: 120,
-                  child: RaisedButton(
-                    padding: const EdgeInsets.all(10),
-                    color: Colors.blue,
-                    child: Text("Participants: ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)),
-                    onPressed: () {
-                      _numberPickerDialog();
-                    },
-                  )),
-              Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
-                color: Colors.grey[200],
-                child: Text(numberOfParticipants.toString(),
-                    style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
               ),
-            ],
-          ),
+              textBoxLarge(context, "  Add description"),
 
-          // okay ages to participate
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  width: 120,
-                  child: RaisedButton(
-                    padding: const EdgeInsets.all(10),
-                    color: Colors.blue,
-                    child: Text("Minimum age: ",
+              Padding(
+                  padding: const EdgeInsets.only(left: 75.0, top: 10),
+                  child: Row(children: <Widget>[
+                    Checkbox(
+                        value: differentGenders,
+                        activeColor: Colors.blue,
+                        onChanged: (bool newValue) {
+                          setState(() {
+                            differentGenders = newValue;
+                            if (newValue = true) {
+                              allowedGender = 'ALL';
+                            } else {
+                              allowedGender = 'NONE';
+                            }
+                          });
+                        }),
+                    Text(
+                        "I want people of different \n genders to be able to sign up",
+                        style: TextStyle(fontWeight: FontWeight.w500)),
+                  ])),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                      width: 120,
+                      child: RaisedButton(
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.blue,
+                        child: Text("Participants: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                        onPressed: () {
+                          _numberPickerDialog();
+                        },
+                      )),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
+                    color: Colors.grey[200],
+                    child: Text(numberOfParticipants.toString(),
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)),
-                    onPressed: () {
-                      _minAgePickerDialog();
-                    },
-                  )),
-              Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
-                color: Colors.grey[200],
-                child: Text(minimumAge.toString(),
-                    style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                            fontSize: 18, fontWeight: FontWeight.w500)),
+                  ),
+                ],
               ),
-            ],
-          ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  width: 120,
-                  child: RaisedButton(
-                    padding: const EdgeInsets.all(10),
-                    color: Colors.blue,
-                    child: Text("Maximum age: ",
+              // okay ages to participate
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                      width: 120,
+                      child: RaisedButton(
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.blue,
+                        child: Text("Minimum age: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                        onPressed: () {
+                          _minAgePickerDialog();
+                        },
+                      )),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
+                    color: Colors.grey[200],
+                    child: Text(minimumAge.toString(),
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)),
-                    onPressed: () {
-                      _maxAgePickerDialog();
-                    },
-                  )),
-              Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
-                color: Colors.grey[200],
-                child: Text(maximumAge.toString(),
-                    style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                            fontSize: 18, fontWeight: FontWeight.w500)),
+                  ),
+                ],
               ),
-            ],
-          ),
 
-          Container(
-              width: 300,
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              alignment: Alignment.bottomCenter,
-              child: ButtonTheme(
-                minWidth: 250,
-              child: RaisedButton(
-                color: Colors.blue,
-                child: Text("Continue",
-                    style: TextStyle(fontSize: 16, color: Colors.white)),
-                onPressed: () {
-                  createJson();
-                  sendToServer();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Frequency()),
-                  );
-                },
-              ))),
-        ]),
-      ),
-    ));
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                      width: 120,
+                      child: RaisedButton(
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.blue,
+                        child: Text("Maximum age: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                        onPressed: () {
+                          _maxAgePickerDialog();
+                        },
+                      )),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
+                    color: Colors.grey[200],
+                    child: Text(maximumAge.toString(),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500)),
+                  ),
+                ],
+              ),
+
+              Container(
+                  width: 300,
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  alignment: Alignment.bottomCenter,
+                  child: ButtonTheme(
+                      minWidth: 250,
+                      child: RaisedButton(
+                        color: Colors.blue,
+                        child: Text("Continue",
+                            style:
+                                TextStyle(fontSize: 16, color: Colors.white)),
+                        onPressed: () {
+                          createJson();
+                          sendToServer();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Frequency()),
+                          );
+                        },
+                      ))),
+            ]),
+          ),
+        ));
   }
 
   void _numberPickerDialog() {
@@ -446,7 +480,10 @@ Widget bottomMenu(BuildContext context) {
         color: Colors.black,
         iconSize: 40,
         onPressed: () {
-          print("PROFILE PAGE");
+          Navigator.push(context, 
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+          //print("PROFILE PAGE"
+          );
         },
       ),
       IconButton(
