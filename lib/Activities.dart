@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_map_location_picker/google_map_location_picker.dart';
+import 'package:pvt_project/ChooseCategory.dart';
 import 'package:pvt_project/Frequency.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
@@ -198,7 +199,7 @@ class _Activities extends State<Activities> {
             onPressed: () {
               // Add route to schedule new event.
               Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => CreateEvent(userID: userID))
+              MaterialPageRoute(builder: (context) => ChooseCategory(userID: userID))
               );
             },
           )
