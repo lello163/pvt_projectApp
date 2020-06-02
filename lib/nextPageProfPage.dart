@@ -15,6 +15,8 @@ class NextProfilePrefPage extends StatefulWidget {
   String selectedRelation;
   String birthDateInString;
   String origin;
+//String location;
+//String occupation;
 
 
 
