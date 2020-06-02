@@ -13,7 +13,7 @@ import 'Frequency.dart';
 class CreateEvent extends StatefulWidget {
 
 String userID = "";
-CreateEvent({Key key, this.userID});
+CreateEvent({Key key, this.userID, String category});
 
   @override
   State<StatefulWidget> createState() {
@@ -70,6 +70,7 @@ class _CreateEventState extends State<CreateEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: bottomMenu(context),
       body: Center(
                  child: Expanded (
