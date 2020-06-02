@@ -54,8 +54,8 @@ Future<void> sendToServer() async {
   Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
   String url = "https://group5-15.pvt.dsv.su.se/user/add";
   Response response = await put(url, headers: headers, body: json);
-
 }
+
   String firstName ="";
   String lastName ="";
   String email="";
@@ -276,8 +276,8 @@ String description="";
                           fontFamily: 'Monserrat',
                           letterSpacing: 2)),
                   onPressed: () {
-                    createJson();
-                    sendToServer();
+                    //createJson();
+                    //sendToServer();
                     _showProfileSavedMessage();
                   }))),
     );
