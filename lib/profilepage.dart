@@ -221,13 +221,13 @@ String description="";
                         : Image.file(_image),
                   ))),
               SizedBox(height: 10),
-            /*  Text(
-              //  User.getName();
+              Text(
+                User.getName();
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
                 ),
-              ),*/
+              ),
               SizedBox(height: 3),
               Container(
                 child: Padding(

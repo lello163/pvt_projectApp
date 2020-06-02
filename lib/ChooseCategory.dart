@@ -5,9 +5,13 @@ import 'CreateEvent.dart';
 import 'InfoAboutCreatingActivity.dart';
 
 class ChooseCategory extends StatefulWidget {
+String userID;
+String category;
+ChooseCategory({Key key, this.userID});
+
   @override
   State<StatefulWidget> createState(){
-    return _ChooseCategoryState();
+    return _ChooseCategoryState(userID: userID);
   }
 }
 
@@ -15,42 +19,32 @@ class ChooseCategory extends StatefulWidget {
 
 String choice = "";
 class _ChooseCategoryState extends State<ChooseCategory> {
+  String userID;
+  String category;
 String woohoo = "Woohoo, let's get started \n   and create your event!";
+
+_ChooseCategoryState({Key key, this.userID});
 
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: Colors.grey[200],
-
-    body: Center(
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 30, left: 10.0),
-                child: RaisedButton.icon(
-                  label: Text("Back"),
-                  onPressed: (){ print("Back");},
-                  icon: Icon(Icons.arrow_back_ios),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: FlatButton.icon(
-                  onPressed: () {
+    appBar: AppBar(title: Text(""),
+    actions: <Widget>[
+      IconButton(
+        icon: Icon(Icons.help),
+        onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => InfoAboutCreatingActivity()),
                     );
                   },
-                  icon: Icon(Icons.help),
-                  label: Text(""),
-                ),
-              ),
-            ],
-          ),
+        )
+    ],),
+    backgroundColor: Colors.grey[200],
+
+    body: Center(
+      child: Column(
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 50, bottom: 50.0),
             child: Transform.rotate(
@@ -73,7 +67,7 @@ Widget build(BuildContext context) {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CreateEvent()),
+                    MaterialPageRoute(builder: (context) => CreateEvent(userID: userID, category: category)),
                   );
                 },
               )

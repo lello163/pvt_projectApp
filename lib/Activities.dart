@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_map_location_picker/google_map_location_picker.dart';
+import 'package:pvt_project/ChooseCategory.dart';
 import 'package:pvt_project/Frequency.dart';
 import 'package:pvt_project/screens/message_screen.dart';
 import 'EventInfo.dart';
@@ -10,15 +11,19 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Activities extends StatefulWidget {
+  String userID;
+  Activities({Key key, this.userID});
+
   @override
-  _Activities createState() => _Activities();
+  _Activities createState() => _Activities(userID: userID);
 }
 
 class _Activities extends State<Activities> {
   bool showAll = true;
+  String userID;
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
 
-  
+  _Activities({Key key, this.userID});
 
   Future<void> _showMeetAgainMessage() async {
     return showDialog<void>(
@@ -194,7 +199,7 @@ class _Activities extends State<Activities> {
             onPressed: () {
               // Add route to schedule new event.
               Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => CreateEvent())
+              MaterialPageRoute(builder: (context) => ChooseCategory(userID: userID))
               );
             },
           )

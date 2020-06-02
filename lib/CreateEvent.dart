@@ -11,10 +11,19 @@ import 'package:http/http.dart' as http;
 import 'Frequency.dart';
 
 class CreateEvent extends StatefulWidget {
+
+String userID = "";
+String category;
+CreateEvent({Key key, this.userID, this.category});
+
   @override
   State<StatefulWidget> createState() {
-    return _CreateEventState();
+    return _CreateEventState(
+      userID: userID.toString(), category: category
+    );
+
   }
+
 }
 
   String name = "";
@@ -28,17 +37,30 @@ class CreateEvent extends StatefulWidget {
 	String location = "" ;
 	String coordinates = "";
 
-class _CreateEventState extends State<CreateEvent> {
+  final eventName = new TextEditingController();
+  final eventDescription = new TextEditingController();
 
+class _CreateEventState extends State<CreateEvent> {
+  String userID;
+  String category;
   String json;
   void createJson(){
     json = "{\"name\":\""+name+"\",\"time\":\""+time+"\",\"description\":\""+description+"\",\"catergoryOfActivity\":\""+categoryOfActivity+"\",\"minAge\"_\""+minAge+"\",\"maxAge\":\""+maxAge+"\",\"groupSize\":\""+groupSize+"\",\"allowedGender\":\""+allowedGender+"\",\"location\":\""+location+"\",\"coordinates\":\""+coordinates+"\"}";
   }
 
+  _CreateEventState({Key key, this.userID, this.category});
+
   Future<void> sendToServer() async {
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
     String url = "https://group5-15.pvt.dsv.su.se/activity/add";
-    Response response = await put(url, headers: headers, body: json);  
+    http.put(url, headers: headers, body: json);  
+    addCreator();
+  }
+
+  Future<void> addCreator() async {
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String url = "/activity/participate?user="+userID+"19753&activity=214193";
+    http.put(url, headers: headers, body: json); 
   }
 
   bool differentGenders = false;
@@ -47,30 +69,19 @@ class _CreateEventState extends State<CreateEvent> {
   int minimumAge = 18;
   int maximumAge = 99;
 
-
-  /*String name = "";
-	String time = "";
-	String description = "";
-	String categoryOfActivity = "";
-	String minAge = "";
-	String maxAge = "";
-	String groupSize = "";
-	String allowedGender = "";
-	String location = "" ;
-	String coordinates = "";*/
-
-  //_CreateEventState({Key key, this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates});
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: bottomMenu(context),
       body: Center(
-        child: Column(children: <Widget>[
+                 child: Expanded (
+            flex: 2,
+            child: 
+        Column(children: <Widget>[
+
           topMenu(context),
           textBox(context, 'Name of event'),
-          Row(
+Row(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 17.0, right: 5),
@@ -114,6 +125,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   initialDateTime: DateTime.now(),
                                   onDateTimeChanged: (DateTime newDate) {
                                     dateTime = newDate;
+                                    time = dateTime.toIso8601String();
                                   },
                                   use24hFormat: true,
                                   maximumDate: new DateTime(2025, 12, 30),
@@ -172,6 +184,11 @@ class _CreateEventState extends State<CreateEvent> {
                     onChanged: (bool newValue) {
                       setState(() {
                         differentGenders = newValue;
+                        if (newValue = true) {
+                          allowedGender = 'ALL';
+                        } else {
+                          allowedGender = 'NONE';
+                        }
                       });
                     }),
                 Text("I want people of different \n genders to be able to sign up",
@@ -258,7 +275,7 @@ class _CreateEventState extends State<CreateEvent> {
 
           Container(
               width: 300,
-              padding: EdgeInsets.fromLTRB(10, 80, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
               alignment: Alignment.bottomCenter,
               child: ButtonTheme(
                 minWidth: 250,
@@ -277,7 +294,7 @@ class _CreateEventState extends State<CreateEvent> {
               ))),
         ]),
       ),
-    );
+    ));
   }
 
   void _numberPickerDialog() {
