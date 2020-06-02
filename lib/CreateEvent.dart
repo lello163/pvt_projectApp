@@ -97,6 +97,7 @@ class _CreateEventState extends State<CreateEvent> {
     final _locationController = new TextEditingController();
     final _nameController = new TextEditingController();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         bottomNavigationBar: bottomMenu(context),
         body: Center(
           child: Expanded(
