@@ -15,6 +15,18 @@ class CreateEvent extends StatefulWidget {
   String category;
   CreateEvent({Key key, this.userID, this.category});
 
+  String json;
+  void createJson(){
+    json = "{\"name\":\""+name+"\",\"time\":\""+setDate + setTime +"\",\"description\":\"" + description + "\",\"categoryOfActivity\":\"" + category + "\",\"minAge\":\"" + minAge + "\",\"maxAge\":\""+ maxAge + "\",\"groupSize\":\"" + groupSize + "\",\"allowedGender\":\""+ allowedGender +"\",\"location\":\"" + location + "\",\"coordinates\":\""+ coordinates + "\"}";
+
+  }
+
+  Future<void> sendToServer() async {
+    Map<String, String> headers =  {"Content-type": 'application/json; charset=UTF-8'};
+    String url = "https://group5-15.pvt.dsv.su.se/activity/add";
+    http.put(url, headers: headers, body: json);
+  }
+
   @override
   State<StatefulWidget> createState() {
     return _CreateEventState(userID: userID.toString(), category: category);
@@ -136,8 +148,9 @@ class _CreateEventState extends State<CreateEvent> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0, left: 62),
+                padding: const EdgeInsets.only(top: 10.0, left: 62, right: 62),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     GestureDetector(
                         child: RaisedButton(
