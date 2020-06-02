@@ -8,7 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
 
-List names = [
+/*List names = [
   "Ling Waldner",
   "Gricelda Barrera",
   "Lenard Milton",
@@ -20,7 +20,56 @@ List names = [
   "Rosario Gathright",
   "Kim Delph",
   "Stacy Christensen",
-];
+];*/
+class User {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+
+  final String selectedGender;
+  final String selectedRelation;
+  final String birthDateInString;
+  final String origin;
+  final String occupation;
+  final String location;
+
+  final String interests;
+
+  User(
+      {this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.selectedGender,
+      this.selectedRelation,
+      this.birthDateInString,
+      this.origin,
+      this.occupation,
+      this.location,
+      this.interests});
+
+  factory User.fromJson(Map<String, dynamic> parsedJson) {
+    return User(
+      firstName: parsedJson['firstName'],
+      lastName: parsedJson['lastName'],
+      email: parsedJson['email'],
+      password: parsedJson['password'],
+      selectedGender: parsedJson['gender'],
+      selectedRelation: parsedJson['relationshipStatus'],
+      birthDateInString: parsedJson['dateOfBirth'],
+      origin: parsedJson['placeOfBirth'],
+      occupation: parsedJson['occupation'],
+      location: parsedJson['placeOfResidence'],
+      interests: parsedJson['interests'],
+    );
+  }
+
+  String getName() {
+    return (firstName + " " + lastName);
+  }
+  
+  }
 
 class Profile extends StatefulWidget {
 
@@ -46,8 +95,8 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
 
 
-  String firstName ="";
-  String lastName ="";
+ // String firstName ="";
+  //String lastName ="";
   String email="";
   String password="";
 
@@ -161,7 +210,7 @@ String description="";
                   ))),
               SizedBox(height: 10),
               Text(
-                names[random.nextInt(10)],
+                User.getName();
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
