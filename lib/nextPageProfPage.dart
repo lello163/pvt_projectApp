@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:pvt_project/CreateEvent.dart';
 import 'package:pvt_project/interests.dart';
 
 class NextProfilePrefPage extends StatefulWidget {
@@ -38,6 +39,7 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
   String birthDateInString;
   bool isDateSelected = false;
   DateTime birthDate;
+  String location;
 
 
 
@@ -157,10 +159,10 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
 
                       //add birthDateInString;
 
-
+                      location = _locationController.text;
                       var route = new MaterialPageRoute(builder: (BuildContext context) =>
                       new InterestsPage(firstName: firstName, lastName: lastName, email: email, password: password,
-                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: _selectedOccupation, location: _selectedOccupation));
+                          selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: _selectedOccupation, location: location));
                       //in med värde i interestpage-metod
                       Navigator.of(context).push(route);
                       /* Navigator.push(

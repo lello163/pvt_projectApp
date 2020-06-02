@@ -65,7 +65,28 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   String json;
+
   void createJson() {
+ print("firstName:" +
+     firstName +
+     "lastName:" +
+     lastName +
+     "dateOfBirth" +
+     birthDateInString +
+     "gender" +
+     selectedGender +
+     "email:" +
+     email +
+     "relationshipStatus" +
+     selectedRelation +
+     "occupation" +
+     occupation +
+     "placeOfBirth" +
+     "NO BIRTHPLACE" +
+     "placeOfResidence" +
+     location +
+     "description" +
+     description);
     json = "{\"firstName\":\"" +
         firstName +
         "\",\"lastName\":\"" +
