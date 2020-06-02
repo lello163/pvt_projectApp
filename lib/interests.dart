@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:http/http.dart' as http;
 
 import 'profilepage.dart';
 
@@ -46,10 +47,12 @@ class _InterestsPageState extends State<InterestsPage> {
   String occupation;
   String location;
 
+
   _InterestsPageState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location});
 
 
   String interest = "";
+  String description="";
   //Selection variables
   bool sportSelected = false;
   double sportOpacity = 1;
@@ -75,6 +78,19 @@ class _InterestsPageState extends State<InterestsPage> {
   //var shape = Brightness.dark;
   var shape = BoxShape.rectangle;
   // var value = ("$(widget.value)");
+
+
+  String json;
+  void createJson (){
+    json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
+
+  }
+
+  Future<void> sendToServer() async {
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String url = "https://group5-15.pvt.dsv.su.se/user/add";
+    http.put(url, headers: headers, body: json);
+  }
 
   void _changeState() {
     setState(() {
@@ -524,7 +540,8 @@ class _InterestsPageState extends State<InterestsPage> {
               if(musicSelected){
                 interest += ",music";
               }
-
+            createJson();
+              sendToServer();
               Navigator.push(
                 context,
                 //Till profile sen

@@ -44,17 +44,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-String json;
-  void createJson (){
-   json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
 
-  }
-
-Future<void> sendToServer() async {
-  Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
-  String url = "https://group5-15.pvt.dsv.su.se/user/add";
-  Response response = await put(url, headers: headers, body: json);
-}
 
   String firstName ="";
   String lastName ="";
@@ -72,7 +62,8 @@ Future<void> sendToServer() async {
 String description="";
 
 
-  _ProfileState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
+
+  _ProfileState({Key key, this.email});
   static Random random = Random();
   File _image;
 
