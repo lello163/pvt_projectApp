@@ -11,10 +11,18 @@ import 'package:http/http.dart' as http;
 import 'Frequency.dart';
 
 class CreateEvent extends StatefulWidget {
+
+String userID = "";
+CreateEvent({Key key, this.userID});
+
   @override
   State<StatefulWidget> createState() {
-    return _CreateEventState();
+    return _CreateEventState(
+      userID: userID.toString(),
+    );
+
   }
+
 }
 
   String name = "";
@@ -28,17 +36,29 @@ class CreateEvent extends StatefulWidget {
 	String location = "" ;
 	String coordinates = "";
 
-class _CreateEventState extends State<CreateEvent> {
+  final eventName = new TextEditingController();
+  final eventDescription = new TextEditingController();
 
+class _CreateEventState extends State<CreateEvent> {
+  String userID;
   String json;
   void createJson(){
     json = "{\"name\":\""+name+"\",\"time\":\""+time+"\",\"description\":\""+description+"\",\"catergoryOfActivity\":\""+categoryOfActivity+"\",\"minAge\"_\""+minAge+"\",\"maxAge\":\""+maxAge+"\",\"groupSize\":\""+groupSize+"\",\"allowedGender\":\""+allowedGender+"\",\"location\":\""+location+"\",\"coordinates\":\""+coordinates+"\"}";
   }
 
+  _CreateEventState({Key key, this.userID});
+
   Future<void> sendToServer() async {
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
     String url = "https://group5-15.pvt.dsv.su.se/activity/add";
-    Response response = await put(url, headers: headers, body: json);  
+    http.put(url, headers: headers, body: json);  
+    addCreator();
+  }
+
+  Future<void> addCreator() async {
+    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    String url = "/activity/participate?user="+userID+"19753&activity=214193";
+    http.put(url, headers: headers, body: json); 
   }
 
   bool differentGenders = false;
@@ -172,6 +192,11 @@ class _CreateEventState extends State<CreateEvent> {
                     onChanged: (bool newValue) {
                       setState(() {
                         differentGenders = newValue;
+                        if (newValue = true) {
+                          allowedGender = 'ALL';
+                        } else {
+                          allowedGender = 'NONE';
+                        }
                       });
                     }),
                 Text("I want people of different \n genders to be able to sign up",

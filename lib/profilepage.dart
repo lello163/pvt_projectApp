@@ -33,7 +33,6 @@ class User {
   final String origin;
   final String occupation;
   final String location;
-
   final String interests;
 
   User(
@@ -85,7 +84,6 @@ class Profile extends StatefulWidget {
   String occupation;
   String location;
 
-
   String interest;
   Profile({Key key, this.email});
   @override
@@ -110,6 +108,8 @@ class _ProfileState extends State<Profile> {
   String interest;
 String description="";
 
+  String userID;
+
 
 
   _ProfileState({Key key, this.email});
@@ -128,7 +128,7 @@ String description="";
     Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
     String urlGetID = "https://group5-15.pvt.dsv.su.se/user/get/id?" + email;
     final response = await get(urlGetID, headers: headers);
-    String userID = response.body;
+    userID = response.body;
     String urlGetUSER = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
     final response2 = await get(urlGetUSER, headers: headers);
     String user = response2.body;
@@ -171,7 +171,7 @@ String description="";
                 Navigator.push(
                   context,
                   //Till profile sen
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                  MaterialPageRoute(builder: (context) => ProfilePage(userID: userID)),
                 );
               },
             ),
@@ -222,7 +222,8 @@ String description="";
                   ))),
               SizedBox(height: 10),
               Text(
-                User.getName();
+                '',
+ //               User.getName();
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,

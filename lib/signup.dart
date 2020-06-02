@@ -151,7 +151,6 @@ class _SignupPageState extends State<SignupPage> {
                             width: 300,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                              //shadowColor: Colors.greenAccent,
                               color: Colors.blue[700],
                               elevation: 7.0,
                               child: RaisedButton(
@@ -163,11 +162,6 @@ class _SignupPageState extends State<SignupPage> {
                                     email = emailCon.text;
                                     password = passwordCon.text;
                                     });
-                                 /* Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProfilePrefPage(firstName: firstName, lastName: lastName, email: email, password: password)));*/
                                   if (checkboxValue) {
                                     Navigator.push(
                                         context,
@@ -235,7 +229,6 @@ class _SignupPageState extends State<SignupPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      //                         MaterialPageRoute(builder: (context) => ProfilePrefPage())
                                       MaterialPageRoute(
                                           builder: (context) => LogInPage()));
                                 },
