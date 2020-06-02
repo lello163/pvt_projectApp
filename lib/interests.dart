@@ -529,7 +529,7 @@ class _InterestsPageState extends State<InterestsPage> {
                 //Till profile sen
 
                 MaterialPageRoute(builder: (context) => Profile(firstName: firstName, lastName: lastName, email: email, password: password,
-                    selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interest: interest)),
+                    selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interests: interest)),
               );
             } else {
               Alert(
