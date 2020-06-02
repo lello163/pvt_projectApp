@@ -37,10 +37,9 @@ class Profile extends StatefulWidget {
 
 
   String interest;
-  Profile({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
+  Profile({Key key, this.email});
   @override
-  _ProfileState createState() => _ProfileState(firstName: firstName, lastName: lastName, email: email, password: password,
-      selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interest: interest);
+  _ProfileState createState() => _ProfileState(email: email);
 }
 
 class _ProfileState extends State<Profile> {
