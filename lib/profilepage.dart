@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:async';
 import 'dart:io';
@@ -6,6 +7,74 @@ import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'settings.dart';
 import 'profilepageview.dart';
+import 'package:http/http.dart' as http;
+
+Future<User> fetchUser() async {
+  final response = 
+    await http.get('https://group5-15.pvt.dsv.su.se/user/get/id?userID');
+    if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return User.fromJson(json.decode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load user  ');
+  }
+}
+
+class User {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+
+  final String selectedGender;
+  final String selectedRelation;
+  final String birthDateInString;
+  final String origin;
+  final String occupation;
+  final String location;
+
+  final String interests;
+
+  User(
+      {this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.selectedGender,
+      this.selectedRelation,
+      this.birthDateInString,
+      this.origin,
+      this.occupation,
+      this.location,
+      this.interests});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      email: json['email'],
+      password: json['password'],
+      selectedGender: json['gender'],
+      selectedRelation: json['relationshipStatus'],
+      birthDateInString: json['dateOfBirth'],
+      origin: json['placeOfBirth'],
+      occupation: json['occupation'],
+      location: json['placeOfResidence'],
+      interests: json['interests'],
+    );
+  }
+
+  String getName(){
+    return firstName + "  " + lastName;
+  }
+
+  String getInfo(){
+    return location + " " + origin + " " + "age"  + " " + selectedRelation + " " +occupation ;
+  }
+}
 
 List names = [
   "Ling Waldner",
@@ -34,7 +103,7 @@ class Profile extends StatefulWidget {
   String occupation;
   String location;
 
-  String interest;
+  String interests;
   Profile(
       {Key key,
       this.firstName,
@@ -47,7 +116,7 @@ class Profile extends StatefulWidget {
       this.birthDateInString,
       this.occupation,
       this.location,
-      this.interest});
+      this.interests});
   @override
   _ProfileState createState() => _ProfileState(
       firstName: firstName,
@@ -60,7 +129,7 @@ class Profile extends StatefulWidget {
       birthDateInString: birthDateInString,
       occupation: occupation,
       location: location,
-      interest: interest);
+      interests: interests);
 }
 
 class _ProfileState extends State<Profile> {
@@ -81,26 +150,38 @@ class _ProfileState extends State<Profile> {
         "\",\"occupation\":\"" +
         occupation +
         "\",\"placeOfBirth\":\"" +
-        "NO BIRTHPLACE" +
+        origin +
         "\",\"placeOfResidence\":\"" +
         location +
         "\",\"description\":\"" +
         description +
+        "\",\"interests\":\"" +
+        interests +
         "\"}";
   }
 
   String userID;
   void getJson() {
-    userID = "{\"userID\":\"" +  userID + "\"}";
+    userID = "{\"userID\":\"" + userID + "\"}";
   }
 
-  Future<void> getFromServer() async {
+  Future<User> futureUser;
+  @override
+  void initState(){
+    super.initState();
+    futureUser = fetchUser();
+  }
+  /*Future<void> getFromServer() async {
     Map<String, String> headers = {
       "Content-type": 'application/json; charset=UTF-8'
     };
     String url = "https://group5-15.pvt.dsv.su.se/user/get/id?email=email";
     Response response = await get(url, headers: headers);
-  }
+  }*/
+
+  /*Future<http.Response> fetchUser() {
+    return http.get('https://group5-15.pvt.dsv.su.se/user/get/id?email=email');
+  }*/
 
   Future<void> sendToServer() async {
     Map<String, String> headers = {
@@ -122,8 +203,11 @@ class _ProfileState extends State<Profile> {
   String occupation;
   String location;
 
-  String interest;
+  String interests;
   String description = "";
+
+  String info =  User().getInfo();
+  String name = User().getName();
 
   _ProfileState(
       {Key key,
@@ -137,7 +221,7 @@ class _ProfileState extends State<Profile> {
       this.birthDateInString,
       this.occupation,
       this.location,
-      this.interest});
+      this.interests});
   static Random random = Random();
   File _image;
 
@@ -250,7 +334,7 @@ class _ProfileState extends State<Profile> {
                   ))),
               SizedBox(height: 10),
               Text(
-                names[random.nextInt(10)],
+                name,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
@@ -258,6 +342,16 @@ class _ProfileState extends State<Profile> {
               ),
               SizedBox(height: 3),
               Container(
+                child: Padding( padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                child:  TextField(
+                  enabled: false,
+                  decoration: InputDecoration(
+                  hintText: info,
+                  ),
+                )
+                 ),
+              ),
+             /* Container(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                   child: TextField(
@@ -282,7 +376,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               Container(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
@@ -373,7 +467,8 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProfilePage(userID: userID)));
+                                builder: (context) =>
+                                    ProfilePage(userID: userID)));
                       })))),
     );
   }

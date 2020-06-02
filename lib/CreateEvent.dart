@@ -41,9 +41,6 @@ class _CreateEventState extends State<CreateEvent> {
     Response response = await put(url, headers: headers, body: json);  
   }
 
- /* bool men = false;
-  bool women = false;
-  bool nonBinary = false;*/
   bool differentGenders = false;
   DateTime dateTime;
   int numberOfParticipants = 2;
@@ -51,7 +48,7 @@ class _CreateEventState extends State<CreateEvent> {
   int maximumAge = 99;
 
 
-  String name = "";
+  /*String name = "";
 	String time = "";
 	String description = "";
 	String categoryOfActivity = "";
@@ -60,10 +57,9 @@ class _CreateEventState extends State<CreateEvent> {
 	String groupSize = "";
 	String allowedGender = "";
 	String location = "" ;
-	String coordinates = "";
+	String coordinates = "";*/
 
-
-  _CreateEventState({Key key, this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates});
+  //_CreateEventState({Key key, this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates});
 
 
   @override
@@ -181,49 +177,7 @@ class _CreateEventState extends State<CreateEvent> {
                 Text("I want people of different \n genders to be able to sign up",
                     style: TextStyle(fontWeight: FontWeight.w500)),
               ])),
-          /*Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Text("Who can sign up?"),
-          ),*/
-         /* Padding(
-            padding: const EdgeInsets.only(left: 50.0, top: 10),
-            child: Row(
-              children: <Widget>[
-                Text("Men: ",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                Checkbox(
-                    value: men,
-                    activeColor: Colors.blue,
-                    onChanged: (bool newValue) {
-                      setState(() {
-                        men = newValue;
-                      });
-                    }),
-                Text("Women: ", style: TextStyle(fontWeight: FontWeight.bold)),
-                Checkbox(
-                    value: women,
-                    activeColor: Colors.blue,
-                    onChanged: (bool newValue) {
-                      setState(() {
-                        women = newValue;
-                      });
-                    }),
-                Text("Non-Binary: ",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                Checkbox(
-                    value: nonBinary,
-                    activeColor: Colors.blue,
-                    onChanged: (bool newValue) {
-                      setState(() {
-                        nonBinary = newValue;
-                      });
-                    }),
-              ],
-            ),
-          ),*/
-
           Row(
-            // crossAxisAlignment: CrossAxisAlignment.values[3],
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
@@ -325,25 +279,6 @@ class _CreateEventState extends State<CreateEvent> {
       ),
     );
   }
-
-  /*  void _showAlertDialog(){
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context)
-        {
-          return(
-              new NumberPickerDialog.integer(
-                minValue: 2,
-                maxValue: 8,
-                initialIntegerValue: _currentValue,
-
-              )
-          );
-        }
-    );
-  }
-*/
 
   void _numberPickerDialog() {
     showDialog<int>(

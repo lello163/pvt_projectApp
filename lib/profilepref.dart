@@ -49,8 +49,8 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
     final _originController = new TextEditingController();
     var _genders = ['Male', 'Female', 'Non-binary'];
     var _relations = [
-      'Singel',
-      'In a relationships',
+      'Single',
+      'In a relationship',
       'Married',
       "Prefer not to say"
     ];
