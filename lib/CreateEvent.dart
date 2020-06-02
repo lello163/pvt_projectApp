@@ -82,7 +82,7 @@ class _CreateEventState extends State<CreateEvent> {
       "Content-type": 'application/json; charset=UTF-8'
     };
     String url =
-        "/activity/participate?user=" + userID + "19753&activity=214193";
+        "/activity/participate?user=" + userID + "&activity=214193";
     http.put(url, headers: headers, body: json);
   }
 
@@ -151,7 +151,7 @@ class _CreateEventState extends State<CreateEvent> {
                             lastDate: new DateTime(2022));
                         setState(() {
                           setDate =
-                              "Date(${datePick.month}/${datePick.day}/${datePick.year})";
+                              "${datePick.month}/${datePick.day}/${datePick.year}";
                         });
                       },
                     )),
@@ -166,13 +166,10 @@ class _CreateEventState extends State<CreateEvent> {
                           context: context,
                         );
                         setState(() {
-                          setTime = "${timePick.toString()} ";
-                          //selectedTime.toString();
+                          setTime = "${timePick.hour}/${timePick.minute} ";
                         });
                       },
                     )),
-
-                   
                     /*Container(
                       width: 40,
                       child: Icon(Icons.access_time),
