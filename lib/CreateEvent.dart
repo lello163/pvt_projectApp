@@ -31,6 +31,9 @@ String groupSize = "";
 String allowedGender = "";
 String location = "";
 String coordinates = "";
+String setTime = "Time";
+String setDate = "Date";
+DateTime selectedDate = DateTime.now();
 
 final eventName = new TextEditingController();
 final eventDescription = new TextEditingController();
@@ -123,11 +126,11 @@ class _CreateEventState extends State<CreateEvent> {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(16, 0, 25, 0),
-                  width: 300,
-                  height: 50,
-                  child: TextFormField(
-                      controller: _locationController,
-                      decoration: InputDecoration(labelText:'Location')),
+                    width: 300,
+                    height: 50,
+                    child: TextFormField(
+                        controller: _locationController,
+                        decoration: InputDecoration(labelText: 'Location')),
                   ),
                 ],
               ),
@@ -135,69 +138,45 @@ class _CreateEventState extends State<CreateEvent> {
                 padding: const EdgeInsets.only(top: 10.0, left: 62),
                 child: Row(
                   children: <Widget>[
-                    MaterialButton(
-                      child: Text(
-                        "Date picker",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    GestureDetector(
+                        child: RaisedButton(
+                      child:
+                          Text(setDate, style: TextStyle(color: Colors.white)),
                       color: Colors.blue,
-                      onPressed: () {
-                        showModalBottomSheet(
+                      onPressed: () async {
+                        final datePick = await showDatePicker(
                             context: context,
-                            builder: (BuildContext builder) {
-                              return Container(
-                                  height: MediaQuery.of(context)
-                                          .copyWith()
-                                          .size
-                                          .height /
-                                      3,
-                                  child: CupertinoDatePicker(
-                                      initialDateTime: DateTime.now(),
-                                      onDateTimeChanged: (DateTime newDate) {
-                                        dateTime = newDate;
-                                        time = dateTime.toIso8601String();
-                                      },
-                                      use24hFormat: true,
-                                      maximumDate: new DateTime(2025, 12, 30),
-                                      maximumYear: DateTime.now().year + 2,
-                                      minuteInterval: 1,
-                                      mode: CupertinoDatePickerMode.date));
-                            });
+                            initialDate: new DateTime.now(),
+                            firstDate: new DateTime.now(),
+                            lastDate: new DateTime(2022));
+                        setState(() {
+                          setDate =
+                              "Date(${datePick.month}/${datePick.day}/${datePick.year})";
+                        });
                       },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: MaterialButton(
-                        child: Text(
-                          "Time",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        color: Colors.blue,
-                        onPressed: () {
-                          showModalBottomSheet(
-                              context: context,
-                              builder: (BuildContext builder) {
-                                return Container(
-                                    height: MediaQuery.of(context)
-                                            .copyWith()
-                                            .size
-                                            .height /
-                                        3,
-                                    child: CupertinoDatePicker(
-                                        initialDateTime: DateTime.now(),
-                                        onDateTimeChanged:
-                                            (DateTime newDate) {},
-                                        use24hFormat: true,
-                                        minuteInterval: 1,
-                                        mode: CupertinoDatePickerMode.time));
-                              });
-                        },
-                      ),
-                    ),
-                    Container(
+                    )),
+                    GestureDetector(
+                      child: RaisedButton(
+                        child:
+                          Text(setTime, style: TextStyle(color: Colors.white)),
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final timePick = await showTimePicker(
+                          initialTime: TimeOfDay.now(),
+                          context: context,
+                        );
+                        setState(() {
+                          setTime = "${timePick.toString()} ";
+                          //selectedTime.toString();
+                        });
+                      },
+                    )),
+
+                   
+                    /*Container(
                       width: 40,
                       child: Icon(Icons.access_time),
-                    ),
+                    ),*/
                   ],
                 ),
               ),
@@ -330,6 +309,7 @@ class _CreateEventState extends State<CreateEvent> {
           ),
         ));
   }
+
 
   void _numberPickerDialog() {
     showDialog<int>(
@@ -480,9 +460,10 @@ Widget bottomMenu(BuildContext context) {
         color: Colors.black,
         iconSize: 40,
         onPressed: () {
-          Navigator.push(context, 
-          MaterialPageRoute(builder: (context) => ProfilePage()),
-          //print("PROFILE PAGE"
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ProfilePage()),
+            //print("PROFILE PAGE"
           );
         },
       ),
