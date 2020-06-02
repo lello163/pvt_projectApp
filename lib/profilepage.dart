@@ -22,10 +22,11 @@ List names = [
 ];
 
 class Profile extends StatefulWidget {
-  String firstName = "";
-  String lastName = "";
-  String email = "";
-  String password = "";
+
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
 
   String selectedGender;
   String selectedRelation;
@@ -34,107 +35,31 @@ class Profile extends StatefulWidget {
   String occupation;
   String location;
 
+
   String interest;
-  Profile(
-      {Key key,
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.password,
-      this.selectedGender,
-      this.selectedRelation,
-      this.origin,
-      this.birthDateInString,
-      this.occupation,
-      this.location,
-      this.interest});
+  Profile({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
   @override
-  _ProfileState createState() => _ProfileState(
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      selectedGender: selectedGender,
-      selectedRelation: selectedRelation,
-      origin: origin,
-      birthDateInString: birthDateInString,
-      occupation: occupation,
-      location: location,
-      interest: interest);
+  _ProfileState createState() => _ProfileState(firstName: firstName, lastName: lastName, email: email, password: password,
+      selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location, interest: interest);
 }
 
 class _ProfileState extends State<Profile> {
-  String json;
+String json;
+  void createJson (){
+   json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ "NO BIRTHPLACE" +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\"}";
 
-  void createJson() {
- print("firstName:" +
-     firstName +
-     "lastName:" +
-     lastName +
-     "dateOfBirth" +
-     birthDateInString +
-     "gender" +
-     selectedGender +
-     "email:" +
-     email +
-     "relationshipStatus" +
-     selectedRelation +
-     "occupation" +
-     occupation +
-     "placeOfBirth" +
-     "NO BIRTHPLACE" +
-     "placeOfResidence" +
-     location +
-     "description" +
-     description);
-    json = "{\"firstName\":\"" +
-        firstName +
-        "\",\"lastName\":\"" +
-        lastName +
-        "\",\"dateOfBirth\":\"" +
-        birthDateInString +
-        "\",\"gender\":\"" +
-        selectedGender +
-        "\",\"email\":\"" +
-        email +
-        "\",\"relationshipStatus\":\"" +
-        selectedRelation +
-        "\",\"occupation\":\"" +
-        occupation +
-        "\",\"placeOfBirth\":\"" +
-        "NO BIRTHPLACE" +
-        "\",\"placeOfResidence\":\"" +
-        location +
-        "\",\"description\":\"" +
-        description +
-        "\"}";
   }
 
-  String userID;
-  void getJson() {
-    userID = "{\"userID\":\"" +  userID + "\"}";
-  }
+Future<void> sendToServer() async {
+  Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+  String url = "https://group5-15.pvt.dsv.su.se/user/add";
+  Response response = await put(url, headers: headers, body: json);
+}
 
-  Future<void> getFromServer() async {
-    Map<String, String> headers = {
-      "Content-type": 'application/json; charset=UTF-8'
-    };
-    String url = "https://group5-15.pvt.dsv.su.se/user/get/id?email=email";
-    Response response = await get(url, headers: headers);
-  }
-
-  Future<void> sendToServer() async {
-    Map<String, String> headers = {
-      "Content-type": 'application/json; charset=UTF-8'
-    };
-    String url = "https://group5-15.pvt.dsv.su.se/user/add";
-    Response response = await put(url, headers: headers, body: json);
-  }
-
-  String firstName = "";
-  String lastName = "";
-  String email = "";
-  String password = "";
+  String firstName ="";
+  String lastName ="";
+  String email="";
+  String password="";
 
   String selectedGender;
   String selectedRelation;
@@ -144,21 +69,10 @@ class _ProfileState extends State<Profile> {
   String location;
 
   String interest;
-  String description = "";
+String description="";
 
-  _ProfileState(
-      {Key key,
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.password,
-      this.selectedGender,
-      this.selectedRelation,
-      this.origin,
-      this.birthDateInString,
-      this.occupation,
-      this.location,
-      this.interest});
+
+  _ProfileState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location, this.interest});
   static Random random = Random();
   File _image;
 
@@ -169,32 +83,6 @@ class _ProfileState extends State<Profile> {
       _image = image;
     });
   }
-
-  /*svoid imagePicker(){
-    if (interest.contains('fitness')){
-      image1 : AssetImage('assets/nature2.png');
-    } 
-    if (interest.contains('parentHang')){
-      if (image1 = null) {
-        image1 : AssetImage('assets/parent2.png');
-      } else {
-        if (image2 = null) {
-          image2 : AssetImage('assets/parent2.png');
-        }
-      }
-    }
-    if (interest.contains('gaming')) {
-      if (image1 = null) {
-        image1 : AssetImage('assets/gaming2.jpg');
-      } else {
-        if (image2 = null) {
-          image2 : AssetImage('assets/gaming2.jpg');
-        } else if (image3 = null) {
-          image3 : AssetImage('assets/gaming2.jpg');
-        }
-      }
-    }
-  } */
 
   Future<void> _showProfileSavedMessage() async {
     return showDialog<void>(
@@ -233,6 +121,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -371,31 +260,26 @@ class _ProfileState extends State<Profile> {
       bottomNavigationBar: SizedBox(
           height: 70,
           width: 150,
-          child: GestureDetector(
-              child: Align(
-                  alignment: FractionalOffset(0.9, 0.3),
-                  child: RaisedButton(
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(10.0),
-                      ),
-                      padding: const EdgeInsets.all(10),
-                      color: Colors.blue[700],
-                      child: Text('Save',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Monserrat',
-                              letterSpacing: 2)),
-                      onPressed: () async {
-                        createJson();
-                        sendToServer();
-                        _showProfileSavedMessage();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProfilePage(userID: userID)));
-                      })))),
+          child: Align(
+              alignment: FractionalOffset(0.9, 0.3),
+              child: RaisedButton(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  color: Colors.blue[700],
+                  child: Text('Save',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Monserrat',
+                          letterSpacing: 2)),
+                  onPressed: () {
+                    //createJson();
+                    //sendToServer();
+                    _showProfileSavedMessage();
+                  }))),
     );
   }
 }
