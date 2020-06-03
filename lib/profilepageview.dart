@@ -105,7 +105,7 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 70),
                 color: Colors.transparent,
-                child: Text('I just moved to Stockholm for work. On my freetime I like to explore new things...', 
+                child: Text(' ', 
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
@@ -129,6 +129,7 @@ class _ProfilePage extends State<ProfilePage> {
               SizedBox(height: 8),
               Container(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),

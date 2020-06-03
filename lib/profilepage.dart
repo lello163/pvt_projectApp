@@ -338,11 +338,11 @@ if(!done){
               Container(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 4, 15, 10),
-                  child: TextField(
+                  child: TextFormField(
 
                     enabled: true,
-                    minLines: 3,
-                    maxLines: 3,
+                   /* minLines: 3,
+                    maxLines: 3,*/
                     autocorrect: true,
                     decoration: InputDecoration(
                       hintText: 'Something interesting about who I am...',
@@ -378,6 +378,7 @@ if(!done){
               SizedBox(height: 8),
               Container(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
