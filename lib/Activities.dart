@@ -10,6 +10,48 @@ import 'package:pvt_project/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+class Activity {
+  final String actName;
+  final String actDate;
+  final String actParticipants;
+
+  final String actType;
+
+  Activity(
+    {this.actName,
+    this.actDate,
+    this.actParticipants,
+    this.actType,});
+
+  factory Activity.fromJson(Map<String, dynamic> parsedJson){
+    return Activity(
+      actName: parsedJson['actName'],
+      actDate: parsedJson['actDate'],
+      actParticipants: parsedJson['actParticipants'],
+    );
+  }
+
+  String getActName(){
+    return actName;
+  }
+
+  String getActDate(){
+    return actDate;
+  }
+
+  String getActParticipants(){
+    return actParticipants;
+  }
+
+  Image getPicture(){
+    //Depending on the type of activity (sport, recreational, animal themed etc.)
+    //the appropriate picture will be given.
+  }
+  
+
+
+}
+
 class Activities extends StatefulWidget {
   String userID;
   Activities({Key key, this.userID});
