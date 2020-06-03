@@ -10,7 +10,7 @@ import 'package:pvt_project/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class Activity {
+/*class Activity {
   final String actName;
   final String actDate;
   final String actParticipants;
@@ -51,7 +51,7 @@ class Activity {
 
 
 }
-
+*/
 class Activities extends StatefulWidget {
   String userID;
   Activities({Key key, this.userID});
