@@ -78,7 +78,8 @@ class _ProfilePage extends State<ProfilePage> {
                       ))),
               SizedBox(height: 10),
               Text(
-                user.getName(),
+                //user.getName(),
+                'Joanne M.',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Monserrat',
@@ -89,8 +90,10 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 10),
                 color: Colors.transparent,
-                child: Text( ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
 
+                child: Text(
+                  // ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
+                  'Vasastan | Austin \n  25 years | In a relationship | Working',
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
@@ -102,7 +105,7 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 70),
                 color: Colors.transparent,
-                child: Text('', 
+                child: Text('I just moved to Stockholm for work. On my freetime I like to explore new things...', 
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
@@ -113,7 +116,8 @@ class _ProfilePage extends State<ProfilePage> {
                   padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
                   child: Center(
                     child:  Text(
-                      'Interests: ' + user.getInterests(),
+                      'Interests: ' ,
+                      //+ user.getInterests(),
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 25.0,
