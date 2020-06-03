@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pvt_project/InfoAboutCreatingActivity.dart';
+
+import 'ActivitiesAlt.dart';
 //SENASTE
 class Frequency extends StatefulWidget {
   @override
@@ -295,7 +297,7 @@ class _FrequencyState extends State<Frequency> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Frequency()),
+                    MaterialPageRoute(builder: (context) => ActivitiesAlt()),
                   );
                 },
               ))),

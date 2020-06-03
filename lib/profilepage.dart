@@ -376,35 +376,7 @@ if(!done){
                 ),
               ),
               SizedBox(height: 8),
-              Container(
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          child: Image.asset(
-                            "assets/fooddrinks.png",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          child: Image.asset(
-                            "assets/explore2.png",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-              ),
-            /*  GridView.builder(
+              GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 primary: false,
@@ -423,7 +395,7 @@ if(!done){
                     ),
                   );
                 },
-              ),*/
+              ),
             ],
           ),
         ),

@@ -10,62 +10,23 @@ import 'package:pvt_project/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-/*class Activity {
-  final String actName;
-  final String actDate;
-  final String actParticipants;
-
-  final String actType;
-
-  Activity(
-    {this.actName,
-    this.actDate,
-    this.actParticipants,
-    this.actType,});
-
-  factory Activity.fromJson(Map<String, dynamic> parsedJson){
-    return Activity(
-      actName: parsedJson['actName'],
-      actDate: parsedJson['actDate'],
-      actParticipants: parsedJson['actParticipants'],
-    );
-  }
-
-  String getActName(){
-    return actName;
-  }
-
-  String getActDate(){
-    return actDate;
-  }
-
-  String getActParticipants(){
-    return actParticipants;
-  }
-
-  Image getPicture(){
-    //Depending on the type of activity (sport, recreational, animal themed etc.)
-    //the appropriate picture will be given.
-  }
-  
-
-
-}
-*/
-class Activities extends StatefulWidget {
+class ActivitiesAlt extends StatefulWidget {
   String userID;
-  Activities({Key key, this.userID});
+  ActivitiesAlt({Key key, this.userID});
 
   @override
-  _Activities createState() => _Activities(userID: userID);
+  _ActivitiesAlt createState() => _ActivitiesAlt(userID: userID);
 }
 
-class _Activities extends State<Activities> {
+class _ActivitiesAlt extends State<ActivitiesAlt> {
+  String actName;
+  String actDate;
+  String actParticipants;
   bool showAll = true;
   String userID;
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
 
-  _Activities({Key key, this.userID});
+  _ActivitiesAlt({Key key, this.userID});
 
   Future<void> _showMeetAgainMessage() async {
     return showDialog<void>(
@@ -104,6 +65,30 @@ class _Activities extends State<Activities> {
 
   @override
   Widget build(BuildContext context) {
+
+  /*  var newActivity = new Card(
+      child: ListTile(
+        onTap: (){
+          Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => CreateEvent()));
+        },
+        leading:
+         ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: 190,
+            minHeight: 64,
+            maxWidth: 190,
+            maxHeight: 64,
+          ),
+          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
+),
+        title: Text(actName),
+        subtitle: Text(actDate + "\nParticipants" + actParticipants),
+        isThreeLine: true,
+      ),
+    );
+
+*/
 
     var dog = new Card(
       child: ListTile(
@@ -161,6 +146,24 @@ class _Activities extends State<Activities> {
       ),
     );
 
+        var explore = new Card(
+      child: ListTile(
+        leading: ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: 190,
+            minHeight: 64,
+            maxWidth: 190,
+            maxHeight: 64,
+          ),
+          child: Image.asset('assets/explore2.png', fit: BoxFit.cover),
+        ),
+        title: Text('Visit the Castle'),
+        subtitle: Text('Friday 14:00. \nParticipants 1/6'),
+        isThreeLine: true,
+      ),
+    );
+
+
   void _changeAllAct(){
     setState(() {
       showAll = !showAll;
@@ -169,20 +172,14 @@ class _Activities extends State<Activities> {
   
   
   List<Card> allAct = <Card>[
+    explore,
     fika,
     dog,
     volley,
-    fika,
-    dog,
-    volley,
-    fika,
-    dog,
-    fika,
   ];
 
   List<Card> signedAct = <Card>[
-    fika,
-    dog,
+    explore,
   ];
 
   List<Card> actList;
