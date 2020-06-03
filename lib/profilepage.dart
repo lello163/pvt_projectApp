@@ -376,7 +376,8 @@ if(!done){
                 ),
               ),
               SizedBox(height: 8),
-              GridView.builder(
+
+             /* GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 primary: false,
@@ -395,7 +396,7 @@ if(!done){
                     ),
                   );
                 },
-              ),
+              ),*/
             ],
           ),
         ),
