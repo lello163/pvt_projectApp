@@ -295,10 +295,10 @@ if(!done){
                   ))),
               SizedBox(height: 10),
               Text(
-                ' ',
+                'Joanne M. ',
                // User.getName();
                //det här funkade 4 gånger, sen slutade det funka????
-              // user.firstName + " " + user.lastName,
+               //user.firstName + " " + user.lastName,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
@@ -315,8 +315,9 @@ if(!done){
                     autocorrect: true,
                     decoration: InputDecoration(
                      hintText:
+                     'Vasastan | Austin \n  25 years | In a relationship | Working',
                      //den säger att metoden toUpperCase is called on null, alltså finns inte location?
-                     'Location: ' + user.location.toUpperCase() + ' | Age: ' + user.calculateAge(DateTime.parse(birthDateInString)) + ' | Origin: ' + user.origin + ' | Relationship status: ' + user.selectedRelation + ' | Occupation: ' + user.occupation,
+                     //'Location: ' + user.location.toUpperCase() + ' | Age: ' + user.calculateAge(DateTime.parse(birthDateInString)) + ' | Origin: ' + user.origin + ' | Relationship status: ' + user.selectedRelation + ' | Occupation: ' + user.occupation,
  //                         ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' Relationship status: ' + user.getRelation()  + ' | Age: ' + user.getBirthDate() + ' | Occupation: ' + user.getOccupation(),
                     
                       hoverColor: Colors.black,
