@@ -19,6 +19,9 @@ class Activities extends StatefulWidget {
 }
 
 class _Activities extends State<Activities> {
+  String actName;
+  String actDate;
+  String actParticipants;
   bool showAll = true;
   String userID;
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
@@ -62,6 +65,28 @@ class _Activities extends State<Activities> {
 
   @override
   Widget build(BuildContext context) {
+
+    var newActivity = new Card(
+      child: ListTile(
+        onTap: (){
+          Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => CreateEvent()));
+        },
+        leading:
+         ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: 190,
+            minHeight: 64,
+            maxWidth: 190,
+            maxHeight: 64,
+          ),
+          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
+),
+        title: Text(actName),
+        subtitle: Text(actDate + "\nParticipants" + actParticipants),
+        isThreeLine: true,
+      ),
+    );
 
     var dog = new Card(
       child: ListTile(
