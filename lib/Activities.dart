@@ -10,7 +10,7 @@ import 'package:pvt_project/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-/*class Activity {
+class Activity {
   final String actName;
   final String actDate;
   final String actParticipants;
@@ -42,16 +42,16 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
   String getActParticipants(){
     return actParticipants;
   }
-
+/*
   Image getPicture(){
     //Depending on the type of activity (sport, recreational, animal themed etc.)
     //the appropriate picture will be given.
   }
   
-
+*/
 
 }
-*/
+
 class Activities extends StatefulWidget {
   String userID;
   Activities({Key key, this.userID});
@@ -108,7 +108,7 @@ class _Activities extends State<Activities> {
   @override
   Widget build(BuildContext context) {
 
-    var newActivity = new Card(
+ /*   var newActivity = new Card(
       child: ListTile(
         onTap: (){
           Navigator.push(context, 
@@ -129,7 +129,7 @@ class _Activities extends State<Activities> {
         isThreeLine: true,
       ),
     );
-
+*/
     var dog = new Card(
       child: ListTile(
         leading: ConstrainedBox(
@@ -197,17 +197,11 @@ class _Activities extends State<Activities> {
     fika,
     dog,
     volley,
-    fika,
-    dog,
-    volley,
-    fika,
-    dog,
-    fika,
+
   ];
 
   List<Card> signedAct = <Card>[
-    fika,
-    dog,
+  
   ];
 
   List<Card> actList;
