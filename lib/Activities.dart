@@ -61,9 +61,6 @@ class Activities extends StatefulWidget {
 }
 
 class _Activities extends State<Activities> {
-  String actName;
-  String actDate;
-  String actParticipants;
   bool showAll = true;
   String userID;
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
