@@ -129,6 +129,7 @@ class _ProfilePage extends State<ProfilePage> {
               SizedBox(height: 8),
               Container(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
