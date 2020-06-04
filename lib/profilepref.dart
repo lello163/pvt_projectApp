@@ -193,7 +193,6 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
                       ),
-                      //hintText: 'Stockholm',
                       icon: Icon(Icons.place),
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue))),

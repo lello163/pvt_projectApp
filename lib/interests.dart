@@ -11,10 +11,10 @@ class InterestsPage extends StatefulWidget {
   // final Data data;
   // InterestsPage({this.data});
 
-  String firstName ="";
-  String lastName ="";
-  String email="";
-  String password="";
+  String firstName = "";
+  String lastName = "";
+  String email = "";
+  String password = "";
 
   String selectedGender;
   String selectedRelation;
@@ -24,21 +24,38 @@ class InterestsPage extends StatefulWidget {
   String occupation;
   String location;
 
-
-
-  InterestsPage({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location});
-
+  InterestsPage(
+      {Key key,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.selectedGender,
+      this.selectedRelation,
+      this.origin,
+      this.birthDateInString,
+      this.occupation,
+      this.location});
 
   @override
-  _InterestsPageState createState() => _InterestsPageState(firstName: firstName, lastName: lastName, email: email, password: password,
-      selectedGender: selectedGender, selectedRelation: selectedRelation, origin: origin, birthDateInString: birthDateInString, occupation: occupation, location: location);
+  _InterestsPageState createState() => _InterestsPageState(
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      selectedGender: selectedGender,
+      selectedRelation: selectedRelation,
+      origin: origin,
+      birthDateInString: birthDateInString,
+      occupation: occupation,
+      location: location);
 }
 
 class _InterestsPageState extends State<InterestsPage> {
-  String firstName ="";
-  String lastName ="";
-  String email="";
-  String password="";
+  String firstName = "";
+  String lastName = "";
+  String email = "";
+  String password = "";
 
   String selectedGender;
   String selectedRelation;
@@ -47,12 +64,21 @@ class _InterestsPageState extends State<InterestsPage> {
   String occupation;
   String location;
 
-
-  _InterestsPageState({Key key, this.firstName, this.lastName, this.email, this.password, this.selectedGender, this.selectedRelation, this.origin, this.birthDateInString, this.occupation, this.location});
-
+  _InterestsPageState(
+      {Key key,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.selectedGender,
+      this.selectedRelation,
+      this.origin,
+      this.birthDateInString,
+      this.occupation,
+      this.location});
 
   String interest = "";
-  String description="";
+  String description = "";
   //Selection variables
   bool sportSelected = false;
   double sportOpacity = 1;
@@ -79,16 +105,38 @@ class _InterestsPageState extends State<InterestsPage> {
   var shape = BoxShape.rectangle;
   // var value = ("$(widget.value)");
 
-
   String json;
-  void createJson (){
-    json = "{\"firstName\":\""+firstName+"\",\"lastName\":\""+lastName +"\",\"dateOfBirth\":\"" + birthDateInString + "\",\"gender\":\"" + selectedGender + "\",\"email\":\"" + email + "\",\"relationshipStatus\":\""+ selectedRelation + "\",\"occupation\":\"" + occupation + "\",\"placeOfBirth\":\""+ origin +"\",\"placeOfResidence\":\"" + location + "\",\"description\":\""+ description + "\",\"interests\":\"" + interest + "\"}";
-
+  void createJson() {
+    json = "{\"firstName\":\"" +
+        firstName +
+        "\",\"lastName\":\"" +
+        lastName +
+        "\",\"dateOfBirth\":\"" +
+        birthDateInString +
+        "\",\"gender\":\"" +
+        selectedGender +
+        "\",\"email\":\"" +
+        email +
+        "\",\"relationshipStatus\":\"" +
+        selectedRelation +
+        "\",\"occupation\":\"" +
+        occupation +
+        "\",\"placeOfBirth\":\"" +
+        origin +
+        "\",\"placeOfResidence\":\"" +
+        location +
+        "\",\"description\":\"" +
+        description +
+        "\",\"interests\":\"" +
+        interest +
+        "\"}";
   }
 
   Future<void> sendToServer() async {
     print("ADDING");
-    Map<String, String> headers = {"Content-type": 'application/json; charset=UTF-8'};
+    Map<String, String> headers = {
+      "Content-type": 'application/json; charset=UTF-8'
+    };
     String url = "https://group5-15.pvt.dsv.su.se/user/add";
     print("STILL ADDING");
     print(json);
@@ -194,7 +242,16 @@ class _InterestsPageState extends State<InterestsPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(firstName + lastName + email + password + selectedGender + selectedRelation + birthDateInString + origin + occupation + location);
+    print(firstName +
+        lastName +
+        email +
+        password +
+        selectedGender +
+        selectedRelation +
+        birthDateInString +
+        origin +
+        occupation +
+        location);
     return new Scaffold(
       appBar: AppBar(
           title: const Text('What are your interests?',
@@ -480,99 +537,98 @@ class _InterestsPageState extends State<InterestsPage> {
           )
         ],
       ),
-      bottomNavigationBar: 
-      SizedBox(
-        height: 70,
-        width: 150,
-        
-      child: Align(
-        alignment: FractionalOffset(0.9, 0.3),
-      child: RaisedButton(
-            shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-          
-          padding: const EdgeInsets.all(10),
-          color: Colors.blue[700],
-          child: Text('Continue',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Monserrat',
-                  letterSpacing: 2)),
-          onPressed: () {
-            if (sportSelected |
-                foodSelected |
-                animalsSelected |
-                parentHangSelected |
-                filmSelected |
-                exploreSelected |
-                fitnessSelected |
-                gamingSelected |
-                musicSelected) {
-              if(sportSelected){
-                interest += "sports";
-              }
-
-              if(foodSelected){
-                interest += ",food";
-              }
-              if(animalsSelected){
-                interest += ",animals";
-              }
-
-              if(parentHangSelected){
-                interest += ",parentHang";
-              }
-
-              if(filmSelected){
-                interest += ",film";
-              }
-              if(exploreSelected){
-                interest += ",explore";
-              }
-
-              if(fitnessSelected){
-                interest += ",fitness";
-              }
-
-              if(gamingSelected){
-                interest += ",gaming";
-              }
-
-              if(musicSelected){
-                interest += ",music";
-              }
-            createJson();
-              sendToServer();
-              Navigator.push(
-                context,
-                //Till profile sen
-
-                MaterialPageRoute(builder: (context) => Profile(email: email)),
-              );
-            } else {
-              Alert(
-                context: context,
-                title: "Slow down, tiger",
-                desc: "You have to choose at least one category of your liking.",
-                buttons: [
-                  DialogButton(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text('OK',
-                        style: TextStyle(
-                          color: Colors.blue,
+      bottomNavigationBar: SizedBox(
+          height: 70,
+          width: 150,
+          child: Align(
+              alignment: FractionalOffset(0.9, 0.3),
+              child: RaisedButton(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  color: Colors.blue[700],
+                  child: Text('Continue',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.w500,
-                        ))),
-                    onPressed: () => Navigator.pop(context),
-                    color: Colors.transparent,
-                  )
-                ],
-              ).show();
-            }
-          }))),
+                          fontFamily: 'Monserrat',
+                          letterSpacing: 2)),
+                  onPressed: () {
+                    if (sportSelected |
+                        foodSelected |
+                        animalsSelected |
+                        parentHangSelected |
+                        filmSelected |
+                        exploreSelected |
+                        fitnessSelected |
+                        gamingSelected |
+                        musicSelected) {
+                      if (sportSelected) {
+                        interest += "sports";
+                      }
+
+                      if (foodSelected) {
+                        interest += ",food";
+                      }
+                      if (animalsSelected) {
+                        interest += ",animals";
+                      }
+
+                      if (parentHangSelected) {
+                        interest += ",parentHang";
+                      }
+
+                      if (filmSelected) {
+                        interest += ",film";
+                      }
+                      if (exploreSelected) {
+                        interest += ",explore";
+                      }
+
+                      if (fitnessSelected) {
+                        interest += ",fitness";
+                      }
+
+                      if (gamingSelected) {
+                        interest += ",gaming";
+                      }
+
+                      if (musicSelected) {
+                        interest += ",music";
+                      }
+                      createJson();
+                      sendToServer();
+                      Navigator.push(
+                        context,
+                        //Till profile sen
+
+                        MaterialPageRoute(
+                            builder: (context) => Profile(email: email)),
+                      );
+                    } else {
+                      Alert(
+                        context: context,
+                        title: "Slow down, tiger",
+                        desc:
+                            "You have to choose at least one category of your liking.",
+                        buttons: [
+                          DialogButton(
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text('OK',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.w500,
+                                    ))),
+                            onPressed: () => Navigator.pop(context),
+                            color: Colors.transparent,
+                          )
+                        ],
+                      ).show();
+                    }
+                  }))),
     );
   }
 }
