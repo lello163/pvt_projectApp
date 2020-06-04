@@ -87,7 +87,7 @@ class _SignupPageState extends State<SignupPage> {
                               hintText: 'Last name',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
-                          obscureText: true,
+                          
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
@@ -114,6 +114,7 @@ class _SignupPageState extends State<SignupPage> {
                               hintText: 'Password',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
+                                  obscureText: true,
                         ),
                         CheckboxListTile(
                           value: checkboxValue,

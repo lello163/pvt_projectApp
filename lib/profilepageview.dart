@@ -105,7 +105,7 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 70),
                 color: Colors.transparent,
-                child: Text(' ', 
+                child: Text('I just moved to Stockholm for work. In my free time I like to explore new things...', 
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
