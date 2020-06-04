@@ -69,17 +69,6 @@ Future<void> getAllActivitiesFromServer() async {
   print("HEY" + activities.activities[0].getActName());
 }
 
-
-
-
-
-
-
-
-
-
-
-
 class Activities extends StatefulWidget {
   String userID;
   Activities({Key key, this.userID});
@@ -253,26 +242,7 @@ class _Activities extends State<Activities> {
     ),
   );
 
-  var signedUpButton = new RaisedButton(
-    shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(5.0),
-    ),
-    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-    onPressed: !showAll ? null : () => _changeAllAct(),
-    color: Colors.blue[700],
-    child: Text(
-      "Activities I've signed up for",
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Monserrat',
-        letterSpacing: 2),
-    ),
-  );
-
-
-    var signedUpButton = new RaisedButton(
+      var  signedUpButton = new RaisedButton(
       shape: new RoundedRectangleBorder(
         borderRadius: new BorderRadius.circular(5.0),
       ),
