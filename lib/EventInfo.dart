@@ -47,11 +47,11 @@ class Activity {
 
 class EventInfo extends StatefulWidget {
 
-  EventInfo({Key key, this.activityID});
+  EventInfo({Key key, this.activityID, this.userID});
 
   @override
   State<StatefulWidget> createState(){
-    return _EventInfoState(activityID: activityID);
+    return _EventInfoState(activityID: activityID, userID: userID);
   }
 }
 
@@ -59,8 +59,9 @@ class _EventInfoState extends State<EventInfo> {
   Activity activity;
 
 String activityID;
+String userID;
 
-_EventInfoState({Key key, this.activityID});
+_EventInfoState({Key key, this.activityID, this.userID});
 
 
 Future<void> getActivityFromServer() async {
@@ -70,6 +71,14 @@ Future<void> getActivityFromServer() async {
   Response responseID= await get(urlIDtoActivity);
   var dataJson = json.decode(responseID.body);
   activity = new Activity.fromJson(dataJson);
+}
+
+
+//vet ej hur användare läggs till på aktiviteten :(
+Future<void> addUserToActivity() async {
+  print('trying to add user');
+  await new Future.delayed(const Duration(seconds : 7));
+  String urlAddUser = "https://group5-15.pvt.dsv.su.se/activity/participate?user="+userID+"&activity="+activityID;
 }
 
   //SECTION OF VARIABLES

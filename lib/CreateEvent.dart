@@ -65,11 +65,11 @@ class _CreateEventState extends State<CreateEvent> {
         description +
         "\",\"categoryOfActivity\":\"" +
         category +
-        "\",\"minAge\":\"" +
+        "\",minAge:\"" +
         minAge +
-        "\",\"maxAge\":\"" +
+        "\",maxAge:\"" +
         maxAge +
-        "\",\"groupSize\":\"" +
+        "\",groupSize:\"" +
         groupSize +
         "\",\"allowedGender\":\"" +
         allowedGender +

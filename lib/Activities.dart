@@ -127,6 +127,7 @@ class _Activities extends State<Activities> {
       ),
     );
 */
+
     var dog = new Card(
       child: ListTile(
         leading: ConstrainedBox(
