@@ -88,6 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.blue))),
                           
+
                         ),
                         SizedBox(height: 10.0),
                         TextFormField(
