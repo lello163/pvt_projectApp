@@ -78,8 +78,8 @@ class _ProfilePage extends State<ProfilePage> {
                       ))),
               SizedBox(height: 10),
               Text(
-                //user.getName(),
-                'Joanne M.',
+                user.getName(),
+               // 'Joanne M.',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Monserrat',

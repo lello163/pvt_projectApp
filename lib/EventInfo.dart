@@ -47,11 +47,15 @@ class Activity {
 
 class EventInfo extends StatefulWidget {
 
-  EventInfo({Key key, this.activityID, this.userID});
+  EventInfo({Key key, 
+//  this.activityID, this.userID
+  });
 
   @override
   State<StatefulWidget> createState(){
-    return _EventInfoState(activityID: activityID, userID: userID);
+    return _EventInfoState(
+      //activityID: activityID, userID: userID
+      );
   }
 }
 

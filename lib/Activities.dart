@@ -47,7 +47,6 @@ class Activity {
     //Depending on the type of activity (sport, recreational, animal themed etc.)
     //the appropriate picture will be given.
   }
-  
 */
 
 }
@@ -79,7 +78,7 @@ class _Activities extends State<Activities> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Did you have a fun time at the Coffe Hangout activity? \nDo you wish to meet them again?'),
+                Text('Did you have a fun time at the Coffee Hangout activity? \nDo you wish to meet them again?'),
               ],
             ),
           ),
@@ -199,7 +198,7 @@ class _Activities extends State<Activities> {
   ];
 
   List<Card> signedAct = <Card>[
-  
+    volley,  
   ];
 
   List<Card> actList;
@@ -326,7 +325,7 @@ class _Activities extends State<Activities> {
                 color: Colors.blue[700],
                 iconSize: 30,
                 onPressed: (){
-                  _showMeetAgainMessage();
+                 // _showMeetAgainMessage();
                 },
               ),
               IconButton(
