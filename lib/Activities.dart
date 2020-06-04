@@ -87,7 +87,9 @@ class Activities extends StatefulWidget {
 }
 
 class _Activities extends State<Activities> {
+  bool updated = false;
   ActivityList activities;
+  List<Card> allAct = <Card>[];
   
   Future<void> getAllActivitiesFromServer() async {
     String url = "https://group5-15.pvt.dsv.su.se/activity/getall";
@@ -95,6 +97,42 @@ class _Activities extends State<Activities> {
     var dataJson = json.decode(response.body);
     print(dataJson);
     activities = new ActivityList.fromJson(dataJson);
+  }
+
+   Future<void> addNewActivitiesToList() async {
+
+
+    var r = await getAllActivitiesFromServer();
+    for (Activity a in activities.activities){
+      var newActivity = new Card(
+      child: ListTile(
+        onTap: (){
+          Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => EventInfo()));
+        },
+        leading:
+         ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: 190,
+            minHeight: 64,
+            maxWidth: 190,
+            maxHeight: 64,
+          ),
+          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
+),
+        title: Text(a.getActName()),
+        subtitle: Text(a.getActDate()),
+        isThreeLine: true,
+      ),
+    );
+
+    allAct.add(newActivity);
+    }
+    setState(() {
+      updated = !updated;
+    });
+    
+
   }
 
   bool showAll = true;
@@ -196,19 +234,25 @@ class _Activities extends State<Activities> {
       ),
     );
 
+if(!updated){
+//getAllActivitiesFromServer();
+  addNewActivitiesToList();
+}
+
   void _changeAllAct(){
     setState(() {
       showAll = !showAll;
     });
   }
   
-  
+  /*
   List<Card> allAct = <Card>[
     fika,
     dog,
     volley,
 
   ];
+  */
 
   List<Card> signedAct = <Card>[
   
@@ -222,6 +266,7 @@ class _Activities extends State<Activities> {
     actList = signedAct;
   }
 
+/*
   void addNewActivitiesToList(){
     for (Activity a in activities.activities){
       var newActivity = new Card(
@@ -253,12 +298,10 @@ class _Activities extends State<Activities> {
       
     });
 
-  }
-  getAllActivitiesFromServer();
+  }*/
   
 
-  addNewActivitiesToList();
-  
+
   var allActButton = new RaisedButton(
     shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(5.0),
