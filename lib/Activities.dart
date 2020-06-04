@@ -69,39 +69,15 @@ Future<void> getAllActivitiesFromServer() async {
   print("HEY" + activities.activities[0].getActName());
 }
 
-class AllActivities {
-  final List<Activity> allActivities;
 
 
-  AllActivities({this.allActivities});
 
-  factory AllActivities.fromJson(Map<String, dynamic> parsedJson){
 
-    return AllActivities(
-      allActivities: parsedJson['name'],
-      unit: parsedJson['unit'],
-      values: parsedJson['values'],
-    );
-  }
 
-}
 
-class Parameters {
-  final String name;
-  final String unit;
-  final List values;
 
-  Parameters({this.name, this.unit, this.values});
 
-  factory Parameters.fromJson(Map<String, dynamic> parsedJson){
 
-    return Parameters(
-      name: parsedJson['name'],
-      unit: parsedJson['unit'],
-      values: parsedJson['values'],
-    );
-  }
-}
 
 
 class Activities extends StatefulWidget {
