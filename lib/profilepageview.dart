@@ -92,8 +92,7 @@ class _ProfilePage extends State<ProfilePage> {
                 color: Colors.transparent,
 
                 child: Text(
-                  // ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
-                  'Vasastan | Austin \n  25 years | In a relationship | Working',
+                   ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' | Age: ' + user.getBirthDate() + ' \n Relationship status: ' + user.getRelation() + ' | Occupation: ' + user.getOccupation(),
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 
@@ -105,7 +104,7 @@ class _ProfilePage extends State<ProfilePage> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 15, 70),
                 color: Colors.transparent,
-                child: Text('I just moved to Stockholm for work. In my free time I like to explore new things...', 
+                child: Text(user.getDescription(),
                 style: TextStyle(
                   fontSize: 18, 
                   fontWeight: FontWeight.w500, 

@@ -74,17 +74,7 @@ class User {
   calculateAge(DateTime dateOfBirth) {
     DateTime currentDate = DateTime.now();
     age = currentDate.year - dateOfBirth.year;
-    int month1 = currentDate.month;
-    int month2 = dateOfBirth.month;
-    if (month2 > month1) {
-      age--;
-    } else if (month1 == month2) {
-      int day1 = currentDate.day;
-      int day2 = dateOfBirth.day;
-      if (day2 > day1) {
-        age--;
-      }
-    }
+
     return age;
   }
 
@@ -131,47 +121,20 @@ class User {
   }
 
 class Profile extends StatefulWidget {
-
-
-  String firstName ="";
-  String lastName ="";
   String email="";
-  String password="";
 
-  String selectedGender;
-  String selectedRelation;
-  String birthDateInString;
-  String origin;
-  String occupation;
-  String location;
-
-
-  String interest;
   Profile({Key key, this.email});
   @override
   _ProfileState createState() => _ProfileState(email: email);
 }
 
 class _ProfileState extends State<Profile> {
+  bool done = false;
   User user;
-
- // String firstName ="";
-  //String lastName ="";
   String email="";
-  String password="";
-
-  String selectedGender;
-  String selectedRelation;
-  String birthDateInString;
-  String origin;
-  String occupation;
-  String location;
-
-  String interest;
-  String description="";
   String userID="";
-
   DateTime age;
+  String description;
 
 
   _ProfileState({Key key, this.email});
@@ -187,18 +150,15 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> getUserFromServer() async {
-    print("count starting");
-   await new Future.delayed(const Duration(seconds : 7));
-    print("count done");
     String urlEmailToID = "https://group5-15.pvt.dsv.su.se/user/get/id?email="+ email;
     Response responseID= await get(urlEmailToID);
     userID = responseID.body;
-    print(userID);
+
     String urlUserByID = "https://group5-15.pvt.dsv.su.se/user/get?id="+userID;
     Response rep2 = await get(urlUserByID);
     var dataJson = json.decode(rep2.body);
     user = new User.fromJson(dataJson);
- //   print(user.firstName + user.lastName + user.location);
+    print("USER RETRIEVED");
   }
 
   void updateUserDescription(){
@@ -250,12 +210,13 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  bool done = false;
+
   @override
   Widget build(BuildContext context) {
 if(!done){
   getUserFromServer();
   done = true;
+  print("DONE");
 }
     return Scaffold(
       appBar: AppBar(
