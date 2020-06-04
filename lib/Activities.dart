@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_map_location_picker/google_map_location_picker.dart';
+import 'package:http/http.dart';
 import 'package:pvt_project/ChooseCategory.dart';
 import 'package:pvt_project/Frequency.dart';
 import 'package:pvt_project/screens/message_screen.dart';
@@ -10,25 +13,39 @@ import 'package:pvt_project/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+
+
+class ActivityList {
+  final List<Activity> activities;
+
+  ActivityList({
+    this.activities,
+  });
+
+  factory ActivityList.fromJson(List<dynamic> parsedJson) {
+
+    List<Activity> activities = new List<Activity>();
+    activities = parsedJson.map((i)=>Activity.fromJson(i)).toList();
+
+    return new ActivityList(
+        activities: activities
+    );
+  }
+}
+
 class Activity {
   final String actName;
   final String actDate;
-  final String actParticipants;
 
-  final String actType;
-
-  Activity({
-    this.actName,
-    this.actDate,
-    this.actParticipants,
-    this.actType,
-  });
+  Activity(
+      {this.actName,
+        this.actDate,
+      });
 
   factory Activity.fromJson(Map<String, dynamic> parsedJson) {
     return Activity(
-      actName: parsedJson['actName'],
-      actDate: parsedJson['actDate'],
-      actParticipants: parsedJson['actParticipants'],
+      actName: parsedJson['name'],
+      actDate: parsedJson['time'],
     );
   }
 
@@ -40,17 +57,52 @@ class Activity {
     return actDate;
   }
 
-  String getActParticipants() {
-    return actParticipants;
-  }
-/*
-  Image getPicture(){
-    //Depending on the type of activity (sport, recreational, animal themed etc.)
-    //the appropriate picture will be given.
-  }
-*/
 
 }
+
+Future<void> getAllActivitiesFromServer() async {
+  String url = "https://group5-15.pvt.dsv.su.se/activity/getall";
+  Response response = await get(url);
+  var dataJson = json.decode(response.body);
+  print(dataJson);
+  ActivityList activities = new ActivityList.fromJson(dataJson);
+  print("HEY" + activities.activities[0].getActName());
+}
+
+class AllActivities {
+  final List<Activity> allActivities;
+
+
+  AllActivities({this.allActivities});
+
+  factory AllActivities.fromJson(Map<String, dynamic> parsedJson){
+
+    return AllActivities(
+      allActivities: parsedJson['name'],
+      unit: parsedJson['unit'],
+      values: parsedJson['values'],
+    );
+  }
+
+}
+
+class Parameters {
+  final String name;
+  final String unit;
+  final List values;
+
+  Parameters({this.name, this.unit, this.values});
+
+  factory Parameters.fromJson(Map<String, dynamic> parsedJson){
+
+    return Parameters(
+      name: parsedJson['name'],
+      unit: parsedJson['unit'],
+      values: parsedJson['values'],
+    );
+  }
+}
+
 
 class Activities extends StatefulWidget {
   String userID;
@@ -80,8 +132,7 @@ class _Activities extends State<Activities> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(
-                    'Did you have a fun time at the Coffee Hangout activity? \nDo you wish to meet them again?'),
+                Text('Did you have a fun time at the Coffe Hangout activity? \nDo you wish to meet them again?'),
               ],
             ),
           ),
@@ -127,7 +178,6 @@ class _Activities extends State<Activities> {
       ),
     );
 */
-
     var dog = new Card(
       child: ListTile(
         leading: ConstrainedBox(
@@ -183,46 +233,68 @@ class _Activities extends State<Activities> {
       ),
     );
 
-    void _changeAllAct() {
-      setState(() {
-        showAll = !showAll;
-      });
-    }
+  void _changeAllAct(){
+    setState(() {
+      showAll = !showAll;
+    });
+  }
+  
+  
+  List<Card> allAct = <Card>[
+    fika,
+    dog,
+    volley,
 
-    List<Card> allAct = <Card>[
-      fika,
-      dog,
-      volley,
-    ];
+  ];
 
-    List<Card> signedAct = <Card>[
-      volley,
-    ];
+  List<Card> signedAct = <Card>[
+  
+  ];
 
-    List<Card> actList;
-    if (showAll) {
-      actList = allAct;
-    } else {
-      actList = signedAct;
-    }
+  List<Card> actList;
+  if (showAll){
+    actList = allAct;
+  }
+  else{
+    actList = signedAct;
+  }
+  
+  var allActButton = new RaisedButton(
+    shape: new RoundedRectangleBorder(
+      borderRadius: new BorderRadius.circular(5.0),
+    ),
+    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+    onPressed: showAll ? null : () => _changeAllAct(),
+    color: Colors.blue[700],
+    child: Text(
+      "All Activities",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Monserrat',
+        letterSpacing: 2),
+    ),
+  );
 
-    var allActButton = new RaisedButton(
-      shape: new RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(5.0),
-      ),
-      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-      onPressed: showAll ? null : () => _changeAllAct(),
-      color: Colors.blue[700],
-      child: Text(
-        "All Activities",
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Monserrat',
-            letterSpacing: 2),
-      ),
-    );
+  var signedUpButton = new RaisedButton(
+    shape: new RoundedRectangleBorder(
+      borderRadius: new BorderRadius.circular(5.0),
+    ),
+    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+    onPressed: !showAll ? null : () => _changeAllAct(),
+    color: Colors.blue[700],
+    child: Text(
+      "Activities I've signed up for",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Monserrat',
+        letterSpacing: 2),
+    ),
+  );
+
 
     var signedUpButton = new RaisedButton(
       shape: new RoundedRectangleBorder(
@@ -317,8 +389,8 @@ class _Activities extends State<Activities> {
                 icon: Icon(Icons.calendar_today),
                 color: Colors.blue[700],
                 iconSize: 30,
-                onPressed: () {
-                  // _showMeetAgainMessage();
+                onPressed: (){
+                  _showMeetAgainMessage();
                 },
               ),
               IconButton(
