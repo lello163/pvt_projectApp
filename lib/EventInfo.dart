@@ -20,12 +20,20 @@ class Activity {
   final String maxAge;
   final String groupSize;
   final String allowedGender;
-  final String location; 
+  final String location;
   final String coordinates;
 
-  Activity({
-    this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates
-  });
+  Activity(
+      {this.name,
+      this.time,
+      this.description,
+      this.categoryOfActivity,
+      this.minAge,
+      this.maxAge,
+      this.groupSize,
+      this.allowedGender,
+      this.location,
+      this.coordinates});
 
   factory Activity.fromJson(Map<String, dynamic> parsedJson) {
     return Activity(
@@ -41,68 +49,72 @@ class Activity {
       coordinates: parsedJson['coordinates'],
     );
   }
-
 }
 
-
 class EventInfo extends StatefulWidget {
-
-  EventInfo({Key key, 
+  EventInfo({
+    Key key,
 //  this.activityID, this.userID
   });
 
   @override
-  State<StatefulWidget> createState(){
+  State<StatefulWidget> createState() {
     return _EventInfoState(
-      //activityID: activityID, userID: userID
-      );
+        //activityID: activityID, userID: userID
+        );
   }
 }
 
 class _EventInfoState extends State<EventInfo> {
   Activity activity;
 
-String activityID;
-String userID;
+  String activityID;
+  String userID;
 
-_EventInfoState({Key key, this.activityID, this.userID});
+  _EventInfoState({Key key, this.activityID, this.userID});
 
-
-Future<void> getActivityFromServer() async {
-  print("trying to get activity");
-  await new Future.delayed(const Duration(seconds : 7));
-  String urlIDtoActivity = "https://group5-15.pvt.dsv.su.se/activity/get/id?="+activityID;
-  Response responseID= await get(urlIDtoActivity);
-  var dataJson = json.decode(responseID.body);
-  activity = new Activity.fromJson(dataJson);
-}
-
+  Future<void> getActivityFromServer() async {
+    print("trying to get activity");
+    await new Future.delayed(const Duration(seconds: 7));
+    String urlIDtoActivity =
+        "https://group5-15.pvt.dsv.su.se/activity/get/id?=" + activityID;
+    Response responseID = await get(urlIDtoActivity);
+    var dataJson = json.decode(responseID.body);
+    activity = new Activity.fromJson(dataJson);
+  }
 
 //vet ej hur användare läggs till på aktiviteten :(
-Future<void> addUserToActivity() async {
-  print('trying to add user');
-  await new Future.delayed(const Duration(seconds : 7));
-  String urlAddUser = "https://group5-15.pvt.dsv.su.se/activity/participate?user="+userID+"&activity="+activityID;
-}
+  Future<void> addUserToActivity() async {
+    print('trying to add user');
+    await new Future.delayed(const Duration(seconds: 7));
+    String urlAddUser =
+        "https://group5-15.pvt.dsv.su.se/activity/participate?user=" +
+            userID +
+            "&activity=" +
+            activityID;
+  }
 
   //SECTION OF VARIABLES
   String title = "Fika";
   String description = "Description of activity";
   String location = "Stockholm";
   var dateAndTime = new DateTime(2020, 5, 8, 8, 0);
-  String testImage = "https://www.visitvarberg.se/images/18.803d73316e35ca147325f5a/1573027844136/g%C3%A4stis%20webb.jpg";
+  String testImage =
+      "https://www.visitvarberg.se/images/18.803d73316e35ca147325f5a/1573027844136/g%C3%A4stis%20webb.jpg";
   Color buttonColor = Colors.blueGrey[300];
   WeatherData weatherData;
   TempAndSky tempAndSky;
   LocationResults locationResults;
-  var forecastURL = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.072/lat/59.3247/data.json';
-  var geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?address=Göteborg&key=AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k";
+  var forecastURL =
+      'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.072/lat/59.3247/data.json';
+  var geocodeURL =
+      "https://maps.googleapis.com/maps/api/geocode/json?address=Göteborg&key=AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k";
 
 //SECTION OF METHODS
   Future<LocationResults> fetchLocation() async {
     LocationResults results;
     var response = await http.get(geocodeURL);
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       var dataJson = json.decode((response.body));
       results = new LocationResults.fromJson(dataJson);
     }
@@ -112,58 +124,70 @@ Future<void> addUserToActivity() async {
   Future<WeatherData> fetchWeatherData() async {
     WeatherData wd;
     var response = await http.get(forecastURL);
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       var dataJson = json.decode(response.body);
       wd = new WeatherData.fromJson(dataJson);
     }
     return wd;
   }
 
-  void updateForecastURL(){
-    if(locationResults != null){
-      String long = locationResults.results[0].geometry.location.longitude.toString();
-      String lat = locationResults.results[0].geometry.location.latitude.toString();
-      if(lat.length > 9){
-        lat = lat.substring(0,9);
+  void updateForecastURL() {
+    if (locationResults != null) {
+      String long =
+          locationResults.results[0].geometry.location.longitude.toString();
+      String lat =
+          locationResults.results[0].geometry.location.latitude.toString();
+      if (lat.length > 9) {
+        lat = lat.substring(0, 9);
       }
-      if(long.length > 9){
-        long = long.substring(0,9);
+      if (long.length > 9) {
+        long = long.substring(0, 9);
         print(long);
       }
-      forecastURL = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/' + long +'/lat/' + lat + '/data.json';
+      forecastURL =
+          'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/' +
+              long +
+              '/lat/' +
+              lat +
+              '/data.json';
     }
   }
 
-  void getForecast(){
-    DateTime lastAvailableForecastDate = DateTime.parse(weatherData.timeSeries[weatherData.timeSeries.length-1].validTime.replaceFirst('T', ' '));
-    if(!dateAndTime.isAfter(lastAvailableForecastDate)){
+  void getForecast() {
+    DateTime lastAvailableForecastDate = DateTime.parse(weatherData
+        .timeSeries[weatherData.timeSeries.length - 1].validTime
+        .replaceFirst('T', ' '));
+    if (!dateAndTime.isAfter(lastAvailableForecastDate)) {
       List<Duration> diff = new List<Duration>();
-      for(int i = 0; i < weatherData.timeSeries.length; i++){
+      for (int i = 0; i < weatherData.timeSeries.length; i++) {
         //Retrieve and format time from JSON
-        String stringTime = weatherData.timeSeries[i].validTime.replaceFirst('T', ' ');
+        String stringTime =
+            weatherData.timeSeries[i].validTime.replaceFirst('T', ' ');
         DateTime time = DateTime.parse(stringTime);
         diff.add(dateAndTime.difference(time));
       }
       //Find the smallest difference
       var smallestDifference = diff[0];
       Duration zero = new Duration();
-      for(int i = 0; i < diff.length ; i++){
-        if(diff[i].abs() < smallestDifference){
+      for (int i = 0; i < diff.length; i++) {
+        if (diff[i].abs() < smallestDifference) {
           smallestDifference = diff[i];
         }
       }
       int location = diff.indexOf(smallestDifference);
-      tempAndSky = new TempAndSky(weatherData.timeSeries[location].parameters[1].values[0], weatherData.timeSeries[location].parameters[18].values[0]);
+      tempAndSky = new TempAndSky(
+          weatherData.timeSeries[location].parameters[1].values[0],
+          weatherData.timeSeries[location].parameters[18].values[0]);
     }
   }
 
   @override
   void initState() {
-    fetchLocation().then((value){
+    fetchLocation().then((value) {
       setState(() {
         locationResults = value;
         updateForecastURL();
-        fetchWeatherData().then((value){
+        fetchWeatherData().then((value) {
           setState(() {
             weatherData = value;
             getForecast();
@@ -173,6 +197,7 @@ Future<void> addUserToActivity() async {
     });
     super.initState();
   }
+
 //MAIN BUILD
   @override
   Widget build(BuildContext context) {
@@ -188,7 +213,7 @@ Future<void> addUserToActivity() async {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0, top: 15.0),
-              child: imageBox(context, testImage) ,
+              child: imageBox(context, testImage),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
@@ -209,8 +234,7 @@ Future<void> addUserToActivity() async {
             ),
             Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: button(context, "Unregister from activity")
-            ),
+                child: button(context, "Unregister from activity")),
           ],
         ),
       ),
@@ -220,61 +244,45 @@ Future<void> addUserToActivity() async {
 
   //SECTION OF WIDGETS
   Widget weatherIcon(BuildContext context) {
-    switch(tempAndSky.getSky()){
+    switch (tempAndSky.getSky()) {
       case Sky.SUN:
-        return Icon(
-          WeatherIcons.WeatherIcons.day_sunny
-        );
+        return Icon(WeatherIcons.WeatherIcons.day_sunny);
         break;
       case Sky.PARTIAL_CLOUD:
-        return Icon(
-            WeatherIcons.WeatherIcons.day_sunny_overcast
-        );
+        return Icon(WeatherIcons.WeatherIcons.day_sunny_overcast);
         break;
       case Sky.CLOUD:
-        return Icon(
-            WeatherIcons.WeatherIcons.cloud
-        );
+        return Icon(WeatherIcons.WeatherIcons.cloud);
         break;
       case Sky.RAIN:
-        return Icon(
-            WeatherIcons.WeatherIcons.day_rain
-        );
+        return Icon(WeatherIcons.WeatherIcons.day_rain);
         break;
       case Sky.SNOW:
-        return Icon(
-            WeatherIcons.WeatherIcons.day_snow
-        );
+        return Icon(WeatherIcons.WeatherIcons.day_snow);
         break;
       case Sky.SLEET:
-        return Icon(
-            WeatherIcons.WeatherIcons.day_sleet
-        );
+        return Icon(WeatherIcons.WeatherIcons.day_sleet);
         break;
       case Sky.FOG:
-        return Icon(
-            WeatherIcons.WeatherIcons.day_fog
-        );
+        return Icon(WeatherIcons.WeatherIcons.day_fog);
         break;
     }
-    return Icon(
-        WeatherIcons.WeatherIcons.day_sunny
-    );
+    return Icon(WeatherIcons.WeatherIcons.day_sunny);
   }
 
-  Widget weatherInfo(BuildContext context){
-    if(tempAndSky != null){
-        return Container(
-          child: Row(
-            children: <Widget>[
-              weatherIcon(context),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(tempAndSky.temp.toString() + " C"),
-              )
-            ],
-          ),
-        );
+  Widget weatherInfo(BuildContext context) {
+    if (tempAndSky != null) {
+      return Container(
+        child: Row(
+          children: <Widget>[
+            weatherIcon(context),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(tempAndSky.temp.toString() + " C"),
+            )
+          ],
+        ),
+      );
     } else {
       return Container(
         child: Row(
@@ -292,18 +300,18 @@ Future<void> addUserToActivity() async {
     }
   }
 
-  Widget imageBox(BuildContext context, String imageAddress){
+  Widget imageBox(BuildContext context, String imageAddress) {
     return Container(
         width: 300,
         height: 150,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black),
         ),
-        child: Image(image: NetworkImage(imageAddress), width: 300, height: 300)
-    );
+        child:
+            Image(image: NetworkImage(imageAddress), width: 300, height: 300));
   }
 
-  Widget button(BuildContext context, String text){
+  Widget button(BuildContext context, String text) {
     return Container(
         height: 50,
         width: 300,
@@ -316,24 +324,28 @@ Future<void> addUserToActivity() async {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Text(text, style: TextStyle(
-            fontWeight: FontWeight.bold,
-          )),
-        )
-    );
+          child: Text(text,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+        ));
   }
-  
-  Widget dateAndTimeRow(BuildContext context){
+
+  Widget dateAndTimeRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           width: 82,
           height: 22,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1)
-          ),
-          child: Center(child: Text(dateAndTime.day.toString() + "/" + dateAndTime.month.toString() + "/" + dateAndTime.year.toString())),
+          decoration:
+              BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
+          child: Center(
+              child: Text(dateAndTime.day.toString() +
+                  "/" +
+                  dateAndTime.month.toString() +
+                  "/" +
+                  dateAndTime.year.toString())),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8.0, right: 8.0),
@@ -348,10 +360,11 @@ Future<void> addUserToActivity() async {
           height: 20,
           decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(width: 1, color: Colors.black),
-              )
-          ),
-          child: Text(dateAndTime.hour.toString() + ":" + dateAndTime.minute.toString()),
+            bottom: BorderSide(width: 1, color: Colors.black),
+          )),
+          child: Text(dateAndTime.hour.toString() +
+              ":" +
+              dateAndTime.minute.toString()),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
@@ -361,61 +374,59 @@ Future<void> addUserToActivity() async {
             size: 30,
           ),
         )
-
       ],
     );
   }
-  
-  Widget bottomMenu(BuildContext context){
+
+  Widget bottomMenu(BuildContext context) {
     return BottomAppBar(
         child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.person),
-              color: Colors.black,
-              iconSize: 30,
-               onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()),
-                  );
-                },
-            ),
-            IconButton(
-              icon: Icon(Icons.message),
-              color: Colors.black,
-              iconSize: 30,
-              onPressed: (){
-                print("MESSAGE PAGE");
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.calendar_today),
-              color: Colors.blue[700],
-              iconSize: 30,
-              onPressed: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Activities()),
-                );
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.location_on),
-              color: Colors.black,
-              iconSize: 30,
-              onPressed: (){
-                print("MAP PAGE");
-              },
-            ),
-          ],
-        )
-    );
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          iconSize: 30,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfilePage()),
+            );
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.message),
+          color: Colors.black,
+          iconSize: 30,
+          onPressed: () {
+            print("MESSAGE PAGE");
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.calendar_today),
+          color: Colors.blue[700],
+          iconSize: 30,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Activities()),
+            );
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.location_on),
+          color: Colors.black,
+          iconSize: 30,
+          onPressed: () {
+            print("MAP PAGE");
+          },
+        ),
+      ],
+    ));
   }
 
-  Widget descriptionBox(BuildContext context, String description){
+  Widget descriptionBox(BuildContext context, String description) {
     return Container(
       width: 300,
       height: 100,
@@ -427,35 +438,29 @@ Future<void> addUserToActivity() async {
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text(description, style: TextStyle(
-          fontSize: 18,
-        )),
+        child: Text(description,
+            style: TextStyle(
+              fontSize: 18,
+            )),
       ),
     );
   }
-  
-  Widget locationRow(BuildContext context, String location){
+
+  Widget locationRow(BuildContext context, String location) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Icon(
-            Icons.location_on,
-            color: Colors.black,
-            size: 30.0
-        ),
+        Icon(Icons.location_on, color: Colors.black, size: 30.0),
         Container(
             height: 24,
             width: 270,
             decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(width: 1, color: Colors.black)
-                )
-            ),
-            child: Text(location, style: TextStyle(
-              fontSize: 20,
-            )
-            )
-        )
+                border:
+                    Border(bottom: BorderSide(width: 1, color: Colors.black))),
+            child: Text(location,
+                style: TextStyle(
+                  fontSize: 20,
+                )))
       ],
     );
   }

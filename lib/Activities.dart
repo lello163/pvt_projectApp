@@ -17,13 +17,14 @@ class Activity {
 
   final String actType;
 
-  Activity(
-    {this.actName,
+  Activity({
+    this.actName,
     this.actDate,
     this.actParticipants,
-    this.actType,});
+    this.actType,
+  });
 
-  factory Activity.fromJson(Map<String, dynamic> parsedJson){
+  factory Activity.fromJson(Map<String, dynamic> parsedJson) {
     return Activity(
       actName: parsedJson['actName'],
       actDate: parsedJson['actDate'],
@@ -31,15 +32,15 @@ class Activity {
     );
   }
 
-  String getActName(){
+  String getActName() {
     return actName;
   }
 
-  String getActDate(){
+  String getActDate() {
     return actDate;
   }
 
-  String getActParticipants(){
+  String getActParticipants() {
     return actParticipants;
   }
 /*
@@ -74,37 +75,37 @@ class _Activities extends State<Activities> {
         return AlertDialog(
           title: Text('Isn\'t it fun to meet new people?'),
           shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(15.0),),
+            borderRadius: new BorderRadius.circular(15.0),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Did you have a fun time at the Coffee Hangout activity? \nDo you wish to meet them again?'),
+                Text(
+                    'Did you have a fun time at the Coffee Hangout activity? \nDo you wish to meet them again?'),
               ],
             ),
           ),
           actions: <Widget>[
             FlatButton(
               child: Text("No"),
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             FlatButton(
-              child: Text("Yes"),
-              onPressed:() {
-                Navigator.of(context).pop();
-              }
-            ),
+                child: Text("Yes"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }),
           ],
         );
       },
-    );  
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-
- /*   var newActivity = new Card(
+    /*   var newActivity = new Card(
       child: ListTile(
         onTap: (){
           Navigator.push(context, 
@@ -146,12 +147,11 @@ class _Activities extends State<Activities> {
 
     var fika = new Card(
       child: ListTile(
-        onTap: (){
-          Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => CreateEvent()));
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => CreateEvent()));
         },
-        leading:
-         ConstrainedBox(
+        leading: ConstrainedBox(
           constraints: BoxConstraints(
             minWidth: 190,
             minHeight: 64,
@@ -159,7 +159,7 @@ class _Activities extends State<Activities> {
             maxHeight: 64,
           ),
           child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
-),
+        ),
         title: Text('Fika Group'),
         subtitle: Text('Sunday 15:00. \nParticipants 3/6'),
         isThreeLine: true,
@@ -183,117 +183,110 @@ class _Activities extends State<Activities> {
       ),
     );
 
-  void _changeAllAct(){
-    setState(() {
-      showAll = !showAll;
-    });
-  }
-  
-  
-  List<Card> allAct = <Card>[
-    fika,
-    dog,
-    volley,
+    void _changeAllAct() {
+      setState(() {
+        showAll = !showAll;
+      });
+    }
 
-  ];
+    List<Card> allAct = <Card>[
+      fika,
+      dog,
+      volley,
+    ];
 
-  List<Card> signedAct = <Card>[
-    volley,  
-  ];
+    List<Card> signedAct = <Card>[
+      volley,
+    ];
 
-  List<Card> actList;
-  if (showAll){
-    actList = allAct;
-  }
-  else{
-    actList = signedAct;
-  }
-  
-  var allActButton = new RaisedButton(
-    shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(5.0),
-    ),
-    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-    onPressed: showAll ? null : () => _changeAllAct(),
-    color: Colors.blue[700],
-    child: Text(
-      "All Activities",
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Monserrat',
-        letterSpacing: 2),
-    ),
-  );
+    List<Card> actList;
+    if (showAll) {
+      actList = allAct;
+    } else {
+      actList = signedAct;
+    }
 
-  var signedUpButton = new RaisedButton(
-    shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(5.0),
-    ),
-    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-    onPressed: !showAll ? null : () => _changeAllAct(),
-    color: Colors.blue[700],
-    child: Text(
-      "Activities I've signed up for",
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Monserrat',
-        letterSpacing: 2),
-    ),
-  );
+    var allActButton = new RaisedButton(
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(5.0),
+      ),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+      onPressed: showAll ? null : () => _changeAllAct(),
+      color: Colors.blue[700],
+      child: Text(
+        "All Activities",
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Monserrat',
+            letterSpacing: 2),
+      ),
+    );
 
-
+    var signedUpButton = new RaisedButton(
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(5.0),
+      ),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+      onPressed: !showAll ? null : () => _changeAllAct(),
+      color: Colors.blue[700],
+      child: Text(
+        "Activities I've signed up for",
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Monserrat',
+            letterSpacing: 2),
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
-        title: showAll? Text('All Activities') : Text("Activities I've signed up for"),
+        title: showAll
+            ? Text('All Activities')
+            : Text("Activities I've signed up for"),
         actions: <Widget>[
-          IconButton( 
+          IconButton(
             color: Colors.blue[900],
             icon: Icon(Icons.calendar_today),
             onPressed: () {
               // Add route to schedule new event.
-              Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => ChooseCategory(userID: userID))
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ChooseCategory(userID: userID)));
             },
           )
         ],
       ),
-
       body: Column(
         children: <Widget>[
-          Row(children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: allActButton,
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: signedUpButton,
-            )
-
-          ],),
-        Expanded(
-        child: ListView.builder(
-          itemCount: actList.length,
-          itemBuilder: (BuildContext context, int index){
-            return Container(
-              child: actList[index],
-            );
-
-          }
-        )
-          )
-
-      ],),
-      
-      
+          Row(
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: allActButton,
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                child: signedUpButton,
+              )
+            ],
+          ),
+          Expanded(
+              child: ListView.builder(
+                  itemCount: actList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      child: actList[index],
+                    );
+                  }))
+        ],
+      ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+          color: Colors.white,
           child: new Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -314,7 +307,7 @@ class _Activities extends State<Activities> {
                 icon: Icon(Icons.chat_bubble_outline),
                 iconSize: 30,
                 onPressed: () {
-                   Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => MessageScreen()),
                   );
@@ -324,34 +317,29 @@ class _Activities extends State<Activities> {
                 icon: Icon(Icons.calendar_today),
                 color: Colors.blue[700],
                 iconSize: 30,
-                onPressed: (){
-                 // _showMeetAgainMessage();
+                onPressed: () {
+                  // _showMeetAgainMessage();
                 },
               ),
               IconButton(
                 icon: Icon(Icons.location_on),
-                iconSize:30,
-                 onPressed: () async {
-                    LocationResult result = await showLocationPicker(
-                      context,
-                      apiKey,
-                      initialCenter: LatLng(31.1975844, 29.9598339),
+                iconSize: 30,
+                onPressed: () async {
+                  LocationResult result = await showLocationPicker(
+                    context,
+                    apiKey,
+                    initialCenter: LatLng(31.1975844, 29.9598339),
 //                      automaticallyAnimateToCurrentLocation: true,
 //                      mapStylePath: 'assets/mapStyle.json',
-                      myLocationButtonEnabled: true,
-                      layersButtonEnabled: true,
+                    myLocationButtonEnabled: true,
+                    layersButtonEnabled: true,
 //                      resultCardAlignment: Alignment.bottomCenter,
-                    );
-                    print("result = $result");
-                  },
-                
+                  );
+                  print("result = $result");
+                },
               )
             ],
           )),
-
-
     );
-
   }
-
 }
