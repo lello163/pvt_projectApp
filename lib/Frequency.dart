@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pvt_project/InfoAboutCreatingActivity.dart';
 
 import 'Activities.dart';
-import 'ActivitiesAlt.dart';
+
 //SENASTE
 class Frequency extends StatefulWidget {
   @override
