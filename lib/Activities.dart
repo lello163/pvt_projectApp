@@ -31,6 +31,10 @@ class ActivityList {
         activities: activities
     );
   }
+
+  List getActivities(){
+    return this.activities;
+  }
 }
 
 class Activity {
@@ -136,28 +140,7 @@ class _Activities extends State<Activities> {
 
   @override
   Widget build(BuildContext context) {
-    /*   var newActivity = new Card(
-      child: ListTile(
-        onTap: (){
-          Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => CreateEvent()));
-        },
-        leading:
-         ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 190,
-            minHeight: 64,
-            maxWidth: 190,
-            maxHeight: 64,
-          ),
-          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
-),
-        title: Text(actName),
-        subtitle: Text(actDate + "\nParticipants" + actParticipants),
-        isThreeLine: true,
-      ),
-    );
-*/
+     
     var dog = new Card(
       child: ListTile(
         leading: ConstrainedBox(
@@ -238,6 +221,42 @@ class _Activities extends State<Activities> {
   else{
     actList = signedAct;
   }
+
+  void addNewActivitiesToList(){
+    
+
+    for ( int i = 0; i < activities.activities.length; i++ ){
+      var newActivity = new Card(
+      child: ListTile(
+        onTap: (){
+          Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => EventInfo()));
+        },
+        leading:
+         ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: 190,
+            minHeight: 64,
+            maxWidth: 190,
+            maxHeight: 64,
+          ),
+          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
+),
+        title: Text(activities.activities[i].getActName()),
+        subtitle: Text(activities.activities[i].getActDate()),
+        isThreeLine: true,
+      ),
+    );
+
+    allAct.add(newActivity);
+    }
+
+    setState(() {
+      
+    });
+
+  }
+  addNewActivitiesToList();
   
   var allActButton = new RaisedButton(
     shape: new RoundedRectangleBorder(
