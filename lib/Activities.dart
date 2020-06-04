@@ -60,14 +60,7 @@ class Activity {
 
 }
 
-Future<void> getAllActivitiesFromServer() async {
-  String url = "https://group5-15.pvt.dsv.su.se/activity/getall";
-  Response response = await get(url);
-  var dataJson = json.decode(response.body);
-  print(dataJson);
-  ActivityList activities = new ActivityList.fromJson(dataJson);
-  print("HEY" + activities.activities[0].getActName());
-}
+
 
 
 
@@ -81,6 +74,7 @@ Future<void> getAllActivitiesFromServer() async {
 
 
 class Activities extends StatefulWidget {
+
   String userID;
   Activities({Key key, this.userID});
 
@@ -89,6 +83,16 @@ class Activities extends StatefulWidget {
 }
 
 class _Activities extends State<Activities> {
+  ActivityList activities;
+  
+  Future<void> getAllActivitiesFromServer() async {
+    String url = "https://group5-15.pvt.dsv.su.se/activity/getall";
+    Response response = await get(url);
+    var dataJson = json.decode(response.body);
+    print(dataJson);
+    activities = new ActivityList.fromJson(dataJson);
+  }
+
   bool showAll = true;
   String userID;
   String apiKey = 'AIzaSyCIYW5-ghM8mTSFRgJynHXXnz-bfKhgi_k';
@@ -271,24 +275,6 @@ class _Activities extends State<Activities> {
     ),
   );
 
-
-    var signedUpButton = new RaisedButton(
-      shape: new RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(5.0),
-      ),
-      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-      onPressed: !showAll ? null : () => _changeAllAct(),
-      color: Colors.blue[700],
-      child: Text(
-        "Activities I've signed up for",
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Monserrat',
-            letterSpacing: 2),
-      ),
-    );
 
     return Scaffold(
       appBar: AppBar(
