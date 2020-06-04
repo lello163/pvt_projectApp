@@ -114,8 +114,8 @@ String allowedGender = "";
 String location = "";
 String coordinates = "";
 String setTime = "Time";
-String setDate = "Date";
-DateTime selectedDate = DateTime.now();*/
+String setDate = "Date";*/
+DateTime selectedDate = DateTime.now();
 
   final eventName = new TextEditingController();
   final eventDescription = new TextEditingController();
@@ -216,8 +216,7 @@ DateTime selectedDate = DateTime.now();*/
                       children: <Widget>[
                         GestureDetector(
                             child: RaisedButton(
-                          child:
-                              Text(setDate, style: TextStyle(color: Colors.white)),
+                            child: Text(setDate, style: TextStyle(color: Colors.white)),
                           color: Colors.blue,
                           onPressed: () async {
                             final datePick = await showDatePicker(
@@ -226,15 +225,17 @@ DateTime selectedDate = DateTime.now();*/
                                 firstDate: new DateTime.now(),
                                 lastDate: new DateTime(2022));
                             setState(() {
+                              selectedDate = datePick;
+                              dateTime = datePick;
                               setDate =
                                   "Date(${datePick.month}/${datePick.day}/${datePick.year})";
+                              Text(setDate);
                             });
                           },
                         )),
                         GestureDetector(
                             child: RaisedButton(
-                          child:
-                              Text(setTime, style: TextStyle(color: Colors.white)),
+                          child: Text(setTime, style: TextStyle(color: Colors.white)),
                           color: Colors.blue,
                           onPressed: () async {
                             final timePick = await showTimePicker(
@@ -244,7 +245,6 @@ DateTime selectedDate = DateTime.now();*/
                             setState(() {
                               setTime = "${timePick.hour}/${timePick.minute} ";
                               print(name);
-                              //selectedTime.toString();
                             });
                           },
                         )),

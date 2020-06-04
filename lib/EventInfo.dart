@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:http/http.dart';
 import 'package:pvt_project/TempAndSky.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,15 +11,67 @@ import 'package:http/http.dart' as http;
 import 'package:weather_icons/weather_icons.dart' as WeatherIcons;
 import 'LocationResults.dart';
 
+class Activity {
+  final String name;
+  final String time;
+  final String description;
+  final String categoryOfActivity;
+  final String minAge;
+  final String maxAge;
+  final String groupSize;
+  final String allowedGender;
+  final String location; 
+  final String coordinates;
+
+  Activity({
+    this.name, this.time, this.description, this.categoryOfActivity, this.minAge, this.maxAge, this.groupSize, this.allowedGender, this.location, this.coordinates
+  });
+
+  factory Activity.fromJson(Map<String, dynamic> parsedJson) {
+    return Activity(
+      name: parsedJson['name'],
+      time: parsedJson['time'],
+      description: parsedJson['description'],
+      categoryOfActivity: parsedJson['categoryOfActivity'],
+      minAge: parsedJson['minAge'],
+      maxAge: parsedJson['maxAge'],
+      groupSize: parsedJson['groupSize'],
+      allowedGender: parsedJson['allowedGender'],
+      location: parsedJson['location'],
+      coordinates: parsedJson['coordinates'],
+    );
+  }
+
+}
+
 
 class EventInfo extends StatefulWidget {
+
+  EventInfo({Key key, this.activityID});
+
   @override
   State<StatefulWidget> createState(){
-    return _EventInfoState();
+    return _EventInfoState(activityID: activityID);
   }
 }
 
 class _EventInfoState extends State<EventInfo> {
+  Activity activity;
+
+String activityID;
+
+_EventInfoState({Key key, this.activityID});
+
+
+Future<void> getActivityFromServer() async {
+  print("trying to get activity");
+  await new Future.delayed(const Duration(seconds : 7));
+  String urlIDtoActivity = "https://group5-15.pvt.dsv.su.se/activity/get/id?="+activityID;
+  Response responseID= await get(urlIDtoActivity);
+  var dataJson = json.decode(responseID.body);
+  activity = new Activity.fromJson(dataJson);
+}
+
   //SECTION OF VARIABLES
   String title = "Fika";
   String description = "Description of activity";
