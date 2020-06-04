@@ -223,9 +223,7 @@ class _Activities extends State<Activities> {
   }
 
   void addNewActivitiesToList(){
-    
-
-    for ( int i = 0; i < activities.activities.length; i++ ){
+    for (Activity a in activities.activities){
       var newActivity = new Card(
       child: ListTile(
         onTap: (){
@@ -242,8 +240,8 @@ class _Activities extends State<Activities> {
           ),
           child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
 ),
-        title: Text(activities.activities[i].getActName()),
-        subtitle: Text(activities.activities[i].getActDate()),
+        title: Text(a.getActName()),
+        subtitle: Text(a.getActDate()),
         isThreeLine: true,
       ),
     );
@@ -256,6 +254,9 @@ class _Activities extends State<Activities> {
     });
 
   }
+  getAllActivitiesFromServer();
+  
+
   addNewActivitiesToList();
   
   var allActButton = new RaisedButton(
