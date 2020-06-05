@@ -257,9 +257,6 @@ if(!done){
               SizedBox(height: 10),
               Text(
                 'Joanne M. ',
-               // User.getName();
-               //det här funkade 4 gånger, sen slutade det funka????
-               //user.firstName + " " + user.lastName,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 25,
@@ -278,15 +275,12 @@ if(!done){
                      hintText:
                      'Vasastan | Austin \n  25 years | In a relationship | Working',
                      //den säger att metoden toUpperCase is called on null, alltså finns inte location?
-                     //'Location: ' + user.location.toUpperCase() + ' | Age: ' + user.calculateAge(DateTime.parse(birthDateInString)) + ' | Origin: ' + user.origin + ' | Relationship status: ' + user.selectedRelation + ' | Occupation: ' + user.occupation,
- //                         ' Location: ' + user.getLocation() + ' | Origin: ' + user.getOrigin() + ' Relationship status: ' + user.getRelation()  + ' | Age: ' + user.getBirthDate() + ' | Occupation: ' + user.getOccupation(),
                     
                       hoverColor: Colors.black,
                       filled: true,
                       fillColor: Colors.transparent,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        //borderSide: BorderSide(color: Colors.grey),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -302,8 +296,6 @@ if(!done){
                   child: TextFormField(
 
                     enabled: true,
-                   /* minLines: 3,
-                    maxLines: 3,*/
                     autocorrect: true,
                     decoration: InputDecoration(
                       hintText: 'Something interesting about who I am...',
@@ -366,26 +358,6 @@ if(!done){
                     ],
                   )
               ),
-            /*  GridView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                primary: false,
-                padding: EdgeInsets.all(5),
-                itemCount: 3,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 200 / 200,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Image.asset(
-                      "assets/fooddrinks.png",
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                },
-              ),*/
             ],
           ),
         ),

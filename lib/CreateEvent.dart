@@ -31,9 +31,6 @@ class CreateEvent extends StatefulWidget {
   @override
   _CreateEventState createState() =>
       _CreateEventState(userID: userID.toString(), category: category);
-  /* State<StatefulWidget> createState() {
-    return _CreateEventState(userID: userID.toString(), category: category);
-  }*/
 }
 
 class _CreateEventState extends State<CreateEvent> {
@@ -105,61 +102,13 @@ class _CreateEventState extends State<CreateEvent> {
     print("användare tillagd");
   }
 
-/*String name = "";
-String time = "";
-String description = "";
-String categoryOfActivity = "";
-String minAge = "";
-String maxAge = "";
-String groupSize = "";
-String allowedGender = "";
-String location = "";
-String coordinates = "";
-String setTime = "Time";
-String setDate = "Date";*/
+
 DateTime selectedDate = DateTime.now();
 
   final eventName = new TextEditingController();
   final eventDescription = new TextEditingController();
 
-/*class _CreateEventState extends State<CreateEvent> {
-  String userID;
-  String category;
-  String json;
-  void createJson() {
-    json = "{\"name\":\"" +
-        name +
-        "\",\"time\":\"" +
-        time +
-        "\",\"description\":\"" +
-        description +
-        "\",\"catergoryOfActivity\":\"" +
-        categoryOfActivity +
-        "\",\"minAge\"_\"" +
-        minAge +
-        "\",\"maxAge\":\"" +
-        maxAge +
-        "\",\"groupSize\":\"" +
-        groupSize +
-        "\",\"allowedGender\":\"" +
-        allowedGender +
-        "\",\"location\":\"" +
-        location +
-        "\",\"coordinates\":\"" +
-        coordinates +
-        "\"}";
-  }*/
 
-  /* _CreateEventState({Key key, this.userID, this.category});*/
-
-  /* Future<void> sendToServer() async {
-    Map<String, String> headers = {
-      "Content-type": 'application/json; charset=UTF-8'
-    };
-    String url = "https://group5-15.pvt.dsv.su.se/activity/add";
-    http.put(url, headers: headers, body: json);
-    addCreator();
-  }*/
 
   bool differentGenders = false;
   DateTime dateTime;
@@ -251,10 +200,6 @@ DateTime selectedDate = DateTime.now();
                           },
                         )),
     
-                        /*Container(
-                          width: 40,
-                          child: Icon(Icons.access_time),
-                        ),*/
                       ],
                     ),
                   ),
@@ -314,7 +259,6 @@ DateTime selectedDate = DateTime.now();
                 ],
               ),
 
-              // okay ages to participate
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -555,7 +499,6 @@ DateTime selectedDate = DateTime.now();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfilePage()),
-              //print("PROFILE PAGE"
             );
           },
         ),

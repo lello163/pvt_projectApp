@@ -3,7 +3,6 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
 import 'profilepage.dart';
-//import 'package:convert/convert.dart' as JSON;
 
 class LogInPage extends StatefulWidget {
   @override
@@ -85,7 +84,7 @@ class _LogInPageState extends State<LogInPage> {
               ),
 
               //Facebook knapp
-              //Yaaaas
+            
               Container(
                   padding: EdgeInsets.only(top: 10.0, left: 45.0, right: 20.0),
                   child: Column(

@@ -116,7 +116,6 @@ class _ProfilePage extends State<ProfilePage> {
                   child: Center(
                     child:  Text(
                       'Interests: ' ,
-                      //+ user.getInterests(),
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 25.0,

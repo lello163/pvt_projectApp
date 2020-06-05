@@ -54,13 +54,11 @@ class Activity {
 class EventInfo extends StatefulWidget {
   EventInfo({
     Key key,
-//  this.activityID, this.userID
   });
 
   @override
   State<StatefulWidget> createState() {
     return _EventInfoState(
-        //activityID: activityID, userID: userID
         );
   }
 }
@@ -83,7 +81,6 @@ class _EventInfoState extends State<EventInfo> {
     activity = new Activity.fromJson(dataJson);
   }
 
-//vet ej hur användare läggs till på aktiviteten :(
   Future<void> addUserToActivity() async {
     print('trying to add user');
     await new Future.delayed(const Duration(seconds: 7));

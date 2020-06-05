@@ -34,7 +34,6 @@ class _ProfilePrefPageState extends State<ProfilePrefPage> {
   String _selectedGender;
   String genderCorrectFormat;
   String relationCorrectFormat;
-  //String _selectedPart;
   String _selectedRelation;
   String _selectedOccupation;
   String birthDateInString;

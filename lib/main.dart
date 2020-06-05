@@ -5,7 +5,6 @@ import 'login.dart';
 import 'interests.dart';
 import 'profilepage.dart';
 import 'package:flutter/services.dart';
-//import 'package:image/image.dart';
 
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
@@ -25,7 +24,6 @@ class MyHomePage extends StatefulWidget{
   _MyHomePageState createState() => new _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  //final alignment = AlignmentGeometry;
 
   @override
   Widget build(BuildContext context){
@@ -41,10 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
     
     child: Scaffold(
       backgroundColor: Colors.transparent,
-      //backgroundColor: Colors.blue,
       body: Column(
         children: <Widget>[
-          //Namn på appen tjansssssa Hello
          Container(
             child: 
               Stack(
@@ -63,15 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           
           //Bild på handskakning
-          //Test
-          //Hejgit
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-  /*             Center( 
-                  child: ImageIcon(AssetImage('assets/handshake.png'), size: 200.0),
-                ) */
               ],
             ),
           ),
@@ -85,14 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
   child: RaisedButton(
       shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(20.0),
-     // side: BorderSide(color: Colors.black, width: 3.0)
       ),
     onPressed: () {
        Navigator.push(
     context,
-    //cheat-route för att se sida över intressen
-    //MaterialPageRoute(builder: (context) => InterestsPage()),
-    //MaterialPageRoute(builder: (context) => Profile()),
     MaterialPageRoute(builder: (context) => SignupPage()),
     );
     },
@@ -111,7 +98,6 @@ ButtonTheme(
   child: RaisedButton(
       shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(20.0),
-     // side: BorderSide(color: Colors.black, width: 3.0)
       ),
     onPressed: () {     
     Navigator.push(

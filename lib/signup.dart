@@ -265,13 +265,11 @@ class _SignupPageState extends State<SignupPage> {
                             width: 300,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                             // color: Colors.blue[700],
                               elevation: 7.0,
                               child: RaisedButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      //MaterialPageRoute(builder: (context) => ProfilePrefPage())
                                       MaterialPageRoute(
                                           builder: (context) => LogInPage()));
                                 },

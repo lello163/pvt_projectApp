@@ -6,10 +6,6 @@ import 'package:http/http.dart' as http;
 import 'profilepage.dart';
 
 class InterestsPage extends StatefulWidget {
-  //final ValueChanged<bool> isSelected;
-  //int _isSelected = 0;
-  // final Data data;
-  // InterestsPage({this.data});
 
   String firstName = "";
   String lastName = "";
@@ -101,9 +97,7 @@ class _InterestsPageState extends State<InterestsPage> {
 
   bool isSelected = false;
   int counter = 0;
-  //var shape = Brightness.dark;
   var shape = BoxShape.rectangle;
-  // var value = ("$(widget.value)");
 
   String json;
   void createJson() {
@@ -148,9 +142,6 @@ class _InterestsPageState extends State<InterestsPage> {
     setState(() {
       if (isSelected = false) shape = BoxShape.circle;
       isSelected = true;
-      // else,
-      //   isSelected = false;
-      //   shape = Brightness.dark;
     });
   }
 
@@ -275,16 +266,13 @@ class _InterestsPageState extends State<InterestsPage> {
         // Generate 100 widgets that display their index in the List.
 
         children: <Widget>[
-          /*  Container(
-                child: const Text('Choose as many categories as you like'),
-              ),*/
+          
           GestureDetector(
             onTap: () {
               selectedInterest(1);
               _changeState();
             },
             child: Container(
-              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/fooddrinks.png'), fit: BoxFit.fitWidth),),
               padding: const EdgeInsets.all(8),
               child: Center(
                 child: const Text(
@@ -313,7 +301,6 @@ class _InterestsPageState extends State<InterestsPage> {
               _changeState();
             },
             child: Container(
-              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/sports2.png'), fit: BoxFit.fitWidth),),
               padding: const EdgeInsets.all(1),
               child: Center(
                 child: const Text(
@@ -342,7 +329,6 @@ class _InterestsPageState extends State<InterestsPage> {
               _changeState();
             },
             child: Container(
-              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/animals2.png'), fit: BoxFit.fitWidth),),
               padding: const EdgeInsets.all(8),
               child: Center(
                 child: const Text(
@@ -479,7 +465,6 @@ class _InterestsPageState extends State<InterestsPage> {
               _changeState();
             },
             child: Container(
-              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/gaming2.jpg'), fit: BoxFit.fitWidth),),
               padding: const EdgeInsets.all(8),
               child: Center(
                 child: const Text(
@@ -507,7 +492,6 @@ class _InterestsPageState extends State<InterestsPage> {
               _changeState();
             },
             child: Container(
-              //foregroundDecoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/music2.png'), fit: BoxFit.fitWidth),),
               padding: const EdgeInsets.all(8),
               child: Center(
                 child: const Text(

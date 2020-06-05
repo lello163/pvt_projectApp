@@ -133,7 +133,7 @@ class _Activities extends State<Activities> {
   Future<void> _showMeetAgainMessage() async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Isn\'t it fun to meet new people?'),

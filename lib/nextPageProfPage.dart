@@ -1,4 +1,3 @@
-//import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -15,8 +14,6 @@ class NextProfilePrefPage extends StatefulWidget {
   String selectedRelation;
   String birthDateInString;
   String origin;
-//String location;
-//String occupation;
 
 
 
@@ -34,7 +31,6 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
   String origin;
 
   String selectedGender;
-  //String _selectedPart;
   String selectedRelation;
   String birthDateInString;
   bool isDateSelected = false;
@@ -120,7 +116,6 @@ class _NextProfilePrefPageState extends State<NextProfilePrefPage> {
                 width: 330,
                 child: TextFormField(
                   controller: _locationController,
-                  //autovalidate: true,
                   decoration: InputDecoration(
                     labelText: 'Where in Stockholm do you live? *',
                     labelStyle: TextStyle(
