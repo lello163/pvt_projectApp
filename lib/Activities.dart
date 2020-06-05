@@ -101,7 +101,7 @@ class _Activities extends State<Activities> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Did you have a fun time at the Coffe Hangout activity? \nDo you wish to meet them again?'),
+                Text('Did you have a fun time at the Coffee Hangout activity? \nDo you wish to meet them again?'),
               ],
             ),
           ),
