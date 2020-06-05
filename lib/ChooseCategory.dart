@@ -43,6 +43,7 @@ Widget build(BuildContext context) {
     backgroundColor: Colors.grey[200],
 
     body: Center(
+      child: Expanded(
       child: Column(
         children: <Widget>[
           Padding(
@@ -54,7 +55,7 @@ Widget build(BuildContext context) {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
-            child: Text('Choose a category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            child: Text('Choose a category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
           ),
           DropdownMenu(),
           Padding(
@@ -75,7 +76,7 @@ Widget build(BuildContext context) {
           ),
 
         ],
-      ),
+      ),),
     ), bottomNavigationBar: bottomMenu(context),
   );
 }
@@ -90,7 +91,7 @@ class DropdownMenu extends StatefulWidget {
 }
 
 class _DropdownMenuState extends State<DropdownMenu> {
-  String dropdownValue = 'Food & Drinks';
+  String dropdownValue = 'FOODDRINKS';
 
   @override
   Widget build(BuildContext context) {
@@ -110,12 +111,11 @@ class _DropdownMenuState extends State<DropdownMenu> {
           choice = newValue;
         });
       },
-      items: <String>['Food & Drinks', 'Sport', 'Fitness & Mindfulness', 'Animals', 'Parent Hang', 'Movies', 'Outdoors & Explore', 'Art & Culture']
+      items: <String>['FOODDRINKS', 'SPORT', 'ANIMALS', 'PARENTHANG', 'FILM', 'EXPLORE', 'FITNESSMINDFULNESS', 'GAMING', 'MUSIC']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
-
         );
       }).toList(),
     );

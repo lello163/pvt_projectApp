@@ -37,7 +37,7 @@ class CreateEvent extends StatefulWidget {
 }
 
 class _CreateEventState extends State<CreateEvent> {
-  String userID = "";
+  String userID;
   String category;
   String name = "";
   String time = "";
@@ -56,6 +56,7 @@ class _CreateEventState extends State<CreateEvent> {
 
   String json;
   void createJson() {
+    print("start creating json");
     json = "{\"name\":\"" +
         name +
         "\",\"time\":\"" +
@@ -78,6 +79,7 @@ class _CreateEventState extends State<CreateEvent> {
         "\",\"coordinates\":\"" +
         coordinates +
         "\"}";
+        print("created json");
   }
 
   Future<void> sendToServer() async {
