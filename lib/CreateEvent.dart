@@ -392,7 +392,7 @@ DateTime selectedDate = DateTime.now();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Frequency()),
+                                builder: (context) => Frequency(userID: userID)),
                           );
                         },
                       ))),

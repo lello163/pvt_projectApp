@@ -7,13 +7,18 @@ import 'Activities.dart';
 
 //SENASTE
 class Frequency extends StatefulWidget {
+
+String userID; 
+Frequency({Key key, this.userID});
+
   @override
   State<StatefulWidget> createState(){
-    return _FrequencyState();
+    return _FrequencyState(userID: userID.toString());
   }
 }
 
 class _FrequencyState extends State<Frequency> {
+  String userID;
   String frequency ="";
   String times ="";
   bool oneTimeEvent = false;
@@ -25,6 +30,8 @@ class _FrequencyState extends State<Frequency> {
   bool twice = false;
   bool threeTimes = false;
   bool fourTimes = false;
+
+  _FrequencyState({Key key, this.userID});
 
   void onChangedFrequency(bool value, int i){
     setState(() {
