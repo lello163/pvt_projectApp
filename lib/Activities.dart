@@ -168,63 +168,7 @@ class _Activities extends State<Activities> {
   @override
   Widget build(BuildContext context) {
      
-    var dog = new Card(
-      child: ListTile(
-        leading: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 190,
-            minHeight: 64,
-            maxWidth: 190,
-            maxHeight: 64,
-          ),
-          child: Image.asset('assets/animals2.png', fit: BoxFit.cover),
-        ),
-        title: Text('A dog walk'),
-        subtitle: Text('Sundays 10:00. \nParticipants 3/4'),
-        isThreeLine: true,
-      ),
-    );
-
-    var fika = new Card(
-      child: ListTile(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CreateEvent()));
-        },
-        leading: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 190,
-            minHeight: 64,
-            maxWidth: 190,
-            maxHeight: 64,
-          ),
-          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
-        ),
-        title: Text('Fika Group'),
-        subtitle: Text('Sunday 15:00. \nParticipants 3/6'),
-        isThreeLine: true,
-      ),
-    );
-
-    var volley = new Card(
-      child: ListTile(
-        leading: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 190,
-            minHeight: 64,
-            maxWidth: 190,
-            maxHeight: 64,
-          ),
-          child: Image.asset('assets/sports2.png', fit: BoxFit.cover),
-        ),
-        title: Text('Play Volleyball'),
-        subtitle: Text('Thursdays 17:00. \nParticipants 10/12'),
-        isThreeLine: true,
-      ),
-    );
-
 if(!updated){
-//getAllActivitiesFromServer();
   addNewActivitiesToList();
 }
 
@@ -233,15 +177,6 @@ if(!updated){
       showAll = !showAll;
     });
   }
-  
-  /*
-  List<Card> allAct = <Card>[
-    fika,
-    dog,
-    volley,
-
-  ];
-  */
 
   List<Card> signedAct = <Card>[
   
@@ -254,43 +189,8 @@ if(!updated){
   else{
     actList = signedAct;
   }
-
-/*
-  void addNewActivitiesToList(){
-    for (Activity a in activities.activities){
-      var newActivity = new Card(
-      child: ListTile(
-        onTap: (){
-          Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => EventInfo()));
-        },
-        leading:
-         ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 190,
-            minHeight: 64,
-            maxWidth: 190,
-            maxHeight: 64,
-          ),
-          child: Image.asset('assets/fooddrinks.png', fit: BoxFit.cover),
-),
-        title: Text(a.getActName()),
-        subtitle: Text(a.getActDate()),
-        isThreeLine: true,
-      ),
-    );
-
-    allAct.add(newActivity);
-    }
-
-    setState(() {
-      
-    });
-
-  }*/
   
-
-
+  
   var allActButton = new RaisedButton(
     shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(5.0),
@@ -338,7 +238,6 @@ if(!updated){
             color: Colors.blue[900],
             icon: Icon(Icons.calendar_today),
             onPressed: () {
-              // Add route to schedule new event.
               Navigator.push(
                   context,
                   MaterialPageRoute(
